@@ -868,97 +868,383 @@
         </div>
       </div>
 
-      <!-- 3-Column Interface Walkthrough Bento -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- 9 Alternating Interface Screens (Open Canvas Editorial Layout with Authentic App Screenshots) -->
+      <div class="space-y-16 sm:space-y-24 lg:space-y-0 relative pt-8">
 
-        <!-- Screen 1: The Hub & Trust Handshake -->
-        <div class="bg-white border border-slate-200 rounded-[32px] p-7 shadow-sm space-y-6 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-              <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Flow 01</span>
-              <span class="text-xs font-bold text-[#2C4A6F]">The Source Hub</span>
+        <!-- SCREEN 1: Image Left, Text Right -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="w-full max-w-[280px] sm:max-w-[310px] rounded-[44px] p-2.5 bg-slate-900 shadow-2xl ring-1 ring-slate-800 transition-transform duration-500 hover:scale-[1.01]">
+              <div class="rounded-[36px] overflow-hidden bg-[#F8FAFC] aspect-[393/852]">
+                <img src="assets/screen-app-hub.png" alt="Screen 1: Add Work Experience Source Hub" class="w-full h-full object-cover object-top" />
+              </div>
             </div>
-            <h4 class="text-lg font-bold text-slate-900 tracking-tight">The Import & Verification Flow</h4>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              A centralized zero-entry setup screen featuring high-contrast touch-friendly tiles for Lumber, Procore, ADP, NCCER, and HCSS, alongside a physical document scanner.
-            </p>
           </div>
 
-          <!-- High-Fidelity UI Wire Frame -->
-          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2.5 text-xs">
-            <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
-              <span class="font-bold text-slate-800 text-[11px]">Upload Resume (PDF, DOCX)</span>
-              <span class="text-slate-400">›</span>
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-[#2C4A6F] text-xs font-mono font-semibold">
+              <span>01</span>
+              <span>/</span>
+              <span>Entry Architecture</span>
             </div>
-            <div class="p-3 bg-[#2C4A6F] text-white rounded-xl flex items-center justify-between font-bold text-[11px] shadow-xs">
-              <div class="flex items-center gap-2">
-                <span class="text-amber-300">⚡</span>
-                <span>Connect with Lumber</span>
-              </div>
-              <span class="text-[9px] bg-white/20 px-1.5 py-0.5 rounded font-mono">1-TAP</span>
+
+            <h4 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 leading-snug">
+              The Source Hub: Zero-Typing Ingestion
+            </h4>
+
+            <div class="space-y-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-[#2C4A6F] block">The Architectural Solution</span>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                The legacy onboarding funnel forced every user toward a fragile PDF resume upload that failed silently. The redesigned Source Hub opens up a multi-modal ingestion gateway: 1-tap Lumber ecosystem handshake, regional contractor connectors (Procore, ADP, NCCER, HCSS), camera OCR scanning for physical union tickets, and structured manual entry.
+              </p>
             </div>
-            <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between text-slate-700 text-[11px] font-semibold">
-              <span>Scan Paper Dispatch Slip</span>
-              <span class="text-slate-400">OCR</span>
+
+            <div class="space-y-2 pt-1">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 block">Field Ergonomics & Site Reality</span>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                Features generous 48px+ touch targets optimized for single-handed thumb reach and dirty gloves. Eliminates onboarding abandonment by meeting tradespeople wherever their records live.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span class="w-2 h-2 rounded-full bg-[#2C4A6F]"></span>
+              <span>Heuristic #7: Flexibility & Efficiency of Use</span>
             </div>
           </div>
         </div>
 
-        <!-- Screen 2: Smart Manual Entry Flow -->
-        <div class="bg-white border border-slate-200 rounded-[32px] p-7 shadow-sm space-y-6 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-              <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Flow 02</span>
-              <span class="text-xs font-bold text-[#2C4A6F]">Micro-Flow</span>
+        <!-- SCREEN 2: Text Left, Image Right (Overlapping) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center lg:-mt-12">
+          <div class="lg:col-span-7 order-2 lg:order-1 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-mono font-semibold">
+              <span>02</span>
+              <span>/</span>
+              <span>Pre-Sync Transparency</span>
             </div>
-            <h4 class="text-lg font-bold text-slate-900 tracking-tight">The Smart Manual Entry Flow</h4>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              <strong>Step 1 (Your Role):</strong> Locks the trade classification with Existing Roles Quick Pick for returning users. <strong>Step 2 (Companies Worked):</strong> Batches new projects under that locked role using predictive contractor chips and duration pickers.
-            </p>
+
+            <h4 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 leading-snug">
+              The Trust Handshake: Transparent Pre-Sync Preview
+            </h4>
+
+            <div class="space-y-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600 block">The Architectural Solution</span>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                Standard third-party sync modals blindly ask for account permissions without showing what data will be imported. The BuilderFax Trust Handshake searches enterprise payroll pipes and surfaces the worker's matched union local (IBEW Local 46), member ID (#784-2910), and exact logged timesheet records (1,840h at Sound Transit) <em>before</em> requesting authorization.
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 block">Field Ergonomics & Site Reality</span>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                Craft workers are deeply protective of their identity data. Seeing their verified hours and union standing pre-rendered in high fidelity converts skepticism into instant adoption.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>Heuristic #1: Visibility of System Status</span>
+            </div>
           </div>
 
-          <!-- High-Fidelity UI Wire Frame -->
-          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2 text-xs">
-            <div class="p-2.5 bg-blue-50/80 rounded-xl border border-blue-100 text-[11px] text-slate-800 font-semibold flex items-center justify-between">
-              <span>Role: Journeyman Electrician</span>
-              <span class="text-emerald-700 font-bold">LOCKED</span>
-            </div>
-            <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-2">
-              <div class="flex items-center justify-between text-[11px] font-bold text-slate-800">
-                <span>Apex Construction Partners</span>
-                <span class="text-slate-500 font-mono">Company 1</span>
-              </div>
-              <div class="flex items-center gap-1 overflow-x-auto text-[10px]">
-                <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600">+ Skanska</span>
-                <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600">+ Turner</span>
+          <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center">
+            <div class="w-full max-w-[280px] sm:max-w-[310px] rounded-[44px] p-2.5 bg-slate-900 shadow-2xl ring-1 ring-slate-800 transition-transform duration-500 hover:scale-[1.01]">
+              <div class="rounded-[36px] overflow-hidden bg-[#F8FAFC] aspect-[393/852]">
+                <img src="assets/screen-app-handshake.png" alt="Screen 2: Pre-Sync Trust Handshake Modal" class="w-full h-full object-cover object-top" />
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Screen 3: Dual View Profile & Export -->
-        <div class="bg-white border border-slate-200 rounded-[32px] p-7 shadow-sm space-y-6 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-              <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Flow 03</span>
-              <span class="text-xs font-bold text-emerald-700">Output & Payoff</span>
+        <!-- SCREEN 3: Image Left, Text Right (Overlapping) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center lg:-mt-12">
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="w-full max-w-[280px] sm:max-w-[310px] rounded-[44px] p-2.5 bg-slate-900 shadow-2xl ring-1 ring-slate-800 transition-transform duration-500 hover:scale-[1.01]">
+              <div class="rounded-[36px] overflow-hidden bg-[#F8FAFC] aspect-[393/852]">
+                <img src="assets/screen-app-step1.png" alt="Screen 3: Step 1 Role Definition" class="w-full h-full object-cover object-top" />
+              </div>
             </div>
-            <h4 class="text-lg font-bold text-slate-900 tracking-tight">Dual-View Profile & Share Pass</h4>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              <strong>Role-Wise Output:</strong> Displays qualification badges like <em>Journeyman Qualified (>2,000h Met)</em> for pay grade proof. <strong>Timeline Output:</strong> Chronological rail. <strong>Share Pass Payoff:</strong> Supervisor-ready SVG QR code for job site entry.
-            </p>
           </div>
 
-          <!-- High-Fidelity UI Wire Frame -->
-          <div class="bg-obsidian text-white p-4 rounded-2xl space-y-3 text-center">
-            <div class="w-16 h-16 bg-white rounded-xl mx-auto p-1.5 flex items-center justify-center shadow-md">
-              <svg class="w-full h-full text-slate-900" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-5 0h2v3h-2v-3zm2 3h3v2h-3v-2zm3 2h3v3h-3v-3zm-5 1h2v2h-2v-2z"/>
-              </svg>
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-[#2C4A6F] text-xs font-mono font-semibold">
+              <span>03</span>
+              <span>/</span>
+              <span>Progressive Trade Lock</span>
             </div>
-            <div class="space-y-0.5">
-              <span class="text-[11px] font-bold text-emerald-400 font-mono block">BFX-7842-SEC-991</span>
-              <span class="text-[10px] text-slate-400 block">Supervisor Ready • Gate Verified</span>
+
+            <h4 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 leading-snug">
+              Step 1: Your Role — Trade Classification & Fast-Picks
+            </h4>
+
+            <div class="space-y-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-[#2C4A6F] block">The Architectural Solution</span>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                Rather than treating every job site as an isolated form, the system decouples the master trade qualification from individual employers. Users establish their core classification once, which then anchors all past and future build sites.
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 block">Field Ergonomics & Site Reality</span>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                Equipped with "Existing Roles in Profile (Quick Pick)" and tactile role chips (Commercial Plumber, HVAC Tech, Heavy Equipment, Framer) with intelligent trade classification auto-mapping. Replaces blank typing fields with recognition-based taps.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span class="w-2 h-2 rounded-full bg-[#2C4A6F]"></span>
+              <span>Heuristic #6: Recognition Over Recall</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 4: Text Left, Image Right (Overlapping) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center lg:-mt-12">
+          <div class="lg:col-span-7 order-2 lg:order-1 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-amber-700 text-xs font-mono font-semibold">
+              <span>04</span>
+              <span>/</span>
+              <span>Role-First Batching</span>
+            </div>
+
+            <h4 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 leading-snug">
+              Step 2: Companies Worked — Multi-Contractor Batching
+            </h4>
+
+            <div class="space-y-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 block">The Architectural Solution</span>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                Tradespeople frequently rotate through 3 to 10 subcontractors every year under the same trade ticket. Step 2 allows users to nest multiple company cards under their locked role without ever re-entering their job title, certifications, or trade category.
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 block">Field Ergonomics & Site Reality</span>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                Features predictive 1-tap contractor chips (<span class="font-bold">+Apex</span>, <span class="font-bold">+Skanska</span>, <span class="font-bold">+Turner</span>, <span class="font-bold">+Mortenson</span>), GPS build-site suggestions, duration selectors, and dedicated estimated hours steppers. Users can log 3 commercial stints in under 45 seconds.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span>Heuristic #8: Aesthetic & Minimalist Design</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center">
+            <div class="w-full max-w-[280px] sm:max-w-[310px] rounded-[44px] p-2.5 bg-slate-900 shadow-2xl ring-1 ring-slate-800 transition-transform duration-500 hover:scale-[1.01]">
+              <div class="rounded-[36px] overflow-hidden bg-[#F8FAFC] aspect-[393/852]">
+                <img src="assets/screen-app-step2.png" alt="Screen 4: Step 2 Companies Worked Batching" class="w-full h-full object-cover object-top" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 5: Image Left, Text Right (Overlapping) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center lg:-mt-12">
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="w-full max-w-[280px] sm:max-w-[310px] rounded-[44px] p-2.5 bg-slate-900 shadow-2xl ring-1 ring-slate-800 transition-transform duration-500 hover:scale-[1.01]">
+              <div class="rounded-[36px] overflow-hidden bg-[#F8FAFC] aspect-[393/852]">
+                <img src="assets/screen-app-calendar.png" alt="Screen 5: Tactical Calendar Picker Modal" class="w-full h-full object-cover object-top" />
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-50 border border-rose-200/80 text-rose-700 text-xs font-mono font-semibold">
+              <span>05</span>
+              <span>/</span>
+              <span>Component Ergonomics</span>
+            </div>
+
+            <h4 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 leading-snug">
+              Tactical Duration Picker: Eradicating the Decade Wheel
+            </h4>
+
+            <div class="space-y-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-rose-600 block">The Architectural Solution</span>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                Directly resolves the audit's "Calendar Problem". The native mobile date picker forced endless scrolling through decades of months. We replaced it with a purpose-built tactical calendar modal featuring a direct year stepper, a 12-month visual touch grid, and one-tap duration presets.
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 block">Field Ergonomics & Site Reality</span>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                Workers can tap presets like "Current Month", "6 Mos Ago", or "1 Yr Ago" in a single touch. Eliminates more than 240 continuous swipe gestures for veterans documenting multi-year careers.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+              <span>Heuristic #5: Error Prevention & Motor Load</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 6: Text Left, Image Right (Overlapping) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center lg:-mt-12">
+          <div class="lg:col-span-7 order-2 lg:order-1 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-mono font-semibold">
+              <span>06</span>
+              <span>/</span>
+              <span>Career Proof & Badging</span>
+            </div>
+
+            <h4 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 leading-snug">
+              Role-Wise Profile: Credential Wallet & Pay Proof
+            </h4>
+
+            <div class="space-y-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600 block">The Architectural Solution</span>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                Standard white-collar resumes treat each company as a separate entry, diluting a tradesperson's overall seniority. The Role-Wise profile rolls fragmented subcontracting stints up into consolidated trade buckets, tracking total logged hours and milestone thresholds.
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 block">Field Ergonomics & Site Reality</span>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                Generates authoritative qualification badges like <span class="font-bold text-emerald-700">Journeyman Qualified (&gt;2,000h Met)</span> with visual progress indicators. Gives tradespeople undeniable proof of pay grade eligibility for union halls and general contractors.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>Heuristic #2: Match Between System & Real World</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center">
+            <div class="w-full max-w-[280px] sm:max-w-[310px] rounded-[44px] p-2.5 bg-slate-900 shadow-2xl ring-1 ring-slate-800 transition-transform duration-500 hover:scale-[1.01]">
+              <div class="rounded-[36px] overflow-hidden bg-[#F8FAFC] aspect-[393/852]">
+                <img src="assets/screen-app-profile-roles.png" alt="Screen 6: Role-Wise Experience Profile" class="w-full h-full object-cover object-top" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 7: Image Left, Text Right (Overlapping) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center lg:-mt-12">
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="w-full max-w-[280px] sm:max-w-[310px] rounded-[44px] p-2.5 bg-slate-900 shadow-2xl ring-1 ring-slate-800 transition-transform duration-500 hover:scale-[1.01]">
+              <div class="rounded-[36px] overflow-hidden bg-[#F8FAFC] aspect-[393/852]">
+                <img src="assets/screen-app-profile-timeline.png" alt="Screen 7: Chronological Timeline View" class="w-full h-full object-cover object-top" />
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-[#2C4A6F] text-xs font-mono font-semibold">
+              <span>07</span>
+              <span>/</span>
+              <span>Continuous Audit Rail</span>
+            </div>
+
+            <h4 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 leading-snug">
+              Chronological Project Rail: Continuous History
+            </h4>
+
+            <div class="space-y-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-[#2C4A6F] block">The Architectural Solution</span>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                While role batching proves trade mastery, site superintendents frequently need chronological proof to verify recent safety compliance and active job-site tenures over the preceding 12 months.
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 block">Field Ergonomics & Site Reality</span>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                Renders a continuous vertical project rail showing sequential contractor stints, active ongoing roles, verified payroll synchronization tags, and exact project durations at a single glance.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span class="w-2 h-2 rounded-full bg-[#2C4A6F]"></span>
+              <span>Heuristic #4: Consistency & Standards</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 8: Text Left, Image Right (Overlapping) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center lg:-mt-12">
+          <div class="lg:col-span-7 order-2 lg:order-1 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-mono font-semibold">
+              <span>08</span>
+              <span>/</span>
+              <span>Field Payoff & Gate Check</span>
+            </div>
+
+            <h4 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 leading-snug">
+              Supervisor Digital Pass: Instant Gate Verification
+            </h4>
+
+            <div class="space-y-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600 block">The Architectural Solution</span>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                Physical certifications get lost, bent, or left behind in work trucks. The Job-Site Share Pass delivers the ultimate field payoff: a clean, dedicated credential pass featuring an SVG QR code and secure verification ID (<span class="font-mono font-bold">BFX-7842-SEC-991</span>).
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 block">Field Ergonomics & Site Reality</span>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                Engineered for harsh job-site sun glare and zero cell service. Site supervisors scan the offline pass in under 2 seconds to confirm badging, OSHA credentials, and gate clearance without stopping work.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>Heuristic #9: Help Users Recognize & Recover</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center">
+            <div class="w-full max-w-[280px] sm:max-w-[310px] rounded-[44px] p-2.5 bg-slate-900 shadow-2xl ring-1 ring-slate-800 transition-transform duration-500 hover:scale-[1.01]">
+              <div class="rounded-[36px] overflow-hidden bg-[#F8FAFC] aspect-[393/852]">
+                <img src="assets/screen-app-share-pass.png" alt="Screen 8: Supervisor Share Pass Modal" class="w-full h-full object-cover object-top" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 9: Image Left, Text Right (Overlapping) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center lg:-mt-12">
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="w-full max-w-[280px] sm:max-w-[310px] rounded-[44px] p-2.5 bg-slate-900 shadow-2xl ring-1 ring-slate-800 transition-transform duration-500 hover:scale-[1.01]">
+              <div class="rounded-[36px] overflow-hidden bg-[#F8FAFC] aspect-[393/852]">
+                <img src="assets/screen-app-scanner.png" alt="Screen 9: Physical Document Camera OCR Scanner" class="w-full h-full object-cover object-top" />
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono font-semibold">
+              <span>09</span>
+              <span>/</span>
+              <span>Physical Fallback OCR</span>
+            </div>
+
+            <h4 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 leading-snug">
+              Physical Document Scanner: Real-Time Edge OCR
+            </h4>
+
+            <div class="space-y-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-600 block">The Architectural Solution</span>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                Because 78% of craft workers still hold physical paper dispatch slips, apprenticeship completion letters, and pay stubs, digital-only systems fail. The on-device OCR camera scanner bridges physical job-site artifacts into digital wallet credentials.
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 block">Field Ergonomics & Site Reality</span>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                Features high-contrast corner targeting reticles, real-time edge detection ("DISPATCH SLIP DETECTED"), and instant data extraction to auto-fill contractor, date, and hour fields without tedious manual typing.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+              <span>Heuristic #10: Help & Documentation in Context</span>
             </div>
           </div>
         </div>
