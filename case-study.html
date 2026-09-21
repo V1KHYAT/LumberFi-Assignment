@@ -295,77 +295,240 @@
   <section id="audit" class="w-full py-20 sm:py-28 bg-canvasSubtle border-b border-slate-200/80 avoid-break">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-        <div class="space-y-3 max-w-2xl">
-          <span class="text-xs font-semibold uppercase tracking-wider text-rose-600">
-            Section 02 / Heuristic Breakdown
-          </span>
-          <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-[1.2]">
-            System Audit: The Loop of Friction
-          </h3>
-        </div>
-        <p class="text-sm text-slate-600 max-w-md leading-relaxed">
-          Why the legacy onboarding funnel triggered a 62% abandonment rate before workers could even reach their profile.
+      <!-- Section Header & Overview -->
+      <div class="space-y-4 max-w-4xl">
+        <span class="text-xs font-semibold uppercase tracking-wider text-rose-600">
+          Section 02 / Heuristic Audit
+        </span>
+        <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-[1.2]">
+          Section 3: System Audit and The Friction Points
+        </h3>
+        <p class="text-base text-slate-600 leading-relaxed font-normal max-w-3xl">
+          The current BuilderFax app assumes a standard corporate user experience, which breaks down on an active construction site. By relying on digital resumes, broken input components, and missing system feedback, the application forces tradespeople into a high friction data entry loop.
         </p>
       </div>
 
-      <!-- 4 Audit Component Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- 5 System Audit Cards (Grid: 2 Columns Top, 3 Columns Bottom) -->
+      <div class="space-y-8">
+        
+        <!-- Row 1: 2 Cards (6 cols each on lg) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-        <!-- Failure 1 -->
-        <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 font-extrabold flex items-center justify-center text-xs">
-              01
+          <!-- Card 1: The Resume Dead End & Silent Failures -->
+          <div class="bg-white p-7 sm:p-8 rounded-[32px] border border-slate-200/90 shadow-sm flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow duration-300">
+            <div class="space-y-5">
+              <!-- Visual Frame -->
+              <div class="w-full h-52 sm:h-60 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 flex items-center justify-center relative group">
+                <img src="assets/card1-resume.png" alt="Screenshot of the Upload your resume option" class="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500" />
+                <div class="absolute top-3 right-3 px-2.5 py-1 bg-rose-600/90 backdrop-blur-md text-white font-mono text-[10px] font-semibold rounded-full shadow-xs">
+                  SILENT FAILURE
+                </div>
+              </div>
+
+              <!-- Card Header -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-lg bg-rose-50 border border-rose-200 text-rose-600 font-mono text-xs font-semibold flex items-center justify-center">01</span>
+                  <h4 class="text-lg sm:text-xl font-semibold text-slate-900 tracking-tight">Card 1: The Resume Dead End & Silent Failures</h4>
+                </div>
+              </div>
+
+              <!-- Content Breakdown -->
+              <div class="space-y-3 text-xs sm:text-sm">
+                <div>
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-rose-600 block mb-1">The Problem</span>
+                  <p class="text-slate-700 leading-relaxed">
+                    The onboarding flow funnels users toward uploading a digital CV. If the PDF upload fails, the system provides zero error feedback, leaving the user completely stuck.
+                  </p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500 block mb-1">The Reality</span>
+                  <p class="text-slate-600 leading-relaxed">
+                    Tradespeople rely on physical dispatch slips. Pushing them toward a white collar PDF flow is a mismatch, and failing silently when a document is rejected violates basic error prevention heuristics.
+                  </p>
+                </div>
+              </div>
             </div>
-            <h4 class="text-base font-bold text-slate-900 tracking-tight">The Resume Dead End</h4>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              The onboarding screen funnels users toward an "Upload your resume" action. This creates an immediate roadblock for tradespeople who rely on physical dispatch slips instead of digital CVs. The promise of profile automation fails at the very first interaction.
-            </p>
+
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+              <span class="font-mono text-rose-600 font-medium">Heuristic #5: Error Prevention</span>
+              <span>Onboarding Funnel</span>
+            </div>
           </div>
-          <span class="text-[11px] font-bold text-rose-600 pt-3 border-t border-slate-100 block">Immediate Drop-Off</span>
+
+          <!-- Card 2: High Cognitive Load -->
+          <div class="bg-white p-7 sm:p-8 rounded-[32px] border border-slate-200/90 shadow-sm flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow duration-300">
+            <div class="space-y-5">
+              <!-- Visual Frame -->
+              <div class="w-full h-52 sm:h-60 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 flex items-center justify-center relative group">
+                <img src="assets/card2-fields.png" alt="Screenshot of the blank Work Experience form focusing on text fields" class="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500" />
+                <div class="absolute top-3 right-3 px-2.5 py-1 bg-amber-600/90 backdrop-blur-md text-white font-mono text-[10px] font-semibold rounded-full shadow-xs">
+                  7 BLANK FIELDS
+                </div>
+              </div>
+
+              <!-- Card Header -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-lg bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs font-semibold flex items-center justify-center">02</span>
+                  <h4 class="text-lg sm:text-xl font-semibold text-slate-900 tracking-tight">Card 2: High Cognitive Load</h4>
+                </div>
+              </div>
+
+              <!-- Content Breakdown -->
+              <div class="space-y-3 text-xs sm:text-sm">
+                <div>
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-amber-600 block mb-1">The Problem</span>
+                  <p class="text-slate-700 leading-relaxed">
+                    The manual entry screen demands heavy typing across seven separate fields.
+                  </p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500 block mb-1">The Reality</span>
+                  <p class="text-slate-600 leading-relaxed">
+                    Forcing a worker to type specific daily tasks into a blank description box on a mobile keyboard violates the recognition over recall usability heuristic.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+              <span class="font-mono text-amber-600 font-medium">Heuristic #6: Recognition Over Recall</span>
+              <span>Manual Entry Form</span>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Failure 2 -->
-        <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 font-extrabold flex items-center justify-center text-xs">
-              02
-            </div>
-            <h4 class="text-base font-bold text-slate-900 tracking-tight">High Cognitive Load</h4>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              The manual work experience form demands heavy typing across seven separate fields. Blank description boxes force users to recall and articulate daily tasks from memory on a mobile keyboard, directly violating the recognition over recall heuristic.
-            </p>
-          </div>
-          <span class="text-[11px] font-bold text-rose-600 pt-3 border-t border-slate-100 block">7 Blank Mobile Fields</span>
-        </div>
+        <!-- Row 2: 3 Cards (4 cols each on lg) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <!-- Failure 3 -->
-        <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 font-extrabold flex items-center justify-center text-xs">
-              03
-            </div>
-            <h4 class="text-base font-bold text-slate-900 tracking-tight">Component Failures</h4>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              The UI utilizes a paginated year selector showing disconnected blocks like 2004 to 2015. Forcing a veteran tradesperson to scroll through paginated blocks to log a 20-year career causes massive frustration. Routing to separate screens triggers save errors.
-            </p>
-          </div>
-          <span class="text-[11px] font-bold text-rose-600 pt-3 border-t border-slate-100 block">Decade Wheel Fatigue</span>
-        </div>
+          <!-- Card 3: Component Friction (The Calendar Problem) -->
+          <div class="bg-white p-7 rounded-[32px] border border-slate-200/90 shadow-sm flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow duration-300">
+            <div class="space-y-5">
+              <!-- Visual Frame -->
+              <div class="w-full h-48 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 flex items-center justify-center relative group">
+                <img src="assets/card3-calendar-enhanced.png" alt="Screenshot zooming in on the date picker component" class="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500" />
+                <div class="absolute top-3 right-3 px-2 py-0.5 bg-rose-600/90 backdrop-blur-md text-white font-mono text-[9px] font-semibold rounded-full shadow-xs">
+                  WHEEL SCROLL
+                </div>
+              </div>
 
-        <!-- Failure 4 -->
-        <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 font-extrabold flex items-center justify-center text-xs">
-              04
+              <!-- Card Header -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-lg bg-rose-50 border border-rose-200 text-rose-600 font-mono text-xs font-semibold flex items-center justify-center">03</span>
+                  <h4 class="text-base sm:text-lg font-semibold text-slate-900 tracking-tight">Card 3: Component Friction (The Calendar Problem)</h4>
+                </div>
+              </div>
+
+              <!-- Content Breakdown -->
+              <div class="space-y-3 text-xs sm:text-sm">
+                <div>
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-rose-600 block mb-1">The Problem</span>
+                  <p class="text-slate-700 leading-relaxed">
+                    The native date picker requires users to scroll through months and years manually.
+                  </p>
+                </div>
+                <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200/80">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500 block mb-1">The Reality</span>
+                  <p class="text-slate-600 leading-relaxed text-xs">
+                    A standard calendar component is a nightmare for a veteran trying to log a 20 year career. It forces endless scrolling for a task that should be solved with simple duration inputs.
+                  </p>
+                </div>
+              </div>
             </div>
-            <h4 class="text-base font-bold text-slate-900 tracking-tight">The Repetitive Entry Loop</h4>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              After enduring manual setup, the app dumps the user onto the main profile page. To add a second job site, the user must navigate back and restart the exact same blank form from scratch. The system lacks any mechanism to batch projects under a single trade.
-            </p>
+
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+              <span class="font-mono text-slate-600 font-medium">Component Ergonomics</span>
+              <span>Date Selectors</span>
+            </div>
           </div>
-          <span class="text-[11px] font-bold text-rose-600 pt-3 border-t border-slate-100 block">Zero Batch Mechanism</span>
+
+          <!-- Card 4: Rigid File Management -->
+          <div class="bg-white p-7 rounded-[32px] border border-slate-200/90 shadow-sm flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow duration-300">
+            <div class="space-y-5">
+              <!-- Visual Frame -->
+              <div class="w-full h-48 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 flex items-center justify-center relative group">
+                <img src="assets/card4-file-enhanced.png" alt="Screenshot of an uploaded credential or document in the app" class="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500" />
+                <div class="absolute top-3 right-3 px-2 py-0.5 bg-slate-800/90 backdrop-blur-md text-white font-mono text-[9px] font-semibold rounded-full shadow-xs">
+                  IMG_4920
+                </div>
+              </div>
+
+              <!-- Card Header -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-lg bg-slate-100 border border-slate-200 text-slate-700 font-mono text-xs font-semibold flex items-center justify-center">04</span>
+                  <h4 class="text-base sm:text-lg font-semibold text-slate-900 tracking-tight">Card 4: Rigid File Management</h4>
+                </div>
+              </div>
+
+              <!-- Content Breakdown -->
+              <div class="space-y-3 text-xs sm:text-sm">
+                <div>
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-600 block mb-1">The Problem</span>
+                  <p class="text-slate-700 leading-relaxed">
+                    Users cannot rename an uploaded image or document within the system.
+                  </p>
+                </div>
+                <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200/80">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500 block mb-1">The Reality</span>
+                  <p class="text-slate-600 leading-relaxed text-xs">
+                    If a worker uploads a photo of a dispatch slip and the phone names it "IMG_4920", they are stuck with that generic file name. This causes organizational chaos when trying to share specific credentials with a site supervisor.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+              <span class="font-mono text-slate-600 font-medium">Heuristic #3: User Control</span>
+              <span>Asset Organization</span>
+            </div>
+          </div>
+
+          <!-- Card 5: The Repetitive Entry Loop -->
+          <div class="bg-white p-7 rounded-[32px] border border-slate-200/90 shadow-sm flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow duration-300">
+            <div class="space-y-5">
+              <!-- Visual Frame -->
+              <div class="w-full h-48 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 flex items-center justify-center relative group">
+                <img src="assets/card5-profile.png" alt="Screenshot of the Profile page with a single Work Experience entry" class="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500" />
+                <div class="absolute top-3 right-3 px-2 py-0.5 bg-rose-600/90 backdrop-blur-md text-white font-mono text-[9px] font-semibold rounded-full shadow-xs">
+                  ISOLATED ENTRIES
+                </div>
+              </div>
+
+              <!-- Card Header -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-lg bg-rose-50 border border-rose-200 text-rose-600 font-mono text-xs font-semibold flex items-center justify-center">05</span>
+                  <h4 class="text-base sm:text-lg font-semibold text-slate-900 tracking-tight">Card 5: The Repetitive Entry Loop</h4>
+                </div>
+              </div>
+
+              <!-- Content Breakdown -->
+              <div class="space-y-3 text-xs sm:text-sm">
+                <div>
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-rose-600 block mb-1">The Problem</span>
+                  <p class="text-slate-700 leading-relaxed">
+                    After enduring the manual setup, the app drops the user onto the main profile page.
+                  </p>
+                </div>
+                <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200/80">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500 block mb-1">The Reality</span>
+                  <p class="text-slate-600 leading-relaxed text-xs">
+                    To add a second job site, the user must navigate back and restart the exact same blank form from scratch. There is no mechanism to duplicate past roles or batch multiple sites under a single trade.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+              <span class="font-mono text-rose-600 font-medium">Architecture Flaw</span>
+              <span>Profile Redirection</span>
+            </div>
+          </div>
+
         </div>
 
       </div>
