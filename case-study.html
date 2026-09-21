@@ -67,11 +67,11 @@
       padding: 0;
     }
 
-    /* Print-to-PDF Specific Engine (Press 'P') */
+    /* Print-to-PDF Specific Engine (Press 'P' to download continuous PDF) */
     @media print {
       @page {
-        size: A4 portrait;
-        margin: 10mm 10mm 10mm 10mm;
+        size: 1440px auto;
+        margin: 0;
       }
       body {
         background-color: #FFFFFF !important;
@@ -82,13 +82,9 @@
       .no-print {
         display: none !important;
       }
-      .page-break {
-        page-break-before: always;
-        break-before: page;
-      }
       .avoid-break {
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
+        page-break-inside: auto !important;
+        break-inside: auto !important;
       }
       header.site-header {
         position: static !important;
@@ -249,7 +245,7 @@
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
               </svg>
             </div>
-            <span class="text-xs text-slate-400 font-mono">5 MIN READ / WATCH</span>
+            <span class="text-xs text-slate-400 font-mono">3 MIN WATCH</span>
           </div>
           <div class="space-y-1">
             <h4 class="text-2xl font-bold tracking-tight text-slate-900">Quick Loom Explainer</h4>
@@ -866,7 +862,7 @@
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
               </svg>
             </div>
-            <span class="text-xs text-slate-400 font-mono">5 MIN READ / WATCH</span>
+            <span class="text-xs text-slate-400 font-mono">3 MIN WATCH</span>
           </div>
           <div class="space-y-1">
             <h4 class="text-2xl font-bold tracking-tight text-slate-900">Quick Loom Explainer</h4>
@@ -1450,21 +1446,23 @@
 
 
   <!-- ===================================================================== -->
-  <!-- JAVASCRIPT: KEYBOARD LISTENER FOR 'P' TO TRIGGER CLEAN PRINT-TO-PDF   -->
+  <!-- JAVASCRIPT: KEYBOARD LISTENER FOR 'P' TO DOWNLOAD CONTINUOUS PDF     -->
   <!-- ===================================================================== -->
   <script>
-    // Listen for single keypress of 'p' or 'P' to trigger PDF export
+    // Press 'P' to download the pre-generated single-page continuous PDF
     window.addEventListener('keydown', function(event) {
-      // Ignore if user is currently typing in an input or textarea
       const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
       if (tag === 'input' || tag === 'textarea' || document.activeElement.isContentEditable) {
         return;
       }
-
-      // Check if 'p' or 'P' was pressed (with or without Ctrl/Cmd)
       if (event.key === 'p' || event.key === 'P') {
         event.preventDefault();
-        window.print();
+        const a = document.createElement('a');
+        a.href = 'BuilderFax-Systems-Redesign-Continuous.pdf';
+        a.download = 'BuilderFax-Systems-Redesign-Continuous.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
       }
     });
   </script>
