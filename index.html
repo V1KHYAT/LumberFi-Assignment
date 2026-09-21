@@ -103,9 +103,9 @@
         <!-- Screen Surface -->
         <div id="phone-screen" class="relative w-full h-full bg-[#F8FAFC] rounded-[40px] overflow-hidden flex flex-col text-slate-900 border border-slate-200/80">
 
-          <!-- 1. Native iOS Status Bar (Clean, no fake notch) -->
+          <!-- 1. Native iOS Status Bar (Clean, no fake notch, real-time clock) -->
           <div class="relative z-40 w-full h-11 pt-2 px-6 flex items-center justify-between text-[13px] font-semibold tracking-tight text-slate-900 bg-white/95 backdrop-blur-md">
-            <span class="font-semibold tracking-tight">9:42</span>
+            <span id="status-bar-time" class="font-semibold tracking-tight">9:41</span>
             <div class="flex items-center gap-1.5 text-slate-900">
               <svg class="w-3.5 h-3" fill="currentColor" viewBox="0 0 18 14">
                 <rect x="0" y="10" width="3" height="4" rx="0.5"/>
@@ -158,7 +158,7 @@
               
               <!-- Navigation Header -->
               <div class="px-5 pt-1 pb-2.5 flex items-center justify-between border-b border-slate-100">
-                <button onclick="showToast('Home')" class="btn-tap -ml-2 w-9 h-9 flex items-center justify-center text-slate-500 hover:text-slate-900" aria-label="Back">
+                <button onclick="goToScreen('hub')" class="btn-tap -ml-2 w-9 h-9 flex items-center justify-center text-slate-500 hover:text-slate-900" aria-label="Back">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
                   </svg>
@@ -383,29 +383,23 @@
                     <div class="divide-y divide-slate-100">
                       
                       <!-- Company 1: Apex Construction Partners -->
-                      <div class="p-3.5 space-y-1.5">
+                      <div class="p-3.5 space-y-1">
                         <div class="flex items-start justify-between">
                           <div>
-                            <div class="flex items-center gap-1.5">
-                              <h3 class="text-[13.5px] font-bold text-slate-900">Apex Construction Partners</h3>
-                              <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.2 rounded-full">
-                                Verified
-                              </span>
-                            </div>
+                            <h3 class="text-[13.5px] font-bold text-slate-900">Apex Construction Partners</h3>
                             <p class="text-xs text-slate-500">
                               Sound Transit Light Rail Extension • Seattle, WA
                             </p>
                           </div>
                           <span class="text-xs font-bold text-slate-900 tabular-nums">1,840 hrs</span>
                         </div>
-                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                        <div class="text-[11px] text-slate-400 pt-0.5">
                           <span>Mar 2024 – Present (Active)</span>
-                          <span class="text-emerald-700 font-medium">Signed by Marcus Vance (Foreman)</span>
                         </div>
                       </div>
 
                       <!-- Company 2: TerraFirma Builders -->
-                      <div class="p-3.5 space-y-1.5">
+                      <div class="p-3.5 space-y-1">
                         <div class="flex items-start justify-between">
                           <div>
                             <h3 class="text-[13.5px] font-bold text-slate-900">TerraFirma Builders</h3>
@@ -415,9 +409,8 @@
                           </div>
                           <span class="text-xs font-bold text-slate-900 tabular-nums">600 hrs</span>
                         </div>
-                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                        <div class="text-[11px] text-slate-400 pt-0.5">
                           <span>Aug 2023 – Feb 2024</span>
-                          <span>Completed Project</span>
                         </div>
                       </div>
 
@@ -474,29 +467,23 @@
                     <div class="divide-y divide-slate-100">
                       
                       <!-- Company 1: SunGrid Industrial Energy -->
-                      <div class="p-3.5 space-y-1.5">
+                      <div class="p-3.5 space-y-1">
                         <div class="flex items-start justify-between">
                           <div>
-                            <div class="flex items-center gap-1.5">
-                              <h3 class="text-[13.5px] font-bold text-slate-900">SunGrid Industrial Energy</h3>
-                              <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.2 rounded-full">
-                                Verified
-                              </span>
-                            </div>
+                            <h3 class="text-[13.5px] font-bold text-slate-900">SunGrid Industrial Energy</h3>
                             <p class="text-xs text-slate-500">
                               Puget Sound Distribution Center Rooftop • Seattle, WA
                             </p>
                           </div>
                           <span class="text-xs font-bold text-slate-900 tabular-nums">560 hrs</span>
                         </div>
-                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                        <div class="text-[11px] text-slate-400 pt-0.5">
                           <span>Jan 2023 – Jul 2023</span>
-                          <span class="text-emerald-700 font-medium">Verified by Dave Miller (PM)</span>
                         </div>
                       </div>
 
                       <!-- Company 2: Northwest Solar Electric -->
-                      <div class="p-3.5 space-y-1.5">
+                      <div class="p-3.5 space-y-1">
                         <div class="flex items-start justify-between">
                           <div>
                             <h3 class="text-[13.5px] font-bold text-slate-900">Northwest Solar Electric</h3>
@@ -506,9 +493,8 @@
                           </div>
                           <span class="text-xs font-bold text-slate-900 tabular-nums">420 hrs</span>
                         </div>
-                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                        <div class="text-[11px] text-slate-400 pt-0.5">
                           <span>Jul 2022 – Dec 2022</span>
-                          <span>Completed Installation</span>
                         </div>
                       </div>
 
@@ -620,7 +606,7 @@
                   </svg>
                   <span>Add New Experience</span>
                 </button>
-                <button onclick="showToast('Verification Pass Generated')" class="btn-tap h-12 px-5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs rounded-full">
+                <button onclick="openSharePassModal()" class="btn-tap h-12 px-5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs rounded-full">
                   Share Pass
                 </button>
               </div>
@@ -654,29 +640,8 @@
                   <div>
                     <h2 class="text-lg font-bold text-slate-900 tracking-tight">What is your role?</h2>
                     <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">
-                      Select or type your trade role. You can log multiple companies under this role in the next step.
+                      Enter or select your trade role below. You can log multiple companies worked under this role in the next step.
                     </p>
-                  </div>
-
-                  <!-- Quick Select Existing Entered Roles -->
-                  <div class="space-y-1.5">
-                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
-                      Existing Roles in Profile (Quick Pick)
-                    </span>
-                    <div class="flex flex-wrap gap-2">
-                      <button type="button" onclick="selectExistingRole('Journeyman Commercial Electrician', 'Electrical')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800">
-                        ⚡ Journeyman Electrician
-                      </button>
-                      <button type="button" onclick="selectExistingRole('Solar PV & Storage Specialist', 'Renewable Energy')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800">
-                        ☀️ Solar PV Specialist
-                      </button>
-                      <button type="button" onclick="selectExistingRole('Commercial Plumber', 'Plumbing & Pipefitting')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800">
-                        🔧 Commercial Plumber
-                      </button>
-                      <button type="button" onclick="selectExistingRole('HVAC Service Technician', 'Mechanical / HVAC')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800">
-                        ❄️ HVAC Tech
-                      </button>
-                    </div>
                   </div>
 
                   <!-- Role Title Input (Empty default, Autocomplete Datalist, Auto-Trade Mapping) -->
@@ -795,11 +760,17 @@
                       <div class="grid grid-cols-2 gap-2">
                         <div>
                           <span class="text-[10px] text-slate-400 block mb-1">From Date</span>
-                          <input type="month" id="input-from-1" value="2023-09" class="w-full h-10 px-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" />
+                          <button type="button" id="btn-from-1" onclick="openCalendarPicker(1, 'from')" class="btn-tap w-full h-10 px-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-800 flex items-center justify-between hover:bg-slate-100 transition-colors">
+                            <span id="label-from-1">Sep 2023</span>
+                            <svg class="w-3.5 h-3.5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                          </button>
                         </div>
                         <div>
                           <span class="text-[10px] text-slate-400 block mb-1">To Date</span>
-                          <input type="month" id="input-to-1" value="2024-03" class="w-full h-10 px-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" />
+                          <button type="button" id="btn-to-1" onclick="openCalendarPicker(1, 'to')" class="btn-tap w-full h-10 px-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-800 flex items-center justify-between hover:bg-slate-100 transition-colors">
+                            <span id="label-to-1">Mar 2024</span>
+                            <svg class="w-3.5 h-3.5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                          </button>
                         </div>
                       </div>
 
@@ -949,6 +920,187 @@
             </div>
           </div>
 
+          <!-- =============================================================== -->
+          <!-- MODAL: DIGITAL WORK PASS WITH FAKE QR CODE                      -->
+          <!-- =============================================================== -->
+          <div id="modal-share-pass" class="hidden absolute inset-0 z-50 bg-black/40 backdrop-blur-xs flex flex-col justify-end">
+            <div onclick="closeSharePassModal()" class="flex-1 w-full"></div>
+
+            <div class="bg-white rounded-t-[28px] p-6 shadow-sheet space-y-4 max-h-[85%] overflow-y-auto">
+              <div class="w-9 h-1 bg-slate-300 rounded-full mx-auto -mt-2 mb-1"></div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-10 h-10 rounded-xl bg-[#2C4A6F] text-white flex items-center justify-center font-bold">
+                    <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 class="text-base font-bold text-slate-900 tracking-tight">Digital Work Pass</h2>
+                    <p class="text-xs text-slate-500">BuilderFax Instant Verification Pass</p>
+                  </div>
+                </div>
+                <button onclick="closeSharePassModal()" class="btn-tap w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center" aria-label="Close">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+              </div>
+
+              <!-- Fake QR Code Container -->
+              <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col items-center justify-center text-center space-y-3">
+                <div class="p-3 bg-white rounded-xl shadow-xs border border-slate-200 inline-block">
+                  <svg class="w-44 h-44" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer positioning square top-left -->
+                    <rect x="10" y="10" width="40" height="40" rx="6" fill="#1E293B" />
+                    <rect x="18" y="18" width="24" height="24" rx="3" fill="white" />
+                    <rect x="24" y="24" width="12" height="12" rx="2" fill="#2C4A6F" />
+                    
+                    <!-- Outer positioning square top-right -->
+                    <rect x="110" y="10" width="40" height="40" rx="6" fill="#1E293B" />
+                    <rect x="118" y="18" width="24" height="24" rx="3" fill="white" />
+                    <rect x="124" y="24" width="12" height="12" rx="2" fill="#2C4A6F" />
+
+                    <!-- Outer positioning square bottom-left -->
+                    <rect x="10" y="110" width="40" height="40" rx="6" fill="#1E293B" />
+                    <rect x="18" y="118" width="24" height="24" rx="3" fill="white" />
+                    <rect x="24" y="124" width="12" height="12" rx="2" fill="#2C4A6F" />
+
+                    <!-- Decorative QR Matrix Patterns -->
+                    <rect x="60" y="14" width="8" height="8" rx="1.5" fill="#1E293B" />
+                    <rect x="76" y="14" width="8" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="92" y="14" width="8" height="8" rx="1.5" fill="#1E293B" />
+
+                    <rect x="60" y="30" width="16" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="84" y="30" width="16" height="8" rx="1.5" fill="#1E293B" />
+
+                    <rect x="14" y="60" width="8" height="8" rx="1.5" fill="#1E293B" />
+                    <rect x="30" y="60" width="8" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="46" y="60" width="8" height="8" rx="1.5" fill="#1E293B" />
+                    <rect x="62" y="60" width="16" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="86" y="60" width="8" height="8" rx="1.5" fill="#1E293B" />
+                    <rect x="102" y="60" width="16" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="126" y="60" width="8" height="8" rx="1.5" fill="#1E293B" />
+                    <rect x="138" y="60" width="8" height="8" rx="1.5" fill="#2C4A6F" />
+
+                    <rect x="60" y="76" width="8" height="16" rx="1.5" fill="#1E293B" />
+                    <rect x="76" y="76" width="8" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="92" y="76" width="8" height="16" rx="1.5" fill="#1E293B" />
+
+                    <rect x="14" y="80" width="16" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="38" y="80" width="8" height="16" rx="1.5" fill="#1E293B" />
+                    <rect x="110" y="80" width="16" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="134" y="80" width="12" height="8" rx="1.5" fill="#1E293B" />
+
+                    <rect x="60" y="100" width="16" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="84" y="100" width="16" height="8" rx="1.5" fill="#1E293B" />
+                    <rect x="108" y="100" width="8" height="16" rx="1.5" fill="#2C4A6F" />
+                    <rect x="124" y="100" width="16" height="8" rx="1.5" fill="#1E293B" />
+
+                    <rect x="60" y="118" width="8" height="8" rx="1.5" fill="#1E293B" />
+                    <rect x="76" y="118" width="16" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="100" y="118" width="8" height="8" rx="1.5" fill="#1E293B" />
+                    <rect x="116" y="118" width="16" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="140" y="118" width="6" height="8" rx="1.5" fill="#1E293B" />
+
+                    <rect x="60" y="134" width="16" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="84" y="134" width="8" height="8" rx="1.5" fill="#1E293B" />
+                    <rect x="100" y="134" width="16" height="8" rx="1.5" fill="#2C4A6F" />
+                    <rect x="124" y="134" width="8" height="8" rx="1.5" fill="#1E293B" />
+                    <rect x="138" y="134" width="8" height="8" rx="1.5" fill="#2C4A6F" />
+
+                    <!-- Center Shield Emblem -->
+                    <circle cx="80" cy="80" r="14" fill="#2C4A6F" />
+                    <path d="M75 80L78 83L85 76" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+
+                <!-- Pass Metadata & Verification Text -->
+                <div class="space-y-1">
+                  <div class="flex items-center justify-center gap-1.5 text-xs font-bold text-slate-800">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span>Pass ID: BFX-7842-SEC-991</span>
+                  </div>
+                  <p class="text-xs text-slate-500 max-w-[280px]">
+                    Scan this pass with any job site reader or mobile camera to verify logged hours, contractor sign-offs, and trade credentials.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Close Button -->
+              <button onclick="closeSharePassModal()" class="btn-tap w-full h-12 bg-[#2C4A6F] hover:bg-[#1E3550] text-white font-bold text-xs rounded-full flex items-center justify-center">
+                Done
+              </button>
+            </div>
+          </div>
+
+          <!-- =============================================================== -->
+          <!-- MODAL: INTERACTIVE CALENDAR MONTH/YEAR PICKER                   -->
+          <!-- =============================================================== -->
+          <div id="modal-calendar-picker" class="hidden absolute inset-0 z-50 bg-black/40 backdrop-blur-xs flex flex-col justify-end">
+            <div onclick="closeCalendarPicker()" class="flex-1 w-full"></div>
+
+            <div class="bg-white rounded-t-[28px] p-5 shadow-sheet space-y-4 max-h-[85%]">
+              <div class="w-9 h-1 bg-slate-300 rounded-full mx-auto -mt-2 mb-1"></div>
+
+              <!-- Header -->
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 id="calendar-picker-title" class="text-base font-bold text-slate-900 tracking-tight">Select Date</h2>
+                  <p id="calendar-picker-subtext" class="text-xs text-slate-500">Pick month and year</p>
+                </div>
+                <button onclick="closeCalendarPicker()" class="btn-tap w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center" aria-label="Close">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+              </div>
+
+              <!-- Year Stepper Bar -->
+              <div class="flex items-center justify-between bg-slate-100 p-1.5 rounded-xl">
+                <button type="button" onclick="adjustCalendarYear(-1)" class="btn-tap w-8 h-8 rounded-lg bg-white shadow-subtle flex items-center justify-center text-slate-700 font-bold hover:bg-slate-50">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <div class="flex items-center gap-1.5">
+                  <span id="calendar-active-year" class="text-sm font-extrabold text-[#2C4A6F]">2023</span>
+                </div>
+                <button type="button" onclick="adjustCalendarYear(1)" class="btn-tap w-8 h-8 rounded-lg bg-white shadow-subtle flex items-center justify-center text-slate-700 font-bold hover:bg-slate-50">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+
+              <!-- Quick Year Pills -->
+              <div class="flex items-center justify-between gap-1 overflow-x-auto no-scrollbar py-0.5">
+                <button type="button" onclick="setCalendarYear(2026)" class="year-pill btn-tap px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">2026</button>
+                <button type="button" onclick="setCalendarYear(2025)" class="year-pill btn-tap px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">2025</button>
+                <button type="button" onclick="setCalendarYear(2024)" class="year-pill btn-tap px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">2024</button>
+                <button type="button" onclick="setCalendarYear(2023)" class="year-pill btn-tap px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">2023</button>
+                <button type="button" onclick="setCalendarYear(2022)" class="year-pill btn-tap px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">2022</button>
+                <button type="button" onclick="setCalendarYear(2021)" class="year-pill btn-tap px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">2021</button>
+              </div>
+
+              <!-- 12-Month Calendar Grid -->
+              <div class="grid grid-cols-4 gap-2 pt-1">
+                <button type="button" onclick="selectCalendarMonth('Jan')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="Jan">Jan</button>
+                <button type="button" onclick="selectCalendarMonth('Feb')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="Feb">Feb</button>
+                <button type="button" onclick="selectCalendarMonth('Mar')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="Mar">Mar</button>
+                <button type="button" onclick="selectCalendarMonth('Apr')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="Apr">Apr</button>
+                <button type="button" onclick="selectCalendarMonth('May')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="May">May</button>
+                <button type="button" onclick="selectCalendarMonth('Jun')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="Jun">Jun</button>
+                <button type="button" onclick="selectCalendarMonth('Jul')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="Jul">Jul</button>
+                <button type="button" onclick="selectCalendarMonth('Aug')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="Aug">Aug</button>
+                <button type="button" onclick="selectCalendarMonth('Sep')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="Sep">Sep</button>
+                <button type="button" onclick="selectCalendarMonth('Oct')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="Oct">Oct</button>
+                <button type="button" onclick="selectCalendarMonth('Nov')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="Nov">Nov</button>
+                <button type="button" onclick="selectCalendarMonth('Dec')" class="cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800" data-month="Dec">Dec</button>
+              </div>
+
+              <!-- Footer with Confirm -->
+              <div class="pt-2">
+                <button type="button" onclick="applyCalendarDate()" class="btn-tap w-full h-11 bg-[#2C4A6F] hover:bg-[#1E3550] text-white font-bold text-xs rounded-full flex items-center justify-center shadow-subtle">
+                  Confirm Date
+                </button>
+              </div>
+            </div>
+          </div>
+
           <!-- iOS Home Indicator -->
           <div class="w-full h-5 bg-white flex items-center justify-center pb-1">
             <div class="w-32 h-1 bg-slate-900/40 rounded-full"></div>
@@ -963,7 +1115,21 @@
   <!-- JAVASCRIPT: PROPORTIONAL SCALING & COMPLETE FLOW LOGIC          -->
   <!-- =============================================================== -->
   <script>
-    // 1. Proportional 80vh Scaling
+    // 1. Real-time Status Bar Clock (Accurate to local time, 12-hour format)
+    function updateStatusBarClock() {
+      const el = document.getElementById('status-bar-time');
+      if (!el) return;
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = now.getMinutes();
+      hours = hours % 12 || 12;
+      const minStr = minutes < 10 ? '0' + minutes : minutes;
+      el.textContent = `${hours}:${minStr}`;
+    }
+    setInterval(updateStatusBarClock, 1000);
+    updateStatusBarClock();
+
+    // 2. Proportional 80vh Scaling
     function updatePhoneScale() {
       const container = document.getElementById('phone-proportional-wrapper');
       const frame = document.getElementById('phone-frame-wrapper');
@@ -979,9 +1145,10 @@
     window.addEventListener('resize', updatePhoneScale);
     window.addEventListener('DOMContentLoaded', () => {
       updatePhoneScale();
+      updateStatusBarClock();
     });
 
-    // 2. Toast Notification Engine (Light Mode, Countdown Progress Bar, Click to Dismiss)
+    // 3. Toast Notification Engine (Light Mode, Progress Bar, Click to Dismiss)
     let toastTimeout = null;
     const TOAST_DURATION = 3000;
 
@@ -1001,7 +1168,7 @@
       if (progress) {
         progress.style.transition = 'none';
         progress.style.width = '100%';
-        void progress.offsetWidth; // Force DOM reflow
+        void progress.offsetWidth; // Force reflow
         progress.style.transition = `width ${TOAST_DURATION}ms linear`;
         progress.style.width = '0%';
       }
@@ -1029,7 +1196,118 @@
       }
     }
 
-    // 3. Screen Switching Engine: 'hub' <-> 'experience' <-> 'add-role-flow'
+    // 4. Digital Work Pass Modal (QR Code)
+    function openSharePassModal() {
+      const modal = document.getElementById('modal-share-pass');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeSharePassModal() {
+      const modal = document.getElementById('modal-share-pass');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // 5. Interactive Calendar Month/Year Picker Engine
+    const cardDates = {
+      1: { fromMonth: 'Sep', fromYear: 2023, toMonth: 'Mar', toYear: 2024, isActive: false }
+    };
+
+    let activeCalendarTarget = { cardIndex: 1, type: 'from' }; // 'from' | 'to'
+    let calendarYear = 2023;
+    let calendarMonth = 'Sep';
+
+    function openCalendarPicker(cardIndex, type) {
+      if (!cardDates[cardIndex]) {
+        cardDates[cardIndex] = { fromMonth: 'Jan', fromYear: 2023, toMonth: 'Dec', toYear: 2023, isActive: false };
+      }
+      if (type === 'to' && cardDates[cardIndex].isActive) {
+        return; // Disabled when currently working here
+      }
+      activeCalendarTarget = { cardIndex, type };
+
+      if (type === 'from') {
+        calendarYear = cardDates[cardIndex].fromYear || 2023;
+        calendarMonth = cardDates[cardIndex].fromMonth || 'Sep';
+      } else {
+        calendarYear = cardDates[cardIndex].toYear || 2024;
+        calendarMonth = cardDates[cardIndex].toMonth || 'Mar';
+      }
+
+      const titleEl = document.getElementById('calendar-picker-title');
+      const subEl = document.getElementById('calendar-picker-subtext');
+      if (titleEl) titleEl.textContent = type === 'from' ? 'Select Start Date' : 'Select End Date';
+      if (subEl) subEl.textContent = `Company ${cardIndex} duration period`;
+
+      updateCalendarPickerUI();
+      const modal = document.getElementById('modal-calendar-picker');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeCalendarPicker() {
+      const modal = document.getElementById('modal-calendar-picker');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function adjustCalendarYear(delta) {
+      calendarYear += delta;
+      if (calendarYear < 1980) calendarYear = 1980;
+      if (calendarYear > 2030) calendarYear = 2030;
+      updateCalendarPickerUI();
+    }
+
+    function setCalendarYear(year) {
+      calendarYear = year;
+      updateCalendarPickerUI();
+    }
+
+    function selectCalendarMonth(m) {
+      calendarMonth = m;
+      updateCalendarPickerUI();
+    }
+
+    function updateCalendarPickerUI() {
+      const yearEl = document.getElementById('calendar-active-year');
+      if (yearEl) yearEl.textContent = calendarYear;
+
+      document.querySelectorAll('.cal-month-btn').forEach(btn => {
+        const m = btn.getAttribute('data-month');
+        if (m === calendarMonth) {
+          btn.className = 'cal-month-btn btn-tap h-10 rounded-xl font-bold text-xs bg-[#2C4A6F] text-white shadow-xs';
+        } else {
+          btn.className = 'cal-month-btn btn-tap h-10 rounded-xl font-semibold text-xs border border-slate-200 bg-white hover:bg-slate-50 text-slate-800';
+        }
+      });
+
+      document.querySelectorAll('.year-pill').forEach(pill => {
+        const yr = parseInt(pill.textContent);
+        if (yr === calendarYear) {
+          pill.className = 'year-pill btn-tap px-2.5 py-1 text-[11px] font-bold rounded-lg bg-[#2C4A6F] text-white';
+        } else {
+          pill.className = 'year-pill btn-tap px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200';
+        }
+      });
+    }
+
+    function applyCalendarDate() {
+      const { cardIndex, type } = activeCalendarTarget;
+      if (!cardDates[cardIndex]) {
+        cardDates[cardIndex] = { fromMonth: 'Jan', fromYear: 2023, toMonth: 'Dec', toYear: 2023, isActive: false };
+      }
+      if (type === 'from') {
+        cardDates[cardIndex].fromMonth = calendarMonth;
+        cardDates[cardIndex].fromYear = calendarYear;
+        const label = document.getElementById(`label-from-${cardIndex}`);
+        if (label) label.textContent = `${calendarMonth} ${calendarYear}`;
+      } else {
+        cardDates[cardIndex].toMonth = calendarMonth;
+        cardDates[cardIndex].toYear = calendarYear;
+        const label = document.getElementById(`label-to-${cardIndex}`);
+        if (label) label.textContent = `${calendarMonth} ${calendarYear}`;
+      }
+      closeCalendarPicker();
+    }
+
+    // 6. Screen Switching Engine: 'hub' <-> 'experience' <-> 'add-role-flow'
     function goToScreen(screenId) {
       const hub = document.getElementById('screen-hub');
       const exp = document.getElementById('screen-experience');
@@ -1046,7 +1324,7 @@
       }
     }
 
-    // 4. Experience View Mode Switcher: Role Wise vs Timeline Wise
+    // 7. Experience View Mode Switcher: Role Wise vs Timeline Wise
     function setExperienceView(mode) {
       const roleContainer = document.getElementById('view-role-container');
       const timelineContainer = document.getElementById('view-timeline-container');
@@ -1066,7 +1344,7 @@
       }
     }
 
-    // 5. Option 1: Upload Resume
+    // 8. Option 1: Upload Resume
     function triggerResumeUpload() {
       showToast('Uploading resume.pdf...');
       setTimeout(() => {
@@ -1075,7 +1353,7 @@
       }, 900);
     }
 
-    // 6. Option 2: Connect with Lumber (Handshake Modal)
+    // 9. Option 2: Connect with Lumber (Handshake Modal)
     function openLumberSyncModal() {
       const modal = document.getElementById('modal-lumber-sync');
       if (modal) modal.classList.remove('hidden');
@@ -1095,21 +1373,21 @@
         closeLumberModal();
         if (label) label.textContent = 'Authorize & Import Experience';
         if (icon) icon.classList.remove('animate-spin');
-        showToast('1,840 Verified Hours Synced from Lumber');
+        showToast('1,840 Hours Synced from Lumber');
         goToScreen('experience');
       }, 850);
     }
 
-    // 7. Option 3: External Platforms (Procore, ADP, NCCER, HCSS)
+    // 10. Option 3: External Platforms (Procore, ADP, NCCER, HCSS)
     function connectExternalPlatform(name) {
       showToast(`Connecting to ${name}...`);
       setTimeout(() => {
-        showToast(`Imported verified records from ${name}`);
+        showToast(`Imported records from ${name}`);
         goToScreen('experience');
       }, 850);
     }
 
-    // 8. Option 4: Scan Documents
+    // 11. Option 4: Scan Documents
     function openDocumentScanner() {
       const modal = document.getElementById('modal-camera-scan');
       if (modal) modal.classList.remove('hidden');
@@ -1128,7 +1406,7 @@
     }
 
     // =========================================================================
-    // 9. ROLE-BASED ADD EXPERIENCE MULTI-STEP FLOW ENGINE
+    // 12. ROLE-BASED ADD EXPERIENCE MULTI-STEP FLOW ENGINE
     // =========================================================================
     let flowCurrentPart = 1;
     let selectedRoleTitle = '';
@@ -1204,16 +1482,6 @@
       }
     }
 
-    function selectExistingRole(title, trade) {
-      const input = document.getElementById('input-role-title');
-      const select = document.getElementById('input-trade-category');
-      if (input) input.value = title;
-      if (select) select.value = trade;
-      selectedRoleTitle = title;
-      selectedTrade = trade;
-      showToast(`Selected: ${title}`);
-    }
-
     function handleFlowNext() {
       if (flowCurrentPart === 1) {
         const input = document.getElementById('input-role-title');
@@ -1233,35 +1501,49 @@
       }
     }
 
-    // Company Input Helpers
+    // Company Input Helpers (Toasts removed for micro-actions)
     function setCompanySuggestion(cardIndex, name) {
       const input = document.getElementById(`input-company-name-${cardIndex}`);
       if (input) input.value = name;
-      showToast(`Selected: ${name}`);
     }
 
     function toggleCompanyActive(cardIndex, isChecked) {
-      const toInput = document.getElementById(`input-to-${cardIndex}`);
-      if (!toInput) return;
+      if (!cardDates[cardIndex]) {
+        cardDates[cardIndex] = { fromMonth: 'Jan', fromYear: 2023, toMonth: 'Dec', toYear: 2023, isActive: false };
+      }
+      cardDates[cardIndex].isActive = isChecked;
+
+      const toBtn = document.getElementById(`btn-to-${cardIndex}`);
+      const toLabel = document.getElementById(`label-to-${cardIndex}`);
+      if (!toBtn || !toLabel) return;
+
       if (isChecked) {
-        toInput.disabled = true;
-        toInput.classList.add('opacity-50', 'bg-slate-100');
-        toInput.dataset.prevValue = toInput.value;
-        toInput.value = '';
+        toBtn.classList.add('opacity-50', 'bg-slate-100', 'cursor-not-allowed');
+        toBtn.classList.remove('hover:bg-slate-100');
+        toLabel.innerHTML = '<span class="text-emerald-700 font-bold">● Present (Active)</span>';
       } else {
-        toInput.disabled = false;
-        toInput.classList.remove('opacity-50', 'bg-slate-100');
-        if (toInput.dataset.prevValue) toInput.value = toInput.dataset.prevValue;
+        toBtn.classList.remove('opacity-50', 'bg-slate-100', 'cursor-not-allowed');
+        toBtn.classList.add('hover:bg-slate-100');
+        toLabel.textContent = `${cardDates[cardIndex].toMonth} ${cardDates[cardIndex].toYear}`;
       }
     }
 
-    // Add Another Company Card (Identical to Company 1, titled Company 2, Company 3, etc.)
+    // Add Another Company Card (Identical to Company 1, titled Company 2, Company 3, etc. with Calendar buttons)
     function addAnotherCompanyCard() {
       const container = document.getElementById('extra-company-container');
       if (!container) return;
 
       companyCardCounter++;
       const index = companyCardCounter;
+
+      // Initialize date storage for this card
+      cardDates[index] = {
+        fromMonth: 'Jan',
+        fromYear: 2023,
+        toMonth: 'Aug',
+        toYear: 2023,
+        isActive: false
+      };
 
       const card = document.createElement('div');
       card.id = `company-card-${index}`;
@@ -1312,11 +1594,17 @@
           <div class="grid grid-cols-2 gap-2">
             <div>
               <span class="text-[10px] text-slate-400 block mb-1">From Date</span>
-              <input type="month" id="input-from-${index}" value="2022-09" class="w-full h-10 px-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" />
+              <button type="button" id="btn-from-${index}" onclick="openCalendarPicker(${index}, 'from')" class="btn-tap w-full h-10 px-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-800 flex items-center justify-between hover:bg-slate-100 transition-colors">
+                <span id="label-from-${index}">Jan 2023</span>
+                <svg class="w-3.5 h-3.5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </button>
             </div>
             <div>
               <span class="text-[10px] text-slate-400 block mb-1">To Date</span>
-              <input type="month" id="input-to-${index}" value="2023-04" class="w-full h-10 px-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" />
+              <button type="button" id="btn-to-${index}" onclick="openCalendarPicker(${index}, 'to')" class="btn-tap w-full h-10 px-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-800 flex items-center justify-between hover:bg-slate-100 transition-colors">
+                <span id="label-to-${index}">Aug 2023</span>
+                <svg class="w-3.5 h-3.5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </button>
             </div>
           </div>
 
@@ -1331,14 +1619,13 @@
         </div>
       `;
       container.appendChild(card);
-      showToast(`Company ${index} form added`);
     }
 
     function removeCompanyCard(index) {
       const card = document.getElementById(`company-card-${index}`);
       if (card) {
         card.remove();
-        showToast(`Company ${index} removed`);
+        delete cardDates[index];
       }
     }
 
@@ -1350,10 +1637,9 @@
       selectedRoleTitle = role;
       flowCurrentPart = 2;
       updateFlowPartUI();
-      showToast(`Adding contractor under ${role}`);
     }
 
-    // Save Multi-Company Role Experience to Profile
+    // Save Multi-Company Role Experience to Profile (Clean design without verified tags)
     function saveNewRoleExperience() {
       const roleTitle = selectedRoleTitle || 'Journeyman Commercial Electrician';
       const tradeName = selectedTrade || 'Electrical';
@@ -1367,29 +1653,29 @@
         const idx = card.dataset.companyIndex;
         const nameInput = document.getElementById(`input-company-name-${idx}`);
         const locInput = document.getElementById(`input-location-${idx}`);
-        const fromInput = document.getElementById(`input-from-${idx}`);
-        const toInput = document.getElementById(`input-to-${idx}`);
         const activeCheck = document.getElementById(`input-active-${idx}`);
         const hoursInput = document.getElementById(`input-hours-${idx}`);
 
         const companyName = nameInput?.value.trim() || `Contractor Partner ${idx}`;
         const location = locInput?.value.trim() || 'Seattle, WA, United States';
-        const fromDate = fromInput?.value || '2023-01';
-        const isActive = activeCheck?.checked || false;
-        const toDate = isActive ? 'Present' : (toInput?.value || '2023-12');
+        
+        const dateData = cardDates[idx] || { fromMonth: 'Jan', fromYear: 2023, toMonth: 'Dec', toYear: 2023, isActive: false };
+        const fromPeriod = `${dateData.fromMonth} ${dateData.fromYear}`;
+        const isActive = activeCheck?.checked || dateData.isActive || false;
+        const toPeriod = isActive ? 'Present' : `${dateData.toMonth} ${dateData.toYear}`;
         const hours = parseInt(hoursInput?.value) || 500;
 
         totalRoleHours += hours;
         companyRecords.push({
           name: companyName,
           location: location,
-          period: `${fromDate} – ${toDate}`,
+          period: `${fromPeriod} – ${toPeriod}`,
           isActive: isActive,
           hours: hours
         });
       });
 
-      // 1. Append Role Card in Role-Wise View
+      // 1. Append Role Card in Role-Wise View (Clean card design)
       const extraRolesContainer = document.getElementById('extra-roles-container');
       if (extraRolesContainer) {
         const roleCard = document.createElement('div');
@@ -1398,20 +1684,16 @@
         let companiesHtml = '';
         companyRecords.forEach(c => {
           companiesHtml += `
-            <div class="p-3.5 space-y-1.5">
+            <div class="p-3.5 space-y-1">
               <div class="flex items-start justify-between">
                 <div>
-                  <div class="flex items-center gap-1.5">
-                    <h3 class="text-[13.5px] font-bold text-slate-900">${c.name}</h3>
-                    ${c.isActive ? '<span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.2 rounded-full">Active</span>' : ''}
-                  </div>
+                  <h3 class="text-[13.5px] font-bold text-slate-900">${c.name}</h3>
                   <p class="text-xs text-slate-500">${c.location}</p>
                 </div>
                 <span class="text-xs font-bold text-slate-900 tabular-nums">${c.hours} hrs</span>
               </div>
-              <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
-                <span>${c.period}</span>
-                <span class="text-slate-500 font-medium">Logged & Pending Verification</span>
+              <div class="text-[11px] text-slate-400 pt-0.5">
+                <span>${c.period}${c.isActive ? ' (Active)' : ''}</span>
               </div>
             </div>
           `;
@@ -1437,9 +1719,6 @@
               </div>
             </div>
             <div class="pt-1 flex items-center justify-between">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
-                ✓ Recorded Profile Role
-              </span>
               <span class="text-[11px] text-slate-500">${companyRecords.length} Contractor${companyRecords.length > 1 ? 's' : ''}</span>
             </div>
           </div>
@@ -1489,7 +1768,7 @@
       if (roleTitleInput) roleTitleInput.value = '';
 
       closeManualRoleFlow();
-      showToast(`${roleTitle} & ${companyRecords.length} Companies Added!`);
+      showToast(`${roleTitle} & ${companyRecords.length} Companies Added`);
       goToScreen('experience');
     }
   </script>
