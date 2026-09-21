@@ -197,34 +197,58 @@
   <!-- ===================================================================== -->
   <!-- INTERACTIVE DELIVERABLES: HTML PROTOTYPE & LOOM VIDEO LINKS           -->
   <!-- ===================================================================== -->
-  <div class="w-full bg-white border-b border-slate-200/90 py-6 px-6 sm:px-10">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span class="text-xs font-semibold text-slate-800 tracking-tight">Interactive Deliverables</span>
-        <span class="text-slate-300 hidden sm:inline">•</span>
-        <span class="text-xs text-slate-500 hidden sm:inline">Explore the live product flow & video explainer</span>
+  <div class="w-full bg-[#0E1420] text-white border-b border-slate-800 py-10 sm:py-12 px-6 sm:px-10 avoid-break shadow-2xl relative z-20">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+      
+      <!-- Text & Live Status -->
+      <div class="space-y-2.5 max-w-xl">
+        <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="tracking-wide uppercase">Interactive Deliverables</span>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+          Explore the Working Redesign
+        </h3>
+        <p class="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
+          Test the interactive mobile prototype directly in your browser, or watch the narrated Loom video walkthrough covering key architectural trade-offs.
+        </p>
       </div>
 
-      <div class="flex items-center gap-3 w-full sm:w-auto">
-        <!-- HTML Prototype Button -->
-        <a href="index.html" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#2C4A6F] text-white text-xs font-semibold shadow-sm hover:bg-[#1E3550] transition-colors group">
-          <svg class="w-4 h-4 text-amber-300 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-          </svg>
-          <span>Interactive HTML Prototype</span>
-          <span class="text-[10px] bg-white/20 px-1.5 py-0.5 rounded font-mono">LIVE</span>
+      <!-- Prominent High-Impact Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+        <!-- HTML Prototype Button (Primary High-Contrast Accent) -->
+        <a href="index.html" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-between sm:justify-center gap-4 px-8 py-4 sm:py-5 rounded-2xl bg-[#2C4A6F] hover:bg-[#1E3550] text-white font-bold text-base shadow-2xl hover:shadow-cyan-900/40 hover:-translate-y-1 transition-all duration-300 ring-2 ring-white/20 hover:ring-amber-300/60">
+          <div class="flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-amber-300 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-inner">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+            </div>
+            <div class="text-left">
+              <span class="block text-base sm:text-lg font-bold tracking-tight text-white leading-tight">Interactive HTML Prototype</span>
+              <span class="text-xs text-slate-300 font-normal font-mono">Live Mobile App Simulator ↗</span>
+            </div>
+          </div>
+          <span class="text-[11px] font-mono font-extrabold bg-emerald-400 text-slate-950 px-2.5 py-1 rounded-lg uppercase tracking-wider shadow-sm ml-2">LIVE</span>
         </a>
 
-        <!-- Loom Video Explainer Button -->
-        <a href="https://www.loom.com/share/your-loom-video-id" target="_blank" rel="noopener noreferrer" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200/80 text-slate-800 text-xs font-semibold border border-slate-200 transition-colors group">
-          <svg class="w-4 h-4 text-[#625DF5] group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
-          </svg>
-          <span>Quick Loom Explainer</span>
-          <span class="text-[10px] text-slate-500 font-normal">(Video)</span>
+        <!-- Loom Video Explainer Button (Crisp High-Contrast White Pill) -->
+        <a href="https://www.loom.com/share/your-loom-video-id" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-between sm:justify-center gap-4 px-8 py-4 sm:py-5 rounded-2xl bg-white hover:bg-slate-100 text-slate-900 font-bold text-base shadow-2xl hover:shadow-white/20 hover:-translate-y-1 transition-all duration-300 ring-2 ring-white hover:ring-[#625DF5]/50">
+          <div class="flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-xl bg-[#625DF5]/10 flex items-center justify-center text-[#625DF5] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-inner">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+              </svg>
+            </div>
+            <div class="text-left">
+              <span class="block text-base sm:text-lg font-bold tracking-tight text-slate-900 leading-tight">Quick Loom Explainer</span>
+              <span class="text-xs text-slate-500 font-normal font-mono">Narrated Video Walkthrough ↗</span>
+            </div>
+          </div>
+          <span class="text-[11px] font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg uppercase tracking-wider border border-slate-300 ml-2">VIDEO</span>
         </a>
       </div>
+
     </div>
   </div>
 
@@ -236,9 +260,6 @@
       
       <!-- Lead Statement -->
       <div class="space-y-4 max-w-4xl">
-        <span class="text-xs font-semibold uppercase tracking-wider text-[#2C4A6F]">
-          The Context
-        </span>
         <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-[1.25]">
           Construction careers do not follow corporate trajectories. Tradespeople define their professional identity by certifications and physical on-site hours—not static PDF resumes.
         </h3>
@@ -330,9 +351,6 @@
       
       <!-- Section Header & Overview -->
       <div class="space-y-4 max-w-4xl">
-        <span class="text-xs font-semibold uppercase tracking-wider text-rose-600">
-          Heuristic Audit
-        </span>
         <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-[1.2]">
           System Audit & The Friction Points
         </h3>
@@ -577,9 +595,6 @@
     <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
       <div class="space-y-4 max-w-4xl">
-        <span class="text-xs font-semibold uppercase tracking-wider text-[#2C4A6F]">
-          Strategic Pivot
-        </span>
         <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-[1.2]">
           Redefining the Data Engine: Direct Handshakes with Enterprise Construction Sources
         </h3>
@@ -719,9 +734,6 @@
     <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
       <div class="space-y-4 max-w-4xl">
-        <span class="text-xs font-semibold uppercase tracking-wider text-[#2C4A6F]">
-          Task Analysis
-        </span>
         <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-[1.2]">
           Select Once, Add Many: The Task Architecture
         </h3>
@@ -798,32 +810,60 @@
     <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
       <div class="space-y-4 max-w-4xl">
-        <span class="text-xs font-semibold uppercase tracking-wider text-[#2C4A6F]">
-          Interface Design
-        </span>
         <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-[1.2]">
           The Interface: Screen by Screen Walkthrough
         </h3>
         <p class="text-base text-slate-600 leading-relaxed font-normal max-w-3xl">
           A high-contrast mobile design system engineered for outdoor job site glare, dirty fingers, and rapid supervisor gate verification.
         </p>
+      </div>
 
-        <!-- Interactive Deliverables Bar (Section 5) -->
-        <div class="pt-4 flex flex-col sm:flex-row items-center gap-3">
-          <a href="index.html" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#2C4A6F] text-white text-xs font-semibold shadow-sm hover:bg-[#1E3550] transition-colors group">
-            <svg class="w-4 h-4 text-amber-300 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-            </svg>
-            <span>Interactive HTML Prototype</span>
-            <span class="text-[10px] bg-white/20 px-1.5 py-0.5 rounded font-mono">LIVE</span>
+      <!-- Prominent Interactive Deliverables Card (Section 5) -->
+      <div class="p-8 sm:p-10 bg-[#0E1420] text-white rounded-[32px] border border-slate-800 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div class="space-y-2.5 max-w-xl">
+          <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="tracking-wide uppercase">Live Evaluation Ready</span>
+          </div>
+          <h4 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            Experience the Redesigned Screens
+          </h4>
+          <p class="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
+            Every screen analyzed below is fully functional. Tap into the live interactive prototype to test the role-first batching engine, or watch the narrated Loom video walkthrough.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 flex-shrink-0">
+          <!-- Launch HTML Prototype -->
+          <a href="index.html" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-between sm:justify-center gap-4 px-8 py-4 sm:py-5 rounded-2xl bg-[#2C4A6F] hover:bg-[#1E3550] text-white font-bold text-base shadow-2xl hover:shadow-cyan-900/40 hover:-translate-y-1 transition-all duration-300 ring-2 ring-white/20 hover:ring-amber-300/60">
+            <div class="flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-amber-300 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-inner">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                </svg>
+              </div>
+              <div class="text-left">
+                <span class="block text-base sm:text-lg font-bold tracking-tight text-white leading-tight">Interactive HTML Prototype</span>
+                <span class="text-xs text-slate-300 font-normal font-mono">Live Mobile App Simulator ↗</span>
+              </div>
+            </div>
+            <span class="text-[11px] font-mono font-extrabold bg-emerald-400 text-slate-950 px-2.5 py-1 rounded-lg uppercase tracking-wider shadow-sm ml-2">LIVE</span>
           </a>
 
-          <a href="https://www.loom.com/share/your-loom-video-id" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 text-xs font-semibold border border-slate-300 shadow-xs transition-colors group">
-            <svg class="w-4 h-4 text-[#625DF5] group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
-            </svg>
-            <span>Quick Loom Explainer</span>
-            <span class="text-[10px] text-slate-500 font-normal">(Video)</span>
+          <!-- Watch Loom Video -->
+          <a href="https://www.loom.com/share/your-loom-video-id" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-between sm:justify-center gap-4 px-8 py-4 sm:py-5 rounded-2xl bg-white hover:bg-slate-100 text-slate-900 font-bold text-base shadow-2xl hover:shadow-white/20 hover:-translate-y-1 transition-all duration-300 ring-2 ring-white hover:ring-[#625DF5]/50">
+            <div class="flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-[#625DF5]/10 flex items-center justify-center text-[#625DF5] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-inner">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                </svg>
+              </div>
+              <div class="text-left">
+                <span class="block text-base sm:text-lg font-bold tracking-tight text-slate-900 leading-tight">Quick Loom Explainer</span>
+                <span class="text-xs text-slate-500 font-normal font-mono">Narrated Video Walkthrough ↗</span>
+              </div>
+            </div>
+            <span class="text-[11px] font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg uppercase tracking-wider border border-slate-300 ml-2">VIDEO</span>
           </a>
         </div>
       </div>
@@ -936,9 +976,6 @@
     <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
       <div class="space-y-4 max-w-4xl">
-        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-700">
-          Validation & Success Metrics
-        </span>
         <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 leading-[1.2]">
           Heuristic Spider Radar & Quantitative Metrics
         </h3>
