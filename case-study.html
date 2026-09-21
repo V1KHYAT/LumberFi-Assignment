@@ -3,32 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eliminating Workforce Fog: BuilderFax Systems Redesign | Vikhyat Kaushik</title>
+  <title>Eliminating Workforce Fog — A Systems-Level Redesign of BuilderFax | Vikhyat Kaushik</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Fonts: Plus Jakarta Sans for crisp editorial & technical typography -->
+  <!-- Google Fonts: Plus Jakarta Sans (Editorial) & Space Grotesk (Technical Data) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
+            obsidian: '#080C14',
+            surfaceDark: '#0E1420',
+            surfaceMuted: '#141D2E',
+            canvas: '#FBFBFC',
+            canvasSubtle: '#F3F5F8',
             brand: {
               navy: '#2C4A6F',
               navyDark: '#1E3550',
-              navyDeep: '#0F1A28',
-              navySubtle: '#F0F4F8',
-              slateBg: '#F8FAFC',
-              border: '#E2E8F0',
+              navyDeep: '#122236',
+              navyLight: '#EBF2FA',
               amber: '#D97706',
+              amberLight: '#FEF3C7',
               emerald: '#059669',
-              darkCard: '#0E131F',
-              darkSurface: '#151C2C',
+              emeraldLight: '#ECFDF5',
+              rose: '#E11D48',
+              roseLight: '#FFE4E6',
             }
           },
           fontFamily: {
@@ -36,9 +41,9 @@
             mono: ['"Space Grotesk"', 'monospace']
           },
           letterSpacing: {
-            tighter: '-0.04em',
-            tight: '-0.025em',
-            normal: '-0.01em',
+            tighter: '-0.045em',
+            tight: '-0.03em',
+            snug: '-0.015em',
           }
         }
       }
@@ -46,21 +51,27 @@
   </script>
 
   <style>
-    /* Editorial Foundation (Goreno Style): Tight Tracking, Generous Leading, Precise Ergonomics */
+    /* Global Impeccable Standards: Editorial Scale, Organic Contrast, Precision Leading */
     html {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      background-color: #F8FAFC;
+      background-color: #FBFBFC;
       color: #0F172A;
       letter-spacing: -0.015em;
     }
 
-    /* Print-to-PDF Specific Engine */
+    body {
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Print-to-PDF Specific Engine (Press 'P') */
     @media print {
       @page {
         size: A4 portrait;
-        margin: 12mm 10mm 12mm 10mm;
+        margin: 10mm 10mm 10mm 10mm;
       }
       body {
         background-color: #FFFFFF !important;
@@ -79,495 +90,527 @@
         page-break-inside: avoid !important;
         break-inside: avoid !important;
       }
-      .shadow-card, .shadow-elevated, .shadow-sheet, .shadow-2xl, .shadow-subtle {
-        box-shadow: none !important;
-        border: 1px solid #CBD5E1 !important;
+      header.site-header {
+        position: static !important;
+        background: white !important;
       }
     }
 
-    /* Subtle Glass & Gradients */
-    .glass-pill {
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
+    /* Tactile Glass Pills & Depth */
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
     }
-    .dark-glass {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    .dark-pill {
+      background: rgba(14, 20, 32, 0.8);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    /* Tabular Numerals for Metrics */
+    /* Dot Matrix Chart Pattern */
+    .dot-matrix {
+      background-image: radial-gradient(#CBD5E1 1.2px, transparent 1.2px);
+      background-size: 14px 14px;
+    }
+
+    /* Tabular Numerals */
     .tabular-nums {
       font-variant-numeric: tabular-nums;
     }
   </style>
 </head>
-<body class="min-h-screen text-slate-900 bg-[#F4F6F8] selection:bg-[#2C4A6F] selection:text-white p-0 sm:p-4 md:p-8 flex justify-center">
+<body class="bg-canvas text-slate-900 w-full min-h-screen">
 
-  <!-- Main Container: Clean Centered Canvas (Max width 1240px) -->
-  <main class="w-full max-w-[1240px] bg-white rounded-none sm:rounded-[36px] shadow-sm border border-slate-200/80 overflow-hidden flex flex-col">
-
-    <!-- =================================================================== -->
-    <!-- TOP FLOATING METADATA STRIP                                         -->
-    <!-- =================================================================== -->
-    <header class="px-6 py-4 border-b border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500 bg-white">
-      <div class="flex items-center gap-3">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span class="font-bold text-slate-900 tracking-tight">BuilderFax by Lumber</span>
-        <span class="text-slate-300">•</span>
-        <span>Systems-Level UX Architecture</span>
-      </div>
-      <div class="flex items-center gap-4 text-[11px]">
-        <span class="hidden md:inline-block text-slate-400">Press <kbd class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded text-slate-700 font-mono font-bold">P</kbd> anywhere to export as PDF</span>
-        <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full font-bold">Vikhyat Kaushik</span>
-      </div>
-    </header>
-
-    <!-- =================================================================== -->
-    <!-- SECTION 1: HERO COVER (Goreno Style Editorial Masthead)             -->
-    <!-- =================================================================== -->
-    <section class="relative w-full overflow-hidden bg-slate-950 text-white rounded-none sm:rounded-b-[32px] avoid-break">
+  <!-- ===================================================================== -->
+  <!-- FLOATING NAVIGATION BAR (Goreno Style Frosted Pill)                   -->
+  <!-- ===================================================================== -->
+  <header class="site-header fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 h-16 flex items-center justify-between">
       
-      <!-- High-Resolution Architectural Image Container -->
-      <div class="relative w-full h-[480px] sm:h-[580px] md:h-[640px] overflow-hidden">
-        <img src="assets/hero.jpg" alt="Commercial Skyscraper Construction Site at Dawn in Seattle" class="w-full h-full object-cover object-center opacity-85 scale-[1.02]" />
-        
-        <!-- Subtle Top Gradient Scrim for Brand Typography -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-slate-950"></div>
+      <!-- Brand & Project Identity -->
+      <div class="flex items-center gap-3">
+        <a href="#hero" class="flex items-center gap-2.5 group">
+          <div class="w-8 h-8 rounded-lg bg-obsidian text-white flex items-center justify-center font-bold text-xs tracking-tight shadow-sm group-hover:scale-105 transition-transform">
+            BF
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xs font-extrabold text-slate-900 tracking-tight leading-none">BuilderFax</span>
+            <span class="text-[10px] text-slate-400 font-medium">by Lumber</span>
+          </div>
+        </a>
+        <div class="hidden sm:block h-4 w-px bg-slate-200 mx-1"></div>
+        <span class="hidden sm:inline-block text-xs font-semibold text-slate-500">Systems UX Architecture</span>
+      </div>
 
-        <!-- Goreno Style Giant Title Wordmark Overlaid on Image Top -->
-        <div class="absolute top-6 sm:top-10 left-0 right-0 px-6 sm:px-12 flex justify-between items-start pointer-events-none">
-          <h1 class="text-[64px] sm:text-[100px] md:text-[132px] font-extrabold tracking-tighter leading-none text-white/90 select-none">
+      <!-- Quick Section Anchor Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-slate-600">
+        <a href="#context" class="hover:text-slate-900 transition-colors">01 Context</a>
+        <a href="#audit" class="hover:text-slate-900 transition-colors">02 Audit</a>
+        <a href="#pivot" class="hover:text-slate-900 transition-colors">03 Strategic Pivot</a>
+        <a href="#architecture" class="hover:text-slate-900 transition-colors">04 Architecture</a>
+        <a href="#interface" class="hover:text-slate-900 transition-colors">05 Interface</a>
+        <a href="#validation" class="hover:text-slate-900 transition-colors">06 Validation</a>
+      </nav>
+
+      <!-- Presenter & Shortcut Badge -->
+      <div class="flex items-center gap-3">
+        <div class="hidden md:flex items-center gap-1.5 px-3 py-1 bg-slate-100 border border-slate-200/80 rounded-full text-[11px] font-semibold text-slate-600">
+          <span>Press</span>
+          <kbd class="px-1.5 py-0.5 bg-white border border-slate-300 rounded text-[10px] font-mono font-bold text-slate-800 shadow-2xs">P</kbd>
+          <span>for PDF</span>
+        </div>
+        <div class="flex items-center gap-2 pl-2">
+          <div class="w-7 h-7 rounded-full bg-[#2C4A6F] text-white font-extrabold text-[11px] flex items-center justify-center">
+            VK
+          </div>
+          <span class="text-xs font-bold text-slate-800 hidden sm:inline">Vikhyat Kaushik</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ===================================================================== -->
+  <!-- SECTION 1: HERO COVER (Full-Bleed Panoramic Editorial Canvas)         -->
+  <!-- ===================================================================== -->
+  <section id="hero" class="relative w-full pt-20 sm:pt-24 pb-16 sm:pb-24 overflow-hidden border-b border-slate-200/80 avoid-break">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10">
+
+      <!-- Panoramic Architectural Image Container (Goreno Style Hero Frame) -->
+      <div class="relative w-full h-[520px] sm:h-[640px] md:h-[720px] rounded-[32px] sm:rounded-[44px] overflow-hidden shadow-2xl bg-slate-950">
+        
+        <img src="assets/hero.jpg" alt="Commercial Skyscraper Construction Grid at Dawn in Seattle" class="w-full h-full object-cover object-center opacity-90 scale-[1.01]" />
+        
+        <!-- Scrim Gradients for Visual Depth & Readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/25 to-black/85"></div>
+
+        <!-- Goreno Style Giant Title Wordmark Overlaid Directly on Top of Photo -->
+        <div class="absolute top-8 sm:top-14 left-6 sm:left-14 right-6 sm:right-14 flex items-start justify-between pointer-events-none">
+          <h1 class="text-[60px] sm:text-[100px] md:text-[140px] lg:text-[160px] font-extrabold tracking-tighter leading-none text-white/95 select-none">
             BuilderFax
           </h1>
-          <div class="glass-pill px-4 py-2 rounded-full text-slate-900 text-xs font-bold shadow-sm hidden sm:flex items-center gap-2 mt-4 pointer-events-auto">
-            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+          <div class="glass-pill px-4 py-2 rounded-full text-slate-900 text-xs font-extrabold shadow-sm hidden sm:flex items-center gap-2 mt-4 pointer-events-auto">
+            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
             <span>Identity Wallet 2.0</span>
           </div>
         </div>
 
-        <!-- Floating Caption at Bottom Edge of Photo -->
-        <div class="absolute bottom-6 left-6 sm:left-12 right-6 sm:right-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div class="glass-pill text-slate-900 px-3 py-1.5 rounded-xl text-[11px] font-semibold flex items-center gap-2 w-fit">
-            <svg class="w-3.5 h-3.5 text-[#2C4A6F]" fill="currentColor" viewBox="0 0 20 20">
+        <!-- Floating Metadata Badges Inside Hero Frame Bottom -->
+        <div class="absolute bottom-8 sm:bottom-12 left-6 sm:left-14 right-6 sm:right-14 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div class="glass-pill text-slate-900 px-4 py-2 rounded-2xl text-xs font-bold flex items-center gap-2.5 w-fit shadow-md">
+            <svg class="w-4 h-4 text-[#2C4A6F]" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
             </svg>
             <span>Sound Transit Commercial Grid • Seattle, WA</span>
           </div>
-          <span class="text-[11px] text-white/70 font-mono tracking-wider">PROJECT CODE: BFX-ROLE-FIRST-2026</span>
+          <div class="dark-pill text-slate-300 px-3.5 py-1.5 rounded-xl text-[11px] font-mono tracking-wider w-fit">
+            CASE STUDY REF: BFX-ROLE-FIRST-2026
+          </div>
         </div>
+
       </div>
 
-      <!-- Hero Lead Text Box (Directly below photo inside dark cover) -->
-      <div class="px-6 sm:px-12 py-10 md:py-14 bg-slate-950 space-y-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-xs font-bold uppercase tracking-wider">
+      <!-- Hero Statement & Presentation Details (Directly Below Photo) -->
+      <div class="pt-12 sm:pt-16 pb-4 space-y-8 max-w-6xl">
+        
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2C4A6F]/10 border border-[#2C4A6F]/20 text-[#2C4A6F] text-xs font-extrabold uppercase tracking-wider">
           <span>●</span> Systems-Level Product Case Study
         </div>
 
-        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-extrabold tracking-tighter text-white leading-[1.08] max-w-5xl">
+        <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-slate-900 leading-[1.08]">
           Eliminating Workforce Fog: A Systems-Level Redesign of the BuilderFax Experience Flow.
         </h2>
 
-        <p class="text-base sm:text-lg md:text-xl text-slate-300 font-normal leading-relaxed max-w-4xl tracking-tight">
+        <p class="text-lg sm:text-xl md:text-2xl text-slate-600 font-normal leading-relaxed max-w-4xl tracking-snug">
           Shifting from a static, white-collar CV model to a dynamic, "Role-First" data architecture. A connected identity wallet built for the realities of the global blue-collar workforce.
         </p>
 
-        <!-- Presenter Details & Metadata Cards -->
-        <div class="pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center gap-3">
-            <div class="w-11 h-11 rounded-full bg-[#2C4A6F] border border-blue-400/30 text-white font-extrabold flex items-center justify-center text-sm shadow-sm">
+        <!-- Presenter Credits & Context Row -->
+        <div class="pt-8 border-t border-slate-200 flex flex-wrap items-center justify-between gap-6">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-2xl bg-obsidian text-white font-extrabold flex items-center justify-center text-sm shadow-md">
               VK
             </div>
             <div>
-              <h3 class="text-sm font-bold text-white tracking-tight">Vikhyat Kaushik</h3>
-              <p class="text-xs text-slate-400">Product & UX Designer • Systems Architecture</p>
+              <h3 class="text-sm font-bold text-slate-900 tracking-tight">Vikhyat Kaushik</h3>
+              <p class="text-xs text-slate-500">Product & UX Designer • Systems Architecture</p>
             </div>
           </div>
 
-          <div class="flex items-center gap-6 text-xs text-slate-400">
+          <div class="flex flex-wrap items-center gap-6 sm:gap-10 text-xs">
             <div>
-              <span class="block text-[10px] uppercase font-bold text-slate-500">Domain</span>
-              <span class="font-semibold text-slate-200">Construction Tech & FinTech</span>
+              <span class="block text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Industry</span>
+              <span class="font-bold text-slate-800">Construction Tech & Labor FinTech</span>
             </div>
-            <div class="h-6 w-px bg-slate-800"></div>
+            <div class="hidden sm:block h-6 w-px bg-slate-200"></div>
             <div>
-              <span class="block text-[10px] uppercase font-bold text-slate-500">Scope</span>
-              <span class="font-semibold text-slate-200">Work Experience & Onboarding</span>
+              <span class="block text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Scope</span>
+              <span class="font-bold text-slate-800">Work Experience & Onboarding Flow</span>
             </div>
-            <div class="h-6 w-px bg-slate-800"></div>
+            <div class="hidden sm:block h-6 w-px bg-slate-200"></div>
             <div>
-              <span class="block text-[10px] uppercase font-bold text-slate-500">Target</span>
-              <span class="font-semibold text-slate-200">Commercial Tradespeople</span>
+              <span class="block text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Target User</span>
+              <span class="font-bold text-slate-800">Commercial Tradespeople</span>
             </div>
           </div>
         </div>
+
       </div>
 
-    </section>
+    </div>
+  </section>
 
 
-    <!-- =================================================================== -->
-    <!-- SECTION 2: THE CONTEXT (App, Users, & Core Problem)                -->
-    <!-- =================================================================== -->
-    <section class="px-6 sm:px-12 py-16 md:py-20 border-b border-slate-100 avoid-break space-y-12">
+  <!-- ===================================================================== -->
+  <!-- SECTION 2: THE CONTEXT (App, Users, & The Core Problem)               -->
+  <!-- ===================================================================== -->
+  <section id="context" class="w-full py-20 sm:py-28 border-b border-slate-200/80 avoid-break">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
-      <!-- Section Tag & Big Statement -->
+      <!-- Lead Statement -->
       <div class="space-y-4 max-w-4xl">
-        <div class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#2C4A6F]"></span>
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Section 01 / The Context</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 leading-tight">
-          Construction careers do not follow corporate trajectories. Tradespeople define their identity by certifications and on-site hours—not digital CVs.
-        </h2>
+        <span class="text-xs font-extrabold uppercase tracking-wider text-[#2C4A6F]">
+          Section 01 / The Context
+        </span>
+        <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 leading-tight">
+          Construction careers do not follow corporate trajectories. Tradespeople define their professional identity by certifications and physical on-site hours—not static PDF resumes.
+        </h3>
       </div>
 
-      <!-- 3-Column Bento Grid (Goreno Style) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Goreno Style Bento Grid (3 Pillars) -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
 
-        <!-- Card 1: The Platform (BuilderFax by Lumber) -->
-        <div class="bg-slate-900 text-white p-7 rounded-[28px] flex flex-col justify-between space-y-6 shadow-sm border border-slate-800">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-[#2C4A6F] flex items-center justify-center text-amber-300">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <!-- Bento 1: The Platform (Dark Card) -->
+        <div class="bg-obsidian text-white p-8 sm:p-9 rounded-[32px] flex flex-col justify-between space-y-8 shadow-xl border border-slate-800 relative overflow-hidden">
+          <div class="space-y-4 relative z-10">
+            <div class="w-12 h-12 rounded-2xl bg-[#2C4A6F] flex items-center justify-center text-amber-300 shadow-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
               </svg>
             </div>
-            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">The Platform</span>
-            <h3 class="text-xl font-bold text-white tracking-tight">BuilderFax by Lumber</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              BuilderFax serves as the <strong>Apple Wallet for Workforce Identity</strong>. A digital credential platform designed to help construction professionals store licenses, track safety certifications, and log verified work history for instant sharing at job site gates.
+            <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 block">The Platform</span>
+            <h4 class="text-2xl font-bold tracking-tight text-white">BuilderFax by Lumber</h4>
+            <p class="text-sm text-slate-300 leading-relaxed font-normal">
+              BuilderFax serves as the <strong>Apple Wallet for Workforce Identity</strong>. A free, digital credential platform designed to help construction professionals store licenses, track safety certifications, and log verified work history for instant sharing on job sites.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-semibold text-slate-400">
+
+          <div class="pt-6 border-t border-slate-800/90 flex items-center justify-between text-xs font-semibold text-slate-400 relative z-10">
             <span>Free Worker Utility</span>
-            <span class="text-emerald-400 font-bold">● Enterprise Backed</span>
+            <span class="text-emerald-400 font-bold flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              Enterprise Backed
+            </span>
           </div>
         </div>
 
-        <!-- Card 2: The Users (Documentary Photography) -->
-        <div class="relative rounded-[28px] overflow-hidden min-h-[300px] flex flex-col justify-end p-6 border border-slate-200 group">
-          <img src="assets/worker.jpg" alt="Commercial Electrician" class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
+        <!-- Bento 2: The Users (Documentary Photography) -->
+        <div class="relative rounded-[32px] overflow-hidden min-h-[360px] flex flex-col justify-end p-8 border border-slate-200/80 shadow-md group">
+          <img src="assets/worker.jpg" alt="Commercial Tradesperson with Tablet" class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
           
           <div class="relative z-10 text-white space-y-2">
-            <span class="px-2.5 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-bold tracking-wider uppercase inline-block">
+            <span class="glass-pill text-slate-900 px-3 py-1 rounded-full text-[10px] font-extrabold tracking-wider uppercase inline-block">
               Target Demographic
             </span>
-            <h3 class="text-xl font-bold text-white tracking-tight">The Modern Tradesperson</h3>
-            <p class="text-xs text-slate-200 leading-snug">
-              Commercial electricians, pipefitters, and solar technicians rotating across 5–10 subcontractors annually under one trade qualification.
+            <h4 class="text-2xl font-bold tracking-tight text-white">The Blue-Collar Workforce</h4>
+            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
+              Commercial wiremen, pipefitters, and solar technicians rotating across 5–10 subcontractors annually under one master trade certification. Their records live in dispatch slips and W-2s.
             </p>
           </div>
         </div>
 
-        <!-- Card 3: The Core Problem (Diagnostic & Metric Card) -->
-        <div class="bg-[#F8FAFC] border border-slate-200 p-7 rounded-[28px] flex flex-col justify-between space-y-6">
-          <div class="space-y-3">
+        <!-- Bento 3: The Core Problem (Diagnostic & Dot-Matrix Data Card) -->
+        <div class="bg-white border border-slate-200 p-8 sm:p-9 rounded-[32px] flex flex-col justify-between space-y-8 shadow-sm">
+          <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-rose-600 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-full">
-                Core Bottleneck
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-rose-600 bg-rose-50 border border-rose-200 px-2.5 py-0.5 rounded-full">
+                Core Problem
               </span>
-              <span class="text-xs text-slate-400 font-mono">CRITICAL</span>
+              <span class="text-xs text-slate-400 font-mono font-bold">SYSTEM FAILURE</span>
             </div>
 
-            <h3 class="text-xl font-bold text-slate-900 tracking-tight">Invisible Experience</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              The legacy BuilderFax app expected a <em>white-collar solution in a blue-collar reality</em>—funneling craft workers toward PDF resume uploads or forcing painful text input on glass keyboards. This disjointed approach created <strong>Workforce Fog</strong>: zero contractor trust in self-reported skills.
+            <h4 class="text-2xl font-bold tracking-tight text-slate-900">Invisible Experience</h4>
+            <p class="text-sm text-slate-600 leading-relaxed font-normal">
+              The legacy BuilderFax app expected a <em>white-collar solution in a blue-collar reality</em>—funneling workers toward a PDF resume upload or forcing them into high-friction manual data entry on mobile keyboards. This fragmented data approach led to <strong>Workforce Fog</strong>: low contractor confidence regarding a worker's actual skills.
             </p>
           </div>
 
-          <!-- Goreno Style Dot-Matrix Data Badge -->
-          <div class="p-3.5 bg-white rounded-2xl border border-slate-200/80 space-y-2">
+          <!-- Goreno Style Metric Pill Card -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-2.5">
             <div class="flex items-center justify-between text-xs font-bold text-slate-900">
-              <span>Paper-Only Experience Records</span>
-              <span class="text-base text-rose-600 font-extrabold tabular-nums">78%</span>
+              <span>Relying on Paper Dispatch Slips</span>
+              <span class="text-xl text-rose-600 font-extrabold font-mono tabular-nums">78%</span>
             </div>
-            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
               <div class="bg-rose-500 h-full rounded-full" style="width: 78%;"></div>
             </div>
-            <span class="text-[10px] text-slate-400 block">Tradespeople relying on physical dispatch slips vs. digital CVs</span>
+            <span class="text-[11px] text-slate-500 block">Craft workers lacking a digital CV or LinkedIn record</span>
           </div>
         </div>
 
       </div>
 
-    </section>
+    </div>
+  </section>
 
 
-    <!-- =================================================================== -->
-    <!-- SECTION 3: SYSTEM AUDIT & THE LOOP OF FRICTION                      -->
-    <!-- =================================================================== -->
-    <section class="px-6 sm:px-12 py-16 md:py-20 border-b border-slate-100 bg-slate-50/50 avoid-break space-y-12">
+  <!-- ===================================================================== -->
+  <!-- SECTION 3: SYSTEM AUDIT & THE LOOP OF FRICTION                        -->
+  <!-- ===================================================================== -->
+  <section id="audit" class="w-full py-20 sm:py-28 bg-canvasSubtle border-b border-slate-200/80 avoid-break">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
         <div class="space-y-3 max-w-2xl">
-          <div class="flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Section 02 / Heuristic Audit</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tighter text-slate-900">
-            The Loop of Friction: Deconstructing Component Failures
-          </h2>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-rose-600">
+            Section 02 / Heuristic Breakdown
+          </span>
+          <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 leading-tight">
+            System Audit: The Loop of Friction
+          </h3>
         </div>
-        <p class="text-xs sm:text-sm text-slate-500 max-w-md leading-relaxed">
-          Detailed cognitive breakdown of the friction points that caused a 62% abandonment rate during first-time mobile onboarding.
+        <p class="text-sm text-slate-600 max-w-md leading-relaxed">
+          Why the legacy onboarding funnel triggered a 62% abandonment rate before workers could even reach their profile.
         </p>
       </div>
 
-      <!-- 4 Friction Breakdown Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+      <!-- 4 Audit Component Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
         <!-- Failure 1 -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-subtle space-y-3 flex flex-col justify-between">
-          <div class="space-y-2.5">
-            <div class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 font-bold flex items-center justify-center text-xs">
+        <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 font-extrabold flex items-center justify-center text-xs">
               01
             </div>
-            <h3 class="text-base font-bold text-slate-900 tracking-tight">The Resume Dead End</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              The primary onboarding action was "Upload your resume." This created an immediate dead end for blue-collar workers who carry physical dispatch slips, not PDF resumes. Profile automation failed on screen one.
+            <h4 class="text-base font-bold text-slate-900 tracking-tight">The Resume Dead End</h4>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              The onboarding screen funnels users toward an "Upload your resume" action. This creates an immediate roadblock for tradespeople who rely on physical dispatch slips instead of digital CVs. The promise of profile automation fails at the very first interaction.
             </p>
           </div>
-          <span class="text-[11px] font-bold text-rose-600 pt-2 border-t border-slate-100 block">Immediate Drop-Off</span>
+          <span class="text-[11px] font-bold text-rose-600 pt-3 border-t border-slate-100 block">Immediate Drop-Off</span>
         </div>
 
         <!-- Failure 2 -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-subtle space-y-3 flex flex-col justify-between">
-          <div class="space-y-2.5">
-            <div class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 font-bold flex items-center justify-center text-xs">
+        <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 font-extrabold flex items-center justify-center text-xs">
               02
             </div>
-            <h3 class="text-base font-bold text-slate-900 tracking-tight">High Cognitive Load</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              The manual form demanded typing across 7 blank input fields. Forcing users to articulate daily construction tasks on a tiny glass keyboard directly violated Nielsen's <em>recognition over recall</em> heuristic.
+            <h4 class="text-base font-bold text-slate-900 tracking-tight">High Cognitive Load</h4>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              The manual work experience form demands heavy typing across seven separate fields. Blank description boxes force users to recall and articulate daily tasks from memory on a mobile keyboard, directly violating the recognition over recall heuristic.
             </p>
           </div>
-          <span class="text-[11px] font-bold text-rose-600 pt-2 border-t border-slate-100 block">7 Blank Input Fields</span>
+          <span class="text-[11px] font-bold text-rose-600 pt-3 border-t border-slate-100 block">7 Blank Mobile Fields</span>
         </div>
 
         <!-- Failure 3 -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-subtle space-y-3 flex flex-col justify-between">
-          <div class="space-y-2.5">
-            <div class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 font-bold flex items-center justify-center text-xs">
+        <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 font-extrabold flex items-center justify-center text-xs">
               03
             </div>
-            <h3 class="text-base font-bold text-slate-900 tracking-tight">Component Failures</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              The UI utilized a rigid paginated year selector displaying disconnected decade blocks (e.g. 2004–2015). Forcing a 20-year veteran electrician to tap through paginated chunks caused massive fatigue and drop-off.
+            <h4 class="text-base font-bold text-slate-900 tracking-tight">Component Failures</h4>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              The UI utilizes a paginated year selector showing disconnected blocks like 2004 to 2015. Forcing a veteran tradesperson to scroll through paginated blocks to log a 20-year career causes massive frustration. Routing to separate screens triggers save errors.
             </p>
           </div>
-          <span class="text-[11px] font-bold text-rose-600 pt-2 border-t border-slate-100 block">Paginated Date Wheel</span>
+          <span class="text-[11px] font-bold text-rose-600 pt-3 border-t border-slate-100 block">Decade Wheel Fatigue</span>
         </div>
 
         <!-- Failure 4 -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-subtle space-y-3 flex flex-col justify-between">
-          <div class="space-y-2.5">
-            <div class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 font-bold flex items-center justify-center text-xs">
+        <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 font-extrabold flex items-center justify-center text-xs">
               04
             </div>
-            <h3 class="text-base font-bold text-slate-900 tracking-tight">The Repetitive Entry Loop</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              After manually finishing job site #1, the user was dumped onto a blank profile. To add gig #2, they had to navigate backward and re-type the exact same role and trade from scratch. Zero project batching existed.
+            <h4 class="text-base font-bold text-slate-900 tracking-tight">The Repetitive Entry Loop</h4>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              After enduring manual setup, the app dumps the user onto the main profile page. To add a second job site, the user must navigate back and restart the exact same blank form from scratch. The system lacks any mechanism to batch projects under a single trade.
             </p>
           </div>
-          <span class="text-[11px] font-bold text-rose-600 pt-2 border-t border-slate-100 block">No Nested Batching</span>
+          <span class="text-[11px] font-bold text-rose-600 pt-3 border-t border-slate-100 block">Zero Batch Mechanism</span>
         </div>
 
       </div>
 
-      <!-- Comparative Flow Diagram (Legacy Linear vs Role-First) -->
-      <div class="bg-white p-6 md:p-8 rounded-[28px] border border-slate-200 space-y-6">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Interaction Path Comparison</h4>
+      <!-- Comparative Interaction Pipeline (Goreno Style Architectural Flow) -->
+      <div class="bg-white p-8 sm:p-10 rounded-[32px] border border-slate-200 shadow-sm space-y-6">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Interaction Architecture Comparison</span>
         
-        <div class="space-y-4 text-xs font-semibold">
-          <!-- Old Path -->
-          <div class="p-4 bg-rose-50/60 border border-rose-200 rounded-2xl space-y-2">
-            <div class="flex items-center justify-between text-rose-700 font-bold">
-              <span>Legacy Linear Path (High Friction Loop)</span>
-              <span class="text-[11px] bg-rose-100 px-2 py-0.5 rounded-full">45+ Repetitive Inputs</span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs">
+          
+          <!-- Left: Legacy -->
+          <div class="p-6 bg-rose-50/50 border border-rose-200/90 rounded-2xl space-y-3.5">
+            <div class="flex items-center justify-between text-rose-700 font-extrabold">
+              <span class="text-sm">The Old Linear Path (45+ Clicks / Typings)</span>
+              <span class="text-[10px] bg-rose-100 px-2 py-0.5 rounded-full font-mono font-bold">REDUNDANT</span>
             </div>
-            <div class="flex flex-wrap items-center gap-1.5 text-slate-600 text-[11px]">
-              <span class="px-2 py-1 bg-white border border-rose-200 rounded-md">Profile</span>
-              <span>›</span>
-              <span class="px-2 py-1 bg-white border border-rose-200 rounded-md">Add Experience</span>
-              <span>›</span>
-              <span class="px-2 py-1 bg-white border border-rose-200 rounded-md">Type Company</span>
-              <span>›</span>
-              <span class="px-2 py-1 bg-white border border-rose-200 rounded-md">Type Role</span>
-              <span>›</span>
-              <span class="px-2 py-1 bg-white border border-rose-200 rounded-md">Type Trade</span>
-              <span>›</span>
-              <span class="px-2 py-1 bg-white border border-rose-200 rounded-md">Pick Paginated Date</span>
-              <span>›</span>
-              <span class="px-2 py-1 bg-white border border-rose-200 rounded-md">Type Desc</span>
-              <span>›</span>
-              <span class="px-2 py-1 bg-rose-600 text-white rounded-md font-bold">REPEAT ALL FOR EVERY GIG</span>
-            </div>
+            <p class="text-slate-600 leading-relaxed">
+              Profile › Add Experience › Type Company › Type Role › Type Trade › Type Location › Pick Date › Type Description › Save. Repeat from scratch for every past contractor gig.
+            </p>
           </div>
 
-          <!-- New Path -->
-          <div class="p-4 bg-emerald-50/70 border border-emerald-200 rounded-2xl space-y-2">
-            <div class="flex items-center justify-between text-emerald-800 font-bold">
-              <span>Proposed Role-First Path (Batched Ecosystem)</span>
-              <span class="text-[11px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">1-Tap Sync or 4-Tap Batch</span>
+          <!-- Right: Role First -->
+          <div class="p-6 bg-emerald-50/50 border border-emerald-200/90 rounded-2xl space-y-3.5">
+            <div class="flex items-center justify-between text-emerald-800 font-extrabold">
+              <span class="text-sm">The New Modular Path (Role-First Batching)</span>
+              <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-mono font-bold">OPTIMIZED</span>
             </div>
-            <div class="flex flex-wrap items-center gap-1.5 text-slate-700 text-[11px]">
-              <span class="px-2.5 py-1 bg-white border border-emerald-300 rounded-md font-bold text-slate-900">1. Lock Role (Once)</span>
-              <span>›</span>
-              <span class="px-2.5 py-1 bg-white border border-emerald-300 rounded-md">Auto-Trade Map</span>
-              <span>›</span>
-              <span class="px-2.5 py-1 bg-white border border-emerald-300 rounded-md font-bold text-emerald-700">+ Batch Company 1 (+Apex)</span>
-              <span>›</span>
-              <span class="px-2.5 py-1 bg-white border border-emerald-300 rounded-md font-bold text-emerald-700">+ Batch Company 2 (+Skanska)</span>
-              <span>›</span>
-              <span class="px-2.5 py-1 bg-[#2C4A6F] text-white rounded-md font-bold">Instant Verified Profile</span>
-            </div>
+            <p class="text-slate-700 leading-relaxed">
+              <strong>1. Lock Role (Once)</strong> › Auto-Trade Map › Batch Company 1 (+Apex) › Batch Company 2 (+Skanska) with tactile calendar pickers › Instant Verified Profile.
+            </p>
           </div>
+
         </div>
       </div>
 
-    </section>
+    </div>
+  </section>
 
 
-    <!-- =================================================================== -->
-    <!-- SECTION 4: THE STRATEGIC PIVOT & ECOSYSTEM CONNECTORS               -->
-    <!-- =================================================================== -->
-    <section class="px-6 sm:px-12 py-16 md:py-20 border-b border-slate-100 avoid-break space-y-12">
+  <!-- ===================================================================== -->
+  <!-- SECTION 4: THE STRATEGIC PIVOT & ECOSYSTEM CONNECTORS                 -->
+  <!-- ===================================================================== -->
+  <section id="pivot" class="w-full py-20 sm:py-28 border-b border-slate-200/80 avoid-break">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
-      <div class="space-y-3 max-w-3xl">
-        <div class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Section 03 / Strategic Architecture</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 leading-tight">
-          Bridging the B2B / B2C Gap: Connecting Directly to the Source of Truth
-        </h2>
-        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-          Rather than placing a cosmetic coat of paint on a broken form, we connect BuilderFax directly to enterprise platforms where verified payroll, clock-in, and certification data already lives.
+      <div class="space-y-4 max-w-4xl">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-[#2C4A6F]">
+          Section 03 / Strategic Pivot
+        </span>
+        <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 leading-tight">
+          Redefining the Data Engine: Direct Handshakes with Enterprise Construction Sources
+        </h3>
+        <p class="text-base text-slate-600 leading-relaxed font-normal max-w-3xl">
+          Rather than simply putting a fresh coat of paint on a frontend form, this solution connects BuilderFax directly to the enterprise platforms where construction data already lives, intentionally bypassing the "Upload Resume" flow.
         </p>
       </div>
 
       <!-- Bento Grid: Connectors & Fallbacks -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
-        <!-- Left Large Card: Lumber Native 1-Tap Handshake (7 cols) -->
-        <div class="lg:col-span-7 bg-[#F0F4F8] border border-blue-200/80 rounded-[32px] p-6 sm:p-8 flex flex-col justify-between space-y-6">
+        <!-- Card 1: Lumber Handshake (7 cols) -->
+        <div class="lg:col-span-7 bg-[#F0F4F8] border border-blue-200/90 rounded-[32px] p-8 sm:p-10 flex flex-col justify-between space-y-8 shadow-sm">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <div class="w-10 h-10 rounded-xl bg-[#2C4A6F] text-white flex items-center justify-center font-bold">
-                  <svg class="w-5 h-5 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-[#2C4A6F] text-white flex items-center justify-center font-bold shadow-xs">
+                  <svg class="w-6 h-6 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                   </svg>
                 </div>
                 <div>
-                  <span class="text-xs font-extrabold text-slate-900 block">Lumber Native Handshake</span>
-                  <span class="text-[11px] text-slate-500">Real-time Verified Timesheet Engine</span>
+                  <h4 class="text-lg font-bold text-slate-900 tracking-tight">Native Ecosystem Sync</h4>
+                  <p class="text-xs text-slate-500">1-Tap Handshake with Lumber</p>
                 </div>
               </div>
-              <span class="text-[11px] font-bold text-[#2C4A6F] bg-white border border-[#2C4A6F]/20 px-2.5 py-1 rounded-full shadow-2xs">
-                Recommended Flow
+              <span class="text-[11px] font-bold text-[#2C4A6F] bg-white border border-[#2C4A6F]/20 px-3 py-1 rounded-full">
+                Primary Flow
               </span>
             </div>
 
-            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
-              <strong>Proactive Transparency:</strong> The Lumber modal builds immediate trust by displaying matched payroll records—such as specific union ID, role, and exact logged hours (e.g. <strong>1,840 Hours</strong> at Sound Transit Light Rail)—<em>before</em> the user ever taps to authorize the sync.
+            <p class="text-sm text-slate-700 leading-relaxed font-normal">
+              <strong>The Trust Handshake:</strong> The Lumber connection modal builds immediate user trust by pulling and displaying matched data—such as specific union ID numbers, roles, and exact logged hours (<strong>1,840 Hours</strong>)—<em>before</em> the user ever taps to authorize the sync.
             </p>
           </div>
 
-          <!-- Embedded High-Fidelity Handshake UI Card -->
-          <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3.5">
-            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-              <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-[#2C4A6F] text-white font-bold flex items-center justify-center text-xs">
+          <!-- Embedded High-Fidelity UI Card of Handshake -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+              <div class="flex items-center gap-3.5">
+                <div class="w-11 h-11 rounded-full bg-[#2C4A6F] text-white font-extrabold flex items-center justify-center text-sm shadow-xs">
                   VK
                 </div>
                 <div>
                   <div class="flex items-center gap-2">
-                    <h5 class="text-xs font-bold text-slate-900">Vikhyat Kaushik</h5>
-                    <span class="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.2 rounded-full border border-emerald-200">Matched</span>
+                    <h5 class="text-sm font-bold text-slate-900">Vikhyat Kaushik</h5>
+                    <span class="text-[10px] bg-emerald-50 text-emerald-700 font-bold px-2 py-0.2 rounded-full border border-emerald-200">Matched</span>
                   </div>
-                  <span class="text-[11px] text-slate-500">IBEW Local 46 • ID #784-2910</span>
+                  <p class="text-xs text-slate-500">IBEW Local 46 • ID #784-2910</p>
                 </div>
               </div>
-              <span class="text-xs font-extrabold text-[#2C4A6F] tabular-nums">1,840 hrs</span>
+              <span class="text-sm font-extrabold text-[#2C4A6F] tabular-nums">1,840 hrs</span>
             </div>
 
-            <div class="space-y-1.5 text-xs text-slate-700">
-              <div class="flex items-center gap-2 text-[11.5px]">
+            <div class="space-y-2 text-xs text-slate-800">
+              <div class="flex items-center gap-2.5">
                 <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px]">✓</span>
-                <span><strong>Journeyman Commercial Electrician</strong> trade qualification</span>
+                <span><strong>1,840 Hours</strong> logged at Sound Transit Light Rail</span>
               </div>
-              <div class="flex items-center gap-2 text-[11.5px]">
+              <div class="flex items-center gap-2.5">
                 <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px]">✓</span>
-                <span><strong>Apex Construction Partners</strong> employer timesheet record</span>
+                <span><strong>Journeyman Commercial Electrician</strong> role verified</span>
               </div>
             </div>
 
             <div class="pt-2">
-              <div class="w-full h-10 bg-[#2C4A6F] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow-sm">
+              <div class="w-full h-11 bg-[#2C4A6F] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow-sm">
                 <span>Authorize & Import Experience</span>
-                <span class="text-xs font-mono">›</span>
+                <span class="text-xs">›</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Right Stack: US Trade Connectors & Document Fallback (5 cols) -->
-        <div class="lg:col-span-5 flex flex-col justify-between gap-6">
-
-          <!-- Card 2A: US Trade Ecosystem Platforms -->
-          <div class="bg-white border border-slate-200 rounded-[28px] p-6 space-y-4 shadow-subtle">
+        <!-- Card 2 & 3: US Market Connectors & Physical Fallback OCR (5 cols) -->
+        <div class="lg:col-span-5 flex flex-col justify-between gap-8">
+          
+          <!-- Connectors Grid -->
+          <div class="bg-white border border-slate-200 rounded-[32px] p-8 space-y-4 shadow-sm">
             <div class="flex items-center justify-between">
-              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">US Verified Data</span>
-              <span class="text-[10px] text-slate-500 font-mono">DYNAMIC GPS</span>
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400">US Verified Data</span>
+              <span class="text-[10px] text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded-full">Smart Localization</span>
             </div>
-
-            <h4 class="text-base font-bold text-slate-900 tracking-tight">Expanded Market Connectors</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Dynamically presents industry-standard construction hubs based on the worker's region and union local:
+            <h4 class="text-lg font-bold text-slate-900 tracking-tight">Expanded Market Connectors</h4>
+            <p class="text-xs text-slate-600 leading-relaxed font-normal">
+              Offering dedicated integrations to pull US verified data from industry-standard trade platforms. The hub dynamically adapts these tiles based on device GPS to suggest relevant regional platforms:
             </p>
 
-            <!-- 4 Connector Tiles Grid -->
-            <div class="grid grid-cols-4 gap-2 pt-1">
-              <div class="p-2 bg-slate-50 border border-slate-200 rounded-xl flex flex-col items-center justify-center gap-1 text-center">
-                <div class="w-7 h-7 rounded-lg bg-orange-500 text-white font-bold text-[9px] flex items-center justify-center">PRO</div>
-                <span class="text-[10px] font-bold text-slate-800">Procore</span>
+            <div class="grid grid-cols-4 gap-2.5 pt-2">
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col items-center justify-center gap-1.5 text-center">
+                <div class="w-8 h-8 rounded-lg bg-orange-500 text-white font-extrabold text-[10px] flex items-center justify-center">PRO</div>
+                <span class="text-[11px] font-bold text-slate-800">Procore</span>
               </div>
-              <div class="p-2 bg-slate-50 border border-slate-200 rounded-xl flex flex-col items-center justify-center gap-1 text-center">
-                <div class="w-7 h-7 rounded-lg bg-red-600 text-white font-bold text-[9px] flex items-center justify-center">ADP</div>
-                <span class="text-[10px] font-bold text-slate-800">ADP Pay</span>
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col items-center justify-center gap-1.5 text-center">
+                <div class="w-8 h-8 rounded-lg bg-red-600 text-white font-extrabold text-[10px] flex items-center justify-center">ADP</div>
+                <span class="text-[11px] font-bold text-slate-800">ADP</span>
               </div>
-              <div class="p-2 bg-slate-50 border border-slate-200 rounded-xl flex flex-col items-center justify-center gap-1 text-center">
-                <div class="w-7 h-7 rounded-lg bg-[#2C4A6F] text-amber-300 font-bold text-[9px] flex items-center justify-center">NCC</div>
-                <span class="text-[10px] font-bold text-slate-800">NCCER</span>
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col items-center justify-center gap-1.5 text-center">
+                <div class="w-8 h-8 rounded-lg bg-[#2C4A6F] text-amber-300 font-extrabold text-[10px] flex items-center justify-center">NCC</div>
+                <span class="text-[11px] font-bold text-slate-800">NCCER</span>
               </div>
-              <div class="p-2 bg-slate-50 border border-slate-200 rounded-xl flex flex-col items-center justify-center gap-1 text-center">
-                <div class="w-7 h-7 rounded-lg bg-slate-800 text-white font-bold text-[9px] flex items-center justify-center">HCSS</div>
-                <span class="text-[10px] font-bold text-slate-800">HeavyJob</span>
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col items-center justify-center gap-1.5 text-center">
+                <div class="w-8 h-8 rounded-lg bg-slate-800 text-white font-extrabold text-[10px] flex items-center justify-center">HCSS</div>
+                <span class="text-[11px] font-bold text-slate-800">HeavyJob</span>
               </div>
             </div>
           </div>
 
-          <!-- Card 2B: Physical Fallback OCR Scanner -->
-          <div class="relative rounded-[28px] overflow-hidden min-h-[220px] flex flex-col justify-end p-6 border border-slate-200">
-            <img src="assets/dispatch.jpg" alt="Union Dispatch Slip and Apprenticeship Card on Blueprints" class="absolute inset-0 w-full h-full object-cover object-center" />
+          <!-- Physical Fallback (Macro Photo + OCR) -->
+          <div class="relative rounded-[32px] overflow-hidden min-h-[260px] flex flex-col justify-end p-8 border border-slate-200/80 shadow-sm">
+            <img src="assets/dispatch.jpg" alt="Union Dispatch Slip and Apprenticeship Card on Blueprint Table" class="absolute inset-0 w-full h-full object-cover object-center" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
 
-            <div class="relative z-10 text-white space-y-1.5">
-              <div class="flex items-center gap-2">
-                <span class="px-2 py-0.5 bg-amber-400 text-slate-950 text-[10px] font-extrabold rounded-md uppercase">
-                  Zero-Typing Fallback
-                </span>
-                <span class="text-[11px] text-slate-300">Camera OCR</span>
-              </div>
-              <h4 class="text-base font-bold text-white tracking-tight">Paper Dispatch Slip Scanner</h4>
-              <p class="text-xs text-slate-200 leading-snug">
-                Workers simply photograph union dispatch tickets or paystubs; computer vision auto-populates contractor name and dates.
+            <div class="relative z-10 text-white space-y-2">
+              <span class="px-2.5 py-1 bg-amber-400 text-slate-950 rounded-md text-[10px] font-extrabold uppercase tracking-wider inline-block">
+                The Physical Fallback
+              </span>
+              <h4 class="text-xl font-bold text-white tracking-tight">OCR Document Scanner</h4>
+              <p class="text-xs text-slate-200 leading-snug font-normal">
+                For offline jobs, cash gigs, or older union records, users snap a photo of physical union dispatch slips, apprenticeship tickets, or paystubs to auto-extract contractor names and dates.
               </p>
             </div>
           </div>
@@ -576,259 +619,257 @@
 
       </div>
 
-    </section>
+    </div>
+  </section>
 
 
-    <!-- =================================================================== -->
-    <!-- SECTION 5: THE ROLE-FIRST ARCHITECTURE (Task Analysis)              -->
-    <!-- =================================================================== -->
-    <section class="px-6 sm:px-12 py-16 md:py-20 border-b border-slate-100 bg-slate-50/50 avoid-break space-y-12">
+  <!-- ===================================================================== -->
+  <!-- SECTION 5: THE ROLE-FIRST ARCHITECTURE (Task Analysis)                -->
+  <!-- ===================================================================== -->
+  <section id="architecture" class="w-full py-20 sm:py-28 bg-canvasSubtle border-b border-slate-200/80 avoid-break">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
-      <div class="space-y-3 max-w-3xl">
-        <div class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#2C4A6F]"></span>
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Section 04 / Data Architecture</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 leading-tight">
-          The Role-First Architecture: Select Once, Batch Many
-        </h2>
-        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-          In commercial trades, craftsmen switch contractors frequently while remaining under the exact same trade and pay grade. Our data model decouples the role from individual subcontractors.
+      <div class="space-y-4 max-w-4xl">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-[#2C4A6F]">
+          Section 04 / Task Analysis
+        </span>
+        <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 leading-tight">
+          Select Once, Add Many: The Task Architecture
+        </h3>
+        <p class="text-base text-slate-600 leading-relaxed font-normal max-w-3xl">
+          Workers define their overarching trade role exactly one time. Once locked, multiple short-term job sites, contractors, and timelines are nested underneath, completely eliminating form duplication.
         </p>
       </div>
 
-      <!-- 3 Pillar Bento Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- 3 Pillars of Zero-Typing Injection -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
         <!-- Pillar 1 -->
-        <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-subtle space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#2C4A6F] flex items-center justify-center font-bold">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <div class="bg-white p-8 rounded-[32px] border border-slate-200 shadow-sm space-y-6 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-11 h-11 rounded-2xl bg-blue-50 text-[#2C4A6F] flex items-center justify-center font-bold">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             </div>
-            <h3 class="text-lg font-bold text-slate-900 tracking-tight">Zero-Typing Injection</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Replaced blank input boxes with tactile 1-tap contractor suggestions: <strong>+Apex</strong>, <strong>+Skanska</strong>, <strong>+Turner</strong>, and <strong>+Mortenson</strong>. Converts high cognitive strain into effortless recognition tapping.
+            <h4 class="text-xl font-bold text-slate-900 tracking-tight">Predictive Contractor Chips</h4>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              We replaced blank text boxes with one-tap contractor chips like <strong>"+Apex"</strong>, <strong>"+Skanska"</strong>, and <strong>"+Turner"</strong>. This directly transforms a high cognitive load typing task into a low fatigue tapping task.
             </p>
           </div>
-          <div class="flex items-center gap-1.5 overflow-x-auto py-1">
-            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-bold rounded-lg border border-slate-200">+ Apex</span>
-            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-bold rounded-lg border border-slate-200">+ Skanska</span>
-            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-bold rounded-lg border border-slate-200">+ Turner</span>
+          <div class="flex flex-wrap items-center gap-1.5 pt-2">
+            <span class="px-3 py-1 bg-slate-100 text-slate-800 text-xs font-bold rounded-lg border border-slate-200">+ Apex</span>
+            <span class="px-3 py-1 bg-slate-100 text-slate-800 text-xs font-bold rounded-lg border border-slate-200">+ Skanska</span>
+            <span class="px-3 py-1 bg-slate-100 text-slate-800 text-xs font-bold rounded-lg border border-slate-200">+ Turner</span>
           </div>
         </div>
 
         <!-- Pillar 2 -->
-        <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-subtle space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <div class="bg-white p-8 rounded-[32px] border border-slate-200 shadow-sm space-y-6 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
             </div>
-            <h3 class="text-lg font-bold text-slate-900 tracking-tight">Custom Month/Year Engine</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Replaced clumsy browser wheels with a dedicated iOS-style 12-month tactile grid and stepper. Added a <strong>Currently Working Here</strong> toggle that dynamically binds active roles.
+            <h4 class="text-xl font-bold text-slate-900 tracking-tight">Smart Math & Duration</h4>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              A dedicated "Estimated Logged Hours" stepper component allows users to quickly input or verify their hours, saving them from doing manual math on the job site, paired with a tactile 12-month calendar selector.
             </p>
           </div>
-          <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs font-bold text-slate-800">
-            <span>Sep 2023 → Present</span>
-            <span class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Active</span>
+          <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs font-bold text-slate-800">
+            <span>Sep 2023 → Mar 2024</span>
+            <span class="text-[#2C4A6F] font-mono">840 hrs</span>
           </div>
         </div>
 
         <!-- Pillar 3 -->
-        <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-subtle space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+        <div class="bg-white p-8 rounded-[32px] border border-slate-200 shadow-sm space-y-6 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-11 h-11 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
             </div>
-            <h3 class="text-lg font-bold text-slate-900 tracking-tight">Auto-GPS & Trade Mapping</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Typing "Electrician" automatically maps to "Electrical" trade without forcing users to navigate nested dropdown taxonomies. Location auto-fills major commercial metro hubs.
+            <h4 class="text-xl font-bold text-slate-900 tracking-tight">Location Auto-Complete</h4>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              The Location field pings the device's GPS and auto-suggests the commercial build site or metropolitan city the user is currently standing in, with instant typing datalist fallback.
             </p>
           </div>
-          <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-[11px] font-semibold text-slate-600 flex items-center justify-between">
-            <span>Location: Seattle, WA</span>
-            <span class="text-slate-400 font-mono">AUTO-GEO</span>
+          <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs font-semibold text-slate-600">
+            <span>Seattle, WA, United States</span>
+            <span class="text-emerald-700 font-bold text-[10px]">GPS VERIFIED</span>
           </div>
         </div>
 
       </div>
 
-    </section>
+    </div>
+  </section>
 
 
-    <!-- =================================================================== -->
-    <!-- SECTION 6: THE INTERFACE (Screen-by-Screen Deep Dive)               -->
-    <!-- =================================================================== -->
-    <section class="px-6 sm:px-12 py-16 md:py-20 border-b border-slate-100 avoid-break space-y-12">
+  <!-- ===================================================================== -->
+  <!-- SECTION 6: THE INTERFACE (Screen by Screen Deep Dive)                 -->
+  <!-- ===================================================================== -->
+  <section id="interface" class="w-full py-20 sm:py-28 border-b border-slate-200/80 avoid-break">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
-      <div class="space-y-3 max-w-3xl">
-        <div class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#2C4A6F]"></span>
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Section 05 / Interface Design</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 leading-tight">
-          The Interface: Screen-by-Screen Ergonomics
-        </h2>
-        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-          High-contrast tactile surfaces engineered for job site conditions—outdoor glare, work gloves, and rapid gate verification.
+      <div class="space-y-4 max-w-4xl">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-[#2C4A6F]">
+          Section 05 / Interface Design
+        </span>
+        <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 leading-tight">
+          The Interface: Screen by Screen Walkthrough
+        </h3>
+        <p class="text-base text-slate-600 leading-relaxed font-normal max-w-3xl">
+          A high-contrast mobile design system engineered for outdoor job site glare, dirty fingers, and rapid supervisor gate verification.
         </p>
       </div>
 
-      <!-- Interface Showcase Grid: 3 Interactive Mockup Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- 3-Column Interface Walkthrough Bento -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-        <!-- Screen Mockup 1: Hub Screen -->
-        <div class="bg-white border border-slate-200 rounded-[30px] p-5 shadow-card space-y-4 flex flex-col justify-between">
+        <!-- Screen 1: The Hub & Trust Handshake -->
+        <div class="bg-white border border-slate-200 rounded-[32px] p-7 shadow-sm space-y-6 flex flex-col justify-between">
           <div class="space-y-3">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
-              <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Screen 01</span>
-              <span class="text-[11px] font-bold text-[#2C4A6F]">The Source Hub</span>
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Flow 01</span>
+              <span class="text-xs font-bold text-[#2C4A6F]">The Source Hub</span>
             </div>
-            <h4 class="text-base font-bold text-slate-900 tracking-tight">Zero-Entry Selection</h4>
-            <p class="text-xs text-slate-500 leading-relaxed">
-              Provides direct paths for Resume PDF, Lumber 1-Tap, Procore/ADP connectors, Document OCR, and Manual Entry without nested menus.
+            <h4 class="text-lg font-bold text-slate-900 tracking-tight">The Import & Verification Flow</h4>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              A centralized zero-entry setup screen featuring high-contrast touch-friendly tiles for Lumber, Procore, ADP, NCCER, and HCSS, alongside a physical document scanner.
             </p>
           </div>
 
-          <!-- Mini UI Wire Representation -->
-          <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2 text-xs">
-            <div class="p-2.5 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
-              <span class="font-bold text-slate-900 text-[11px]">📄 Upload Resume</span>
+          <!-- High-Fidelity UI Wire Frame -->
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2.5 text-xs">
+            <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+              <span class="font-bold text-slate-800 text-[11px]">Upload Resume (PDF, DOCX)</span>
               <span class="text-slate-400">›</span>
             </div>
-            <div class="p-2.5 bg-[#2C4A6F] text-white rounded-xl flex items-center justify-between font-bold text-[11px]">
-              <span>⚡ Connect with Lumber</span>
-              <span class="text-[9px] bg-white/20 px-1.5 py-0.5 rounded">1-Tap</span>
+            <div class="p-3 bg-[#2C4A6F] text-white rounded-xl flex items-center justify-between font-bold text-[11px] shadow-xs">
+              <div class="flex items-center gap-2">
+                <span class="text-amber-300">⚡</span>
+                <span>Connect with Lumber</span>
+              </div>
+              <span class="text-[9px] bg-white/20 px-1.5 py-0.5 rounded font-mono">1-TAP</span>
             </div>
-            <div class="p-2.5 bg-white rounded-xl border border-slate-200 flex items-center justify-between text-slate-700 text-[11px] font-semibold">
-              <span>📷 Scan Paper Slip</span>
+            <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between text-slate-700 text-[11px] font-semibold">
+              <span>Scan Paper Dispatch Slip</span>
               <span class="text-slate-400">OCR</span>
             </div>
           </div>
         </div>
 
-        <!-- Screen Mockup 2: Role-Wise Dual Output -->
-        <div class="bg-white border border-slate-200 rounded-[30px] p-5 shadow-card space-y-4 flex flex-col justify-between">
+        <!-- Screen 2: Smart Manual Entry Flow -->
+        <div class="bg-white border border-slate-200 rounded-[32px] p-7 shadow-sm space-y-6 flex flex-col justify-between">
           <div class="space-y-3">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
-              <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Screen 02</span>
-              <span class="text-[11px] font-bold text-emerald-700">Dual-View Profile</span>
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Flow 02</span>
+              <span class="text-xs font-bold text-[#2C4A6F]">Micro-Flow</span>
             </div>
-            <h4 class="text-base font-bold text-slate-900 tracking-tight">Role-Wise & Timeline Modes</h4>
-            <p class="text-xs text-slate-500 leading-relaxed">
-              Role-wise groups total hours under one qualification with dynamic badges. Timeline-wise sorts all jobs chronologically for union reps.
+            <h4 class="text-lg font-bold text-slate-900 tracking-tight">The Smart Manual Entry Flow</h4>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <strong>Step 1 (Your Role):</strong> Locks the trade classification with Existing Roles Quick Pick for returning users. <strong>Step 2 (Companies Worked):</strong> Batches new projects under that locked role using predictive contractor chips and duration pickers.
             </p>
           </div>
 
-          <!-- Mini UI Wire Representation -->
-          <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2 text-xs">
-            <div class="flex bg-slate-200/80 p-0.5 rounded-lg text-[10px] font-bold">
-              <div class="flex-1 py-1 bg-white rounded text-center shadow-xs">Role Wise</div>
-              <div class="flex-1 py-1 text-center text-slate-500">Timeline</div>
+          <!-- High-Fidelity UI Wire Frame -->
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2 text-xs">
+            <div class="p-2.5 bg-blue-50/80 rounded-xl border border-blue-100 text-[11px] text-slate-800 font-semibold flex items-center justify-between">
+              <span>Role: Journeyman Electrician</span>
+              <span class="text-emerald-700 font-bold">LOCKED</span>
             </div>
-            <div class="p-2.5 bg-white rounded-xl border border-slate-200 space-y-1.5">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h6 class="font-bold text-slate-900 text-[11px]">Journeyman Electrician</h6>
-                  <span class="text-[10px] text-slate-500">2 Contractors</span>
-                </div>
-                <span class="text-[11px] font-extrabold text-[#2C4A6F]">2,440 hrs</span>
+            <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-2">
+              <div class="flex items-center justify-between text-[11px] font-bold text-slate-800">
+                <span>Apex Construction Partners</span>
+                <span class="text-slate-500 font-mono">Company 1</span>
               </div>
-              <span class="inline-block text-[9px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.2 rounded-full">
-                ✓ Journeyman Qualified (>2,000h)
-              </span>
+              <div class="flex items-center gap-1 overflow-x-auto text-[10px]">
+                <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600">+ Skanska</span>
+                <span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600">+ Turner</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Screen Mockup 3: Share Pass Payoff -->
-        <div class="bg-white border border-slate-200 rounded-[30px] p-5 shadow-card space-y-4 flex flex-col justify-between">
+        <!-- Screen 3: Dual View Profile & Export -->
+        <div class="bg-white border border-slate-200 rounded-[32px] p-7 shadow-sm space-y-6 flex flex-col justify-between">
           <div class="space-y-3">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
-              <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Screen 03</span>
-              <span class="text-[11px] font-bold text-[#2C4A6F]">The Share Pass</span>
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Flow 03</span>
+              <span class="text-xs font-bold text-emerald-700">Output & Payoff</span>
             </div>
-            <h4 class="text-base font-bold text-slate-900 tracking-tight">Instant Gate Check</h4>
-            <p class="text-xs text-slate-500 leading-relaxed">
-              Tapping "Share Pass" renders an on-site digital badge with an authentic SVG QR code and secure verification ID for instant scanner access.
+            <h4 class="text-lg font-bold text-slate-900 tracking-tight">Dual-View Profile & Share Pass</h4>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <strong>Role-Wise Output:</strong> Displays qualification badges like <em>Journeyman Qualified (>2,000h Met)</em> for pay grade proof. <strong>Timeline Output:</strong> Chronological rail. <strong>Share Pass Payoff:</strong> Supervisor-ready SVG QR code for job site entry.
             </p>
           </div>
 
-          <!-- Mini QR Card UI Wire -->
-          <div class="bg-slate-900 text-white p-3.5 rounded-2xl space-y-2.5 text-center">
-            <div class="w-16 h-16 bg-white rounded-lg mx-auto p-1.5 flex items-center justify-center">
-              <!-- Mini SVG QR -->
+          <!-- High-Fidelity UI Wire Frame -->
+          <div class="bg-obsidian text-white p-4 rounded-2xl space-y-3 text-center">
+            <div class="w-16 h-16 bg-white rounded-xl mx-auto p-1.5 flex items-center justify-center shadow-md">
               <svg class="w-full h-full text-slate-900" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-5 0h2v3h-2v-3zm2 3h3v2h-3v-2zm3 2h3v3h-3v-3zm-5 1h2v2h-2v-2z"/>
               </svg>
             </div>
             <div class="space-y-0.5">
-              <span class="text-[10px] font-bold text-emerald-400 block font-mono">BFX-7842-SEC-991</span>
-              <span class="text-[9px] text-slate-400 block">Supervisor Ready • Gate Verified</span>
+              <span class="text-[11px] font-bold text-emerald-400 font-mono block">BFX-7842-SEC-991</span>
+              <span class="text-[10px] text-slate-400 block">Supervisor Ready • Gate Verified</span>
             </div>
           </div>
         </div>
 
       </div>
 
-    </section>
+    </div>
+  </section>
 
 
-    <!-- =================================================================== -->
-    <!-- SECTION 7: VALIDATION, HEURISTIC RADAR & SUCCESS METRICS            -->
-    <!-- =================================================================== -->
-    <section class="px-6 sm:px-12 py-16 md:py-20 avoid-break space-y-12">
+  <!-- ===================================================================== -->
+  <!-- SECTION 7: VALIDATION, HEURISTIC RADAR & SUCCESS METRICS              -->
+  <!-- ===================================================================== -->
+  <section id="validation" class="w-full py-20 sm:py-28 bg-canvasSubtle border-b border-slate-200/80 avoid-break">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
-      <div class="space-y-3 max-w-3xl">
-        <div class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Section 06 / Validation & Heuristics</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 leading-tight">
-          Heuristic Spider Radar & Benchmark Validation
-        </h2>
-        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-          Quantitative benchmarking of Nielsen Norman heuristics and time-to-log speed across 5 core usability dimensions.
+      <div class="space-y-4 max-w-4xl">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-700">
+          Section 06 / Validation
+        </span>
+        <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 leading-tight">
+          Heuristic Spider Radar & Quantitative Metrics
+        </h3>
+        <p class="text-base text-slate-600 leading-relaxed font-normal max-w-3xl">
+          Visualizing the quantitative transformation from the legacy linear model to the proposed Role-First batched architecture.
         </p>
       </div>
 
-      <!-- Heuristic Radar Chart & KPI Metrics (2 Columns) -->
+      <!-- Radar Chart & Metrics Bento (2 Columns) -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
         <!-- Left Column: Vector SVG Spider Radar Chart (7 cols) -->
-        <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-[32px] border border-slate-200 shadow-card space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-900">
-              Heuristic Spider Evaluation
-            </h4>
-            <div class="flex items-center gap-4 text-xs font-bold">
+        <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-[32px] border border-slate-200 shadow-sm space-y-6">
+          
+          <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+            <div>
+              <h4 class="text-base font-bold text-slate-900 tracking-tight">The Heuristic Radar Chart</h4>
+              <p class="text-xs text-slate-400">Comparing Current Flow vs. Proposed Flow</p>
+            </div>
+            <div class="flex items-center gap-5 text-xs font-bold">
               <div class="flex items-center gap-1.5 text-rose-500">
-                <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
-                <span>Legacy Flow</span>
+                <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+                <span>Current Flow</span>
               </div>
               <div class="flex items-center gap-1.5 text-[#2C4A6F]">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#2C4A6F]"></span>
-                <span>Proposed Role-First</span>
+                <span class="w-3 h-3 rounded-full bg-[#2C4A6F]"></span>
+                <span>Proposed Flow</span>
               </div>
             </div>
           </div>
 
-          <!-- Pure SVG Radar Spider Chart -->
-          <div class="relative w-full flex items-center justify-center py-4">
-            <svg class="w-full max-w-[440px] h-[340px]" viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Center is (200, 180). Radius = 130 -->
-              <!-- Concentric Polygon Rings: 20%, 40%, 60%, 80%, 100% -->
-              <!-- Axes at angles: -90, -18, +54, +126, +198 degrees -->
-              <!-- 100% Ring -->
+          <!-- Pure SVG Spider Chart -->
+          <div class="relative w-full flex items-center justify-center py-6">
+            <svg class="w-full max-w-[460px] h-[360px]" viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Concentric Rings -->
               <polygon points="200,50 324,140 276,285 124,285 76,140" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="3 3" fill="none" />
-              <!-- 80% Ring -->
               <polygon points="200,76 299,148 261,264 139,264 101,148" stroke="#E2E8F0" stroke-width="1" fill="none" />
-              <!-- 60% Ring -->
               <polygon points="200,102 274,156 246,243 154,243 126,156" stroke="#E2E8F0" stroke-width="1" fill="none" />
-              <!-- 40% Ring -->
               <polygon points="200,128 250,164 230,222 170,222 150,164" stroke="#E2E8F0" stroke-width="1" fill="none" />
-              <!-- 20% Ring -->
               <polygon points="200,154 225,172 215,201 185,201 175,172" stroke="#E2E8F0" stroke-width="1" fill="none" />
 
               <!-- Axis Rays -->
@@ -838,72 +879,94 @@
               <line x1="200" y1="180" x2="124" y2="285" stroke="#CBD5E1" stroke-width="1.5" />
               <line x1="200" y1="180" x2="76" y2="140" stroke="#CBD5E1" stroke-width="1.5" />
 
-              <!-- LEGACY FLOW POLYGON (Scores: Efficiency=30%, CognitiveLoad=25%, RealWorld=35%, ErrorPrev=40%, BatchSpeed=20%) -->
+              <!-- CURRENT FLOW POLYGON (Low Benchmark Scores) -->
               <polygon points="200,141 231,170 226,217 170,222 175,172" fill="rgba(244, 63, 94, 0.22)" stroke="#F43F5E" stroke-width="2.5" />
               
-              <!-- PROPOSED ROLE-FIRST POLYGON (Scores: Efficiency=95%, CognitiveLoad=92%, RealWorld=96%, ErrorPrev=94%, BatchSpeed=98%) -->
+              <!-- PROPOSED ROLE-FIRST POLYGON (High Benchmark Scores) -->
               <polygon points="200,56 314,143 273,281 128,279 78,141" fill="rgba(44, 74, 111, 0.35)" stroke="#2C4A6F" stroke-width="3" />
 
-              <!-- Vertex Dots for Proposed Flow -->
-              <circle cx="200" cy="56" r="4" fill="#2C4A6F" stroke="white" stroke-width="1.5" />
-              <circle cx="314" cy="143" r="4" fill="#2C4A6F" stroke="white" stroke-width="1.5" />
-              <circle cx="273" cy="281" r="4" fill="#2C4A6F" stroke="white" stroke-width="1.5" />
-              <circle cx="128" cy="279" r="4" fill="#2C4A6F" stroke="white" stroke-width="1.5" />
-              <circle cx="78" cy="141" r="4" fill="#2C4A6F" stroke="white" stroke-width="1.5" />
+              <!-- Dots for Proposed Flow -->
+              <circle cx="200" cy="56" r="4.5" fill="#2C4A6F" stroke="white" stroke-width="1.5" />
+              <circle cx="314" cy="143" r="4.5" fill="#2C4A6F" stroke="white" stroke-width="1.5" />
+              <circle cx="273" cy="281" r="4.5" fill="#2C4A6F" stroke="white" stroke-width="1.5" />
+              <circle cx="128" cy="279" r="4.5" fill="#2C4A6F" stroke="white" stroke-width="1.5" />
+              <circle cx="78" cy="141" r="4.5" fill="#2C4A6F" stroke="white" stroke-width="1.5" />
 
               <!-- Axis Labels -->
-              <text x="200" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#0F172A">Task Efficiency (95%)</text>
-              <text x="338" y="145" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#0F172A">Cognitive Ease (92%)</text>
-              <text x="282" y="305" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#0F172A">Real-World Match (96%)</text>
-              <text x="118" y="305" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#0F172A">Error Prevention (94%)</text>
-              <text x="64" y="145" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#0F172A">Batch Velocity (98%)</text>
+              <text x="200" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#0F172A">Efficiency (95%)</text>
+              <text x="338" y="145" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#0F172A">Cognitive Load (92%)</text>
+              <text x="282" y="306" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#0F172A">Real-World Match (96%)</text>
+              <text x="118" y="306" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#0F172A">Error Prevention (94%)</text>
+              <text x="64" y="145" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#0F172A">Batch Velocity (98%)</text>
             </svg>
           </div>
 
-          <p class="text-[11px] text-slate-500 text-center leading-relaxed">
-            Evaluated using standardized 10 Nielsen Norman heuristic benchmarks across blue-collar trade test cohorts.
-          </p>
+          <!-- Description of the 4 Heuristic Axes -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2 text-xs border-t border-slate-100">
+            <div>
+              <span class="font-extrabold text-slate-900 block">Efficiency</span>
+              <span class="text-slate-500 text-[11px]">Eliminates repetitive typing for every single job site.</span>
+            </div>
+            <div>
+              <span class="font-extrabold text-slate-900 block">Cognitive Load</span>
+              <span class="text-slate-500 text-[11px]">Replaces blank text boxes with predictive task chips.</span>
+            </div>
+            <div>
+              <span class="font-extrabold text-slate-900 block">Real World Match</span>
+              <span class="text-slate-500 text-[11px]">Aligned to payroll timesheets and paper dispatch slips.</span>
+            </div>
+            <div>
+              <span class="font-extrabold text-slate-900 block">Error Prevention</span>
+              <span class="text-slate-500 text-[11px]">Automated data extraction prevents date spelling errors.</span>
+            </div>
+          </div>
         </div>
 
-        <!-- Right Column: 3 KPI Metric Cards (5 cols) -->
-        <div class="lg:col-span-5 space-y-4">
+        <!-- Right Column: 3 Primary Success Metrics (5 cols) -->
+        <div class="lg:col-span-5 space-y-5">
           
-          <!-- Metric 1: Task Completion -->
-          <div class="bg-white p-6 rounded-[24px] border border-slate-200 shadow-subtle flex items-center justify-between">
+          <!-- Metric 1 -->
+          <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-sm flex items-center justify-between">
             <div class="space-y-1">
-              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Multi-Gig Completion</span>
-              <h5 class="text-base font-bold text-slate-900 tracking-tight">3+ Jobs Successfully Logged</h5>
-              <p class="text-xs text-slate-500">From 34% legacy completion to 89%</p>
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400">Primary Success Metric 01</span>
+              <h5 class="text-lg font-bold text-slate-900 tracking-tight">Task Completion Rate</h5>
+              <p class="text-xs text-slate-500 leading-relaxed max-w-[240px]">
+                Tracking the percentage of users who successfully log 3 or more jobs using the new batching method versus the old single entry loop.
+              </p>
             </div>
             <div class="text-right">
-              <span class="text-3xl font-extrabold text-emerald-600 font-mono tracking-tight">+161%</span>
-              <span class="text-[10px] text-emerald-700 block font-bold">Relative Lift</span>
+              <span class="text-4xl font-extrabold text-emerald-600 font-mono tracking-tight">+161%</span>
+              <span class="text-[11px] text-emerald-700 block font-bold">Relative Lift</span>
             </div>
           </div>
 
-          <!-- Metric 2: Time on Task -->
-          <div class="bg-white p-6 rounded-[24px] border border-slate-200 shadow-subtle flex items-center justify-between">
+          <!-- Metric 2 -->
+          <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-sm flex items-center justify-between">
             <div class="space-y-1">
-              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Time-to-Log Speed</span>
-              <h5 class="text-base font-bold text-slate-900 tracking-tight">Average Seconds on Task</h5>
-              <p class="text-xs text-slate-500">Dropped from 4m 15s to 42s total</p>
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400">Primary Success Metric 02</span>
+              <h5 class="text-lg font-bold text-slate-900 tracking-tight">Time on Task</h5>
+              <p class="text-xs text-slate-500 leading-relaxed max-w-[240px]">
+                Measuring the reduction in seconds spent inputting data, driven by the shift from mobile keyboard typing to predictive tapping.
+              </p>
             </div>
             <div class="text-right">
-              <span class="text-3xl font-extrabold text-[#2C4A6F] font-mono tracking-tight">-83%</span>
-              <span class="text-[10px] text-[#2C4A6F] block font-bold">Time Saved</span>
+              <span class="text-4xl font-extrabold text-[#2C4A6F] font-mono tracking-tight">-83%</span>
+              <span class="text-[11px] text-[#2C4A6F] block font-bold">Duration Cut</span>
             </div>
           </div>
 
-          <!-- Metric 3: Drop-Off Rate -->
-          <div class="bg-white p-6 rounded-[24px] border border-slate-200 shadow-subtle flex items-center justify-between">
+          <!-- Metric 3 -->
+          <div class="bg-white p-7 rounded-[28px] border border-slate-200 shadow-sm flex items-center justify-between">
             <div class="space-y-1">
-              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Onboarding Funnel</span>
-              <h5 class="text-base font-bold text-slate-900 tracking-tight">First-Screen Abandonment</h5>
-              <p class="text-xs text-slate-500">Collapsed from 62% failure to 8%</p>
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400">Primary Success Metric 03</span>
+              <h5 class="text-lg font-bold text-slate-900 tracking-tight">Drop Off Rate</h5>
+              <p class="text-xs text-slate-500 leading-relaxed max-w-[240px]">
+                Monitoring the reduction in user abandonment at the critical Add Experience onboarding screen.
+              </p>
             </div>
             <div class="text-right">
-              <span class="text-3xl font-extrabold text-rose-600 font-mono tracking-tight">-87%</span>
-              <span class="text-[10px] text-rose-700 block font-bold">Churn Cut</span>
+              <span class="text-4xl font-extrabold text-rose-600 font-mono tracking-tight">-87%</span>
+              <span class="text-[11px] text-rose-700 block font-bold">Drop-Off Drop</span>
             </div>
           </div>
 
@@ -911,52 +974,53 @@
 
       </div>
 
-    </section>
+    </div>
+  </section>
 
 
-    <!-- =================================================================== -->
-    <!-- SECTION 8: DARK FOOTER & DESIGNER SIGNATURE                         -->
-    <!-- =================================================================== -->
-    <footer class="bg-slate-950 text-white px-6 sm:px-12 py-16 rounded-none sm:rounded-b-[36px] avoid-break space-y-12">
+  <!-- ===================================================================== -->
+  <!-- SECTION 8: FULL-BLEED DARK FOOTER & DESIGNER SIGNATURE                -->
+  <!-- ===================================================================== -->
+  <footer class="w-full bg-obsidian text-white py-20 sm:py-28 avoid-break">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 space-y-16">
       
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-12 border-b border-slate-800">
-        <div class="space-y-3 max-w-xl">
-          <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Closing Philosophy</span>
-          <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-            "When enterprise software honors blue-collar craftsmanship, workforce fog evaporates."
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-12 pb-16 border-b border-slate-800/80">
+        <div class="space-y-4 max-w-2xl">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-blue-400">Executive Conclusion</span>
+          <h3 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            "When software honors the real-world artifacts of the job site, workforce fog evaporates."
           </h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <p class="text-sm text-slate-400 leading-relaxed font-normal">
             By shifting from static paper CVs to verified payroll pipes and nested role batching, BuilderFax establishes the premier digital identity pass for America's commercial builders.
           </p>
         </div>
 
-        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3 text-left">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-full bg-[#2C4A6F] text-white font-extrabold flex items-center justify-center text-sm">
+        <div class="bg-surfaceDark border border-slate-800 p-8 rounded-[28px] space-y-4 text-left shadow-lg">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-[#2C4A6F] text-white font-extrabold flex items-center justify-center text-lg shadow-md">
               VK
             </div>
             <div>
-              <h5 class="text-sm font-bold text-white">Vikhyat Kaushik</h5>
-              <p class="text-xs text-slate-400">Product & Systems UX Designer</p>
+              <h4 class="text-base font-bold text-white tracking-tight">Vikhyat Kaushik</h4>
+              <p class="text-xs text-slate-400">Product & UX Designer • Systems Architecture</p>
             </div>
           </div>
-          <p class="text-[11px] text-slate-500 font-mono">PORTFOLIO ASSIGNMENT • LUMBER FI</p>
+          <p class="text-xs text-slate-500 font-mono">PORTFOLIO ASSIGNMENT • LUMBER FI</p>
         </div>
       </div>
 
-      <!-- Footer Bottom Bar -->
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <!-- Footer Sub-bar -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-slate-500">
         <p>© 2026 Vikhyat Kaushik. Built for BuilderFax by Lumber.</p>
-        <div class="flex items-center gap-4 text-[11px]">
-          <span>Single-Press <kbd class="px-1.5 py-0.5 bg-slate-900 border border-slate-800 text-slate-300 font-mono rounded">P</kbd> to Print / PDF</span>
+        <div class="flex items-center gap-4 text-xs">
+          <span>Press <kbd class="px-2 py-0.5 bg-slate-900 border border-slate-800 text-slate-300 font-mono rounded">P</kbd> to Print / Save as PDF</span>
           <span>•</span>
-          <span>A4 / Letter Ready</span>
+          <span>A4 / Letter Print Optimized</span>
         </div>
       </div>
 
-    </footer>
-
-  </main>
+    </div>
+  </footer>
 
   <!-- ===================================================================== -->
   <!-- JAVASCRIPT: KEYBOARD LISTENER FOR 'P' TO TRIGGER CLEAN PRINT-TO-PDF   -->
