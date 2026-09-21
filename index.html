@@ -290,7 +290,7 @@
 
                 <!-- 5. Enter Data Manually (Button) -->
                 <div class="pt-2">
-                  <button type="button" onclick="openManualRoleFlow()" class="btn-tap w-full h-12 bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-semibold text-xs rounded-full flex items-center justify-center gap-2 shadow-subtle">
+                  <button type="button" onclick="openManualRoleFlow('manual')" class="btn-tap w-full h-12 bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-semibold text-xs rounded-full flex items-center justify-center gap-2 shadow-subtle">
                     <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                     </svg>
@@ -317,7 +317,7 @@
                 <h1 class="text-[16px] font-bold text-slate-900 tracking-tight">Work Experience</h1>
                 
                 <!-- + Add Experience Header Action -->
-                <button onclick="openManualRoleFlow()" class="btn-tap text-xs font-bold text-[#2C4A6F] hover:underline flex items-center gap-1">
+                <button onclick="openManualRoleFlow('experience')" class="btn-tap text-xs font-bold text-[#2C4A6F] hover:underline flex items-center gap-1">
                   <span>+ Add</span>
                 </button>
               </div>
@@ -600,7 +600,7 @@
 
               <!-- Sticky Action Bar -->
               <div class="absolute bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-md border-t border-slate-200 flex items-center gap-3">
-                <button onclick="openManualRoleFlow()" class="btn-tap flex-1 h-12 bg-[#2C4A6F] hover:bg-[#1E3550] text-white font-bold text-xs rounded-full flex items-center justify-center gap-2 shadow-subtle">
+                <button onclick="openManualRoleFlow('experience')" class="btn-tap flex-1 h-12 bg-[#2C4A6F] hover:bg-[#1E3550] text-white font-bold text-xs rounded-full flex items-center justify-center gap-2 shadow-subtle">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
                   </svg>
@@ -642,6 +642,44 @@
                     <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">
                       Enter or select your trade role below. You can log multiple companies worked under this role in the next step.
                     </p>
+                  </div>
+
+                  <!-- Role & Job Title Quick Suggestions Container (Hidden for 'Enter Manually', Visible for other options/experience) -->
+                  <div id="container-role-suggestions" class="space-y-3">
+                    <!-- Existing Roles in Profile -->
+                    <div class="space-y-1.5">
+                      <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
+                        Existing Roles in Profile (Quick Pick)
+                      </span>
+                      <div id="existing-roles-pills" class="flex flex-wrap gap-2">
+                        <!-- Populated by renderExistingRolesPills() -->
+                      </div>
+                    </div>
+
+                    <!-- Role & Job Title Examples -->
+                    <div class="space-y-1.5">
+                      <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
+                        Role & Job Title Examples
+                      </span>
+                      <div class="flex flex-wrap gap-2">
+                        <button type="button" onclick="selectExistingRole('Commercial Plumber', 'Plumbing & Pipefitting')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800 flex items-center gap-1.5 transition-all">
+                          <span>🔧</span>
+                          <span>Commercial Plumber</span>
+                        </button>
+                        <button type="button" onclick="selectExistingRole('HVAC Service Technician', 'Mechanical / HVAC')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800 flex items-center gap-1.5 transition-all">
+                          <span>❄️</span>
+                          <span>HVAC Service Tech</span>
+                        </button>
+                        <button type="button" onclick="selectExistingRole('Heavy Equipment Operator', 'Heavy Equipment')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800 flex items-center gap-1.5 transition-all">
+                          <span>🏗️</span>
+                          <span>Heavy Equipment</span>
+                        </button>
+                        <button type="button" onclick="selectExistingRole('Commercial Framer & Carpenter', 'Carpentry & Framing')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800 flex items-center gap-1.5 transition-all">
+                          <span>🔨</span>
+                          <span>Commercial Framer</span>
+                        </button>
+                      </div>
+                    </div>
                   </div>
 
                   <!-- Role Title Input (Empty default, Autocomplete Datalist, Auto-Trade Mapping) -->
@@ -1413,9 +1451,67 @@
     let selectedTrade = 'Electrical';
     let companyCardCounter = 1;
 
-    function openManualRoleFlow() {
+    const profileRoles = [
+      { title: 'Journeyman Commercial Electrician', trade: 'Electrical', icon: '⚡' },
+      { title: 'Solar PV & Storage Specialist', trade: 'Renewable Energy', icon: '☀️' }
+    ];
+
+    function renderExistingRolesPills() {
+      const container = document.getElementById('existing-roles-pills');
+      if (!container) return;
+      container.innerHTML = profileRoles.map(r => `
+        <button type="button" onclick="selectExistingRole('${r.title}', '${r.trade}')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800 flex items-center gap-1.5 transition-all">
+          <span>${r.icon || '🛠️'}</span>
+          <span>${r.title}</span>
+        </button>
+      `).join('');
+    }
+
+    function selectExistingRole(title, trade) {
+      const input = document.getElementById('input-role-title');
+      const select = document.getElementById('input-trade-category');
+      if (input) input.value = title;
+      if (select) select.value = trade;
+      selectedRoleTitle = title;
+      selectedTrade = trade;
+
+      // Highlight selected pill
+      document.querySelectorAll('.role-pill').forEach(pill => {
+        if (pill.textContent.includes(title) || (title.includes('Electrician') && pill.textContent.includes('Electrician')) || (title.includes('Solar') && pill.textContent.includes('Solar')) || (title.includes('Plumber') && pill.textContent.includes('Plumber')) || (title.includes('HVAC') && pill.textContent.includes('HVAC')) || (title.includes('Heavy Equipment') && pill.textContent.includes('Heavy Equipment')) || (title.includes('Framer') && pill.textContent.includes('Framer'))) {
+          pill.classList.add('border-[#2C4A6F]', 'bg-blue-50/70', 'text-[#2C4A6F]', 'ring-1', 'ring-[#2C4A6F]/30');
+          pill.classList.remove('border-slate-200', 'bg-white', 'text-slate-800');
+        } else {
+          pill.classList.remove('border-[#2C4A6F]', 'bg-blue-50/70', 'text-[#2C4A6F]', 'ring-1', 'ring-[#2C4A6F]/30');
+          pill.classList.add('border-slate-200', 'bg-white', 'text-slate-800');
+        }
+      });
+    }
+
+    function openManualRoleFlow(entrySource = 'experience') {
       flowCurrentPart = 1;
       updateFlowPartUI();
+
+      const roleSuggestions = document.getElementById('container-role-suggestions');
+      if (roleSuggestions) {
+        if (entrySource === 'manual') {
+          // User clicked "Enter Details Manually" on Screen 1: hide role examples & existing roles
+          roleSuggestions.classList.add('hidden');
+        } else {
+          // User came from other options (Resume, Lumber, Trade platforms, Scanner, or Experience screen): show role examples & existing roles
+          roleSuggestions.classList.remove('hidden');
+          renderExistingRolesPills();
+        }
+      }
+
+      // Reset role input and active pill highlights
+      const input = document.getElementById('input-role-title');
+      if (input) input.value = '';
+      selectedRoleTitle = '';
+      document.querySelectorAll('.role-pill').forEach(pill => {
+        pill.classList.remove('border-[#2C4A6F]', 'bg-blue-50/70', 'text-[#2C4A6F]', 'ring-1', 'ring-[#2C4A6F]/30');
+        pill.classList.add('border-slate-200', 'bg-white', 'text-slate-800');
+      });
+
       const addFlow = document.getElementById('screen-add-role-flow');
       if (addFlow) {
         addFlow.className = 'screen-panel absolute inset-0 flex flex-col bg-[#F8FAFC] z-20 translate-x-0 opacity-100';
@@ -1457,6 +1553,13 @@
     // Dynamic Role-to-Trade Mapping as User Types
     function handleRoleInput(val) {
       selectedRoleTitle = val;
+
+      // Clear any active pill highlight if user manually types
+      document.querySelectorAll('.role-pill').forEach(pill => {
+        pill.classList.remove('border-[#2C4A6F]', 'bg-blue-50/70', 'text-[#2C4A6F]', 'ring-1', 'ring-[#2C4A6F]/30');
+        pill.classList.add('border-slate-200', 'bg-white', 'text-slate-800');
+      });
+
       const lower = val.toLowerCase().trim();
       const tradeSelect = document.getElementById('input-trade-category');
       if (!tradeSelect) return;
@@ -1760,6 +1863,11 @@
       const extraCompContainer = document.getElementById('extra-company-container');
       if (extraCompContainer) extraCompContainer.innerHTML = '';
       companyCardCounter = 1;
+
+      // Register new role in profileRoles for quick pick
+      if (!profileRoles.some(r => r.title.toLowerCase() === roleTitle.toLowerCase())) {
+        profileRoles.push({ title: roleTitle, trade: tradeName, icon: '🛠️' });
+      }
 
       // Reset inputs
       const comp1Name = document.getElementById('input-company-name-1');
