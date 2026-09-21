@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>BuilderFax - Add Work Experience</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans for crisp, premium mobile typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#2C4A6F',
+              navyDark: '#1E3550',
+              navyDeep: '#16283D',
+              navySubtle: '#F0F4F8',
+              slateBg: '#F8FAFC',
+              border: '#E2E8F0',
+              borderSubtle: '#EDF2F7',
+              ink: '#0F172A',
+              inkSecondary: '#475569',
+              inkMuted: '#64748B',
+              amber: '#D97706',
+              amberSubtle: '#FEF3C7',
+              emerald: '#059669',
+              emeraldSubtle: '#ECFDF5',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          boxShadow: {
+            'subtle': '0 1px 2px 0 rgba(15, 23, 42, 0.04)',
+            'card': '0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04)',
+            'elevated': '0 8px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04)',
+            'sheet': '0 -10px 30px -4px rgba(15, 23, 42, 0.14)',
+            'device': '0 20px 60px -15px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Impeccable Design Foundation: Typography, Ergonomics & Restraint */
+    html, body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      letter-spacing: -0.012em;
+    }
+
+    /* Tactile Press Physics */
+    .btn-tap {
+      transition: transform 0.12s cubic-bezier(0.2, 0, 0, 1), background-color 0.12s ease, opacity 0.12s ease, border-color 0.12s ease;
+    }
+    .btn-tap:active {
+      transform: scale(0.965);
+    }
+
+    /* Subtle Slide Transitions */
+    .screen-panel {
+      transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.24s ease;
+    }
+
+    /* Scrollbar Suppression */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Tabular numbers for hours/counts */
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-900 min-h-screen w-screen flex items-center justify-center p-0 m-0 overflow-hidden">
+
+  <!-- Viewport Canvas (Proportional Scaling to 80% Viewport Height) -->
+  <main class="w-full h-full flex items-center justify-center overflow-hidden">
+
+    <!-- Container maintaining strict 393:852 aspect ratio -->
+    <div id="phone-proportional-wrapper" class="relative flex items-center justify-center" style="height: 80vh; width: calc(80vh * (393 / 852));">
+      
+      <!-- Native Mobile Hardware Frame (393px × 852px scaled proportionally) -->
+      <div id="phone-frame-wrapper" class="relative w-[393px] h-[852px] rounded-[48px] bg-white p-2.5 shadow-device ring-1 ring-slate-900/10 overflow-hidden flex flex-col justify-between select-none flex-shrink-0" style="transform-origin: center center;">
+
+        <!-- Screen Surface -->
+        <div id="phone-screen" class="relative w-full h-full bg-[#F8FAFC] rounded-[40px] overflow-hidden flex flex-col text-slate-900 border border-slate-200/80">
+
+          <!-- 1. Native iOS Status Bar (Clean, no fake notch) -->
+          <div class="relative z-40 w-full h-11 pt-2 px-6 flex items-center justify-between text-[13px] font-semibold tracking-tight text-slate-900 bg-white/95 backdrop-blur-md">
+            <span class="font-semibold tracking-tight">9:42</span>
+            <div class="flex items-center gap-1.5 text-slate-900">
+              <svg class="w-3.5 h-3" fill="currentColor" viewBox="0 0 18 14">
+                <rect x="0" y="10" width="3" height="4" rx="0.5"/>
+                <rect x="4.5" y="7" width="3" height="7" rx="0.5"/>
+                <rect x="9" y="4" width="3" height="10" rx="0.5"/>
+                <rect x="13.5" y="0" width="3" height="14" rx="0.5"/>
+              </svg>
+              <span class="text-[11px] font-bold tracking-tight">5G</span>
+              <div class="w-5 h-2.5 border border-slate-900 rounded-[3px] p-[1px] flex items-center">
+                <div class="h-full w-4 bg-slate-900 rounded-[1px]"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toast Notification (Full Width Light Mode Card with Countdown Progress Bar) -->
+          <div id="app-toast" onclick="dismissToast()" class="hidden absolute bottom-20 left-4 right-4 z-50 transition-all duration-200 ease-out cursor-pointer">
+            <div class="bg-white border border-slate-200 text-slate-900 rounded-2xl shadow-elevated p-3 flex flex-col justify-between overflow-hidden hover:bg-slate-50 transition-colors">
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2.5 min-w-0">
+                  <div class="w-6 h-6 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <span id="toast-text" class="text-xs font-bold text-slate-900 tracking-tight truncate">Notification</span>
+                </div>
+                <button type="button" onclick="event.stopPropagation(); dismissToast();" class="text-slate-400 hover:text-slate-600 p-1 rounded-full flex-shrink-0" aria-label="Dismiss">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                </button>
+              </div>
+              <!-- Countdown Dismissal Progress Bar -->
+              <div class="w-full h-1 bg-slate-100 mt-2.5 rounded-full overflow-hidden">
+                <div id="toast-progress" class="h-full bg-[#2C4A6F] rounded-full" style="width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =============================================================== -->
+          <!-- SCREENS VIEWPORT CONTAINER                                      -->
+          <!-- =============================================================== -->
+          <div class="relative flex-1 w-full h-full overflow-hidden">
+
+
+            <!-- ============================================================= -->
+            <!-- SCREEN 1: ADD WORK EXPERIENCE (HUB)                           -->
+            <!-- ============================================================= -->
+            <div id="screen-hub" class="screen-panel absolute inset-0 flex flex-col bg-white z-10 translate-x-0 opacity-100">
+              
+              <!-- Navigation Header -->
+              <div class="px-5 pt-1 pb-2.5 flex items-center justify-between border-b border-slate-100">
+                <button onclick="showToast('Home')" class="btn-tap -ml-2 w-9 h-9 flex items-center justify-center text-slate-500 hover:text-slate-900" aria-label="Back">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                  </svg>
+                </button>
+                <h1 class="text-[16px] font-bold text-slate-900 tracking-tight">Add Work Experience</h1>
+                <button onclick="goToScreen('experience')" class="btn-tap text-xs font-semibold text-slate-500 hover:text-slate-800">
+                  Skip
+                </button>
+              </div>
+
+              <!-- Scrollable Body -->
+              <div class="flex-1 overflow-y-auto no-scrollbar px-5 pt-4 pb-8 space-y-4">
+
+                <!-- Header Intro Text -->
+                <div class="space-y-1">
+                  <p class="text-[13px] text-slate-500 leading-relaxed">
+                    Add verified projects, contractors, and logged hours to build your trusted trade record.
+                  </p>
+                </div>
+
+                <!-- 1. Upload Resume (First Option) -->
+                <div onclick="triggerResumeUpload()" class="btn-tap p-4 rounded-2xl border border-slate-200 hover:border-slate-400 bg-white cursor-pointer shadow-subtle flex items-start gap-3.5 group">
+                  <div class="w-11 h-11 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 flex items-center justify-center flex-shrink-0 group-hover:border-slate-300">
+                    <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between">
+                      <h2 class="text-sm font-bold text-slate-900">Upload your resume</h2>
+                      <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-0.5 leading-snug">
+                      Import details from your resume to quickly setup your profile (PDF, DOCX).
+                    </p>
+                  </div>
+                </div>
+
+                <!-- 2. Connect with Lumber (Primary Auto-Sync) -->
+                <div onclick="openLumberSyncModal()" class="btn-tap p-4 rounded-2xl border-2 border-[#2C4A6F] bg-[#F0F4F8] cursor-pointer shadow-subtle flex items-start gap-3.5 group relative">
+                  <div class="w-11 h-11 rounded-xl bg-[#2C4A6F] text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+                    <!-- Bespoke Architectural Timber / Monogram Icon -->
+                    <svg class="w-6 h-6 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-1.5">
+                        <h2 class="text-sm font-bold text-slate-900">Connect with Lumber</h2>
+                        <span class="text-[10px] font-bold text-[#2C4A6F] bg-white border border-[#2C4A6F]/20 px-1.5 py-0.2 rounded-full">Recommended</span>
+                      </div>
+                      <svg class="w-4 h-4 text-[#2C4A6F] group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </div>
+                    <p class="text-xs text-slate-600 mt-0.5 leading-snug">
+                      1-tap sync of verified clock-ins, project hours, and contractor sign-offs.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- 3. US Construction Data Sources (3-4 Industry Sources) -->
+                <div class="space-y-2 pt-1">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                      Sync from Trade Platforms
+                    </span>
+                    <span class="text-[10px] text-slate-400">US Verified Data</span>
+                  </div>
+
+                  <div class="grid grid-cols-4 gap-2">
+                    <!-- Procore -->
+                    <button type="button" onclick="connectExternalPlatform('Procore')" class="btn-tap bg-white border border-slate-200 hover:border-slate-400 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1 text-center shadow-subtle group">
+                      <div class="w-9 h-9 rounded-xl bg-orange-500 text-white font-extrabold text-[11px] flex items-center justify-center shadow-xs">
+                        PRO
+                      </div>
+                      <span class="text-[10px] font-bold text-slate-700 leading-tight">Procore</span>
+                    </button>
+
+                    <!-- ADP Payroll -->
+                    <button type="button" onclick="connectExternalPlatform('ADP')" class="btn-tap bg-white border border-slate-200 hover:border-slate-400 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1 text-center shadow-subtle group">
+                      <div class="w-9 h-9 rounded-xl bg-red-600 text-white font-extrabold text-[11px] flex items-center justify-center shadow-xs">
+                        ADP
+                      </div>
+                      <span class="text-[10px] font-bold text-slate-700 leading-tight">ADP</span>
+                    </button>
+
+                    <!-- NCCER Registry -->
+                    <button type="button" onclick="connectExternalPlatform('NCCER')" class="btn-tap bg-white border border-slate-200 hover:border-slate-400 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1 text-center shadow-subtle group">
+                      <div class="w-9 h-9 rounded-xl bg-[#2C4A6F] text-amber-300 font-extrabold text-[10px] flex items-center justify-center shadow-xs">
+                        NCC
+                      </div>
+                      <span class="text-[10px] font-bold text-slate-700 leading-tight">NCCER</span>
+                    </button>
+
+                    <!-- HCSS HeavyJob -->
+                    <button type="button" onclick="connectExternalPlatform('HCSS HeavyJob')" class="btn-tap bg-white border border-slate-200 hover:border-slate-400 p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1 text-center shadow-subtle group">
+                      <div class="w-9 h-9 rounded-xl bg-slate-800 text-white font-extrabold text-[10px] flex items-center justify-center shadow-xs">
+                        HCSS
+                      </div>
+                      <span class="text-[10px] font-bold text-slate-700 leading-tight">HeavyJob</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- 4. Scan Documents -->
+                <div onclick="openDocumentScanner()" class="btn-tap p-4 rounded-2xl border border-slate-200 hover:border-slate-400 bg-white cursor-pointer shadow-subtle flex items-start gap-3.5 group">
+                  <div class="w-11 h-11 rounded-xl bg-slate-900 text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+                    <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between">
+                      <h2 class="text-sm font-bold text-slate-900">Scan Documents</h2>
+                      <svg class="w-4 h-4 text-slate-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-0.5 leading-snug">
+                      Auto-extract from union dispatch slips, apprenticeship tickets, or paystubs.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- 5. Enter Data Manually (Button) -->
+                <div class="pt-2">
+                  <button type="button" onclick="openManualRoleFlow()" class="btn-tap w-full h-12 bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-semibold text-xs rounded-full flex items-center justify-center gap-2 shadow-subtle">
+                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                    </svg>
+                    <span>Enter Details Manually</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+
+            <!-- ============================================================= -->
+            <!-- SCREEN 2: WORK EXPERIENCE VIEW (ROLE-WISE & TIMELINE)         -->
+            <!-- ============================================================= -->
+            <div id="screen-experience" class="screen-panel absolute inset-0 flex flex-col bg-[#F8FAFC] z-10 translate-x-full opacity-0">
+              
+              <!-- Navigation Header -->
+              <div class="px-5 pt-1 pb-2.5 flex items-center justify-between border-b border-slate-200/80 bg-white">
+                <button onclick="goToScreen('hub')" class="btn-tap -ml-2 w-9 h-9 flex items-center justify-center text-slate-600 hover:text-slate-900" aria-label="Back">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                  </svg>
+                </button>
+                <h1 class="text-[16px] font-bold text-slate-900 tracking-tight">Work Experience</h1>
+                
+                <!-- + Add Experience Header Action -->
+                <button onclick="openManualRoleFlow()" class="btn-tap text-xs font-bold text-[#2C4A6F] hover:underline flex items-center gap-1">
+                  <span>+ Add</span>
+                </button>
+              </div>
+
+              <!-- View Switcher Segmented Control -->
+              <div class="p-3 bg-white border-b border-slate-200/70">
+                <div class="bg-slate-100 p-1 rounded-xl flex items-center text-xs font-semibold">
+                  <button id="tab-role-view" onclick="setExperienceView('role')" class="btn-tap flex-1 py-1.5 rounded-lg bg-white text-slate-900 shadow-subtle font-semibold transition-all text-center">
+                    Role Wise
+                  </button>
+                  <button id="tab-timeline-view" onclick="setExperienceView('timeline')" class="btn-tap flex-1 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-medium transition-all text-center">
+                    Timeline Wise
+                  </button>
+                </div>
+              </div>
+
+              <!-- Scrollable Body -->
+              <div class="flex-1 overflow-y-auto no-scrollbar px-4 py-3 space-y-3 pb-24">
+
+                <!-- ----------------------------------------------------------- -->
+                <!-- VIEW A: ROLE-WISE EXPERIENCE (Shows hours per role)         -->
+                <!-- ----------------------------------------------------------- -->
+                <div id="view-role-container" class="space-y-3">
+                  
+                  <!-- ROLE 1: JOURNEYMAN COMMERCIAL ELECTRICIAN -->
+                  <div class="bg-white rounded-2xl border border-slate-200 shadow-card overflow-hidden">
+                    
+                    <!-- Role Header Box -->
+                    <div class="p-4 bg-[#F0F4F8] border-b border-slate-200/80 space-y-2">
+                      <div class="flex items-start justify-between">
+                        <div>
+                          <span class="text-[10px] font-bold text-[#2C4A6F] uppercase tracking-wider">
+                            Primary Trade Role
+                          </span>
+                          <h2 class="text-base font-bold text-slate-900 tracking-tight">
+                            Journeyman Commercial Electrician
+                          </h2>
+                          <p class="text-xs text-slate-500">
+                            Trade: Electrical • IBEW Local 46
+                          </p>
+                        </div>
+
+                        <!-- Total Hours per Role Badge (Compatibility Indicator) -->
+                        <div class="text-right">
+                          <span class="text-xs text-slate-400 block font-medium">Logged Hours</span>
+                          <span class="text-base font-extrabold text-[#2C4A6F] tabular-nums">2,440 hrs</span>
+                        </div>
+                      </div>
+
+                      <!-- Job Compatibility Stamp -->
+                      <div class="pt-1 flex items-center justify-between">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                          <svg class="w-3 h-3 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                          </svg>
+                          Journeyman Qualified (>2,000h Met)
+                        </span>
+                        <span class="text-[11px] text-slate-500">2 Contractors</span>
+                      </div>
+                    </div>
+
+                    <!-- Companies Under this Role -->
+                    <div class="divide-y divide-slate-100">
+                      
+                      <!-- Company 1: Apex Construction Partners -->
+                      <div class="p-3.5 space-y-1.5">
+                        <div class="flex items-start justify-between">
+                          <div>
+                            <div class="flex items-center gap-1.5">
+                              <h3 class="text-[13.5px] font-bold text-slate-900">Apex Construction Partners</h3>
+                              <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.2 rounded-full">
+                                Verified
+                              </span>
+                            </div>
+                            <p class="text-xs text-slate-500">
+                              Sound Transit Light Rail Extension • Seattle, WA
+                            </p>
+                          </div>
+                          <span class="text-xs font-bold text-slate-900 tabular-nums">1,840 hrs</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                          <span>Mar 2024 – Present (Active)</span>
+                          <span class="text-emerald-700 font-medium">Signed by Marcus Vance (Foreman)</span>
+                        </div>
+                      </div>
+
+                      <!-- Company 2: TerraFirma Builders -->
+                      <div class="p-3.5 space-y-1.5">
+                        <div class="flex items-start justify-between">
+                          <div>
+                            <h3 class="text-[13.5px] font-bold text-slate-900">TerraFirma Builders</h3>
+                            <p class="text-xs text-slate-500">
+                              Amazon Block 44 Commercial Tower • Bellevue, WA
+                            </p>
+                          </div>
+                          <span class="text-xs font-bold text-slate-900 tabular-nums">600 hrs</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                          <span>Aug 2023 – Feb 2024</span>
+                          <span>Completed Project</span>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- Quick Add Company to this Role -->
+                    <div class="p-3 bg-slate-50/70 border-t border-slate-100">
+                      <button type="button" onclick="addCompanyToSpecificRole('Journeyman Commercial Electrician')" class="btn-tap w-full py-2 text-xs font-semibold text-[#2C4A6F] hover:bg-slate-100 rounded-xl flex items-center justify-center gap-1.5">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                        <span>Add another company worked under this role</span>
+                      </button>
+                    </div>
+
+                  </div>
+
+                  <!-- ROLE 2: SOLAR PV & STORAGE SPECIALIST -->
+                  <div class="bg-white rounded-2xl border border-slate-200 shadow-card overflow-hidden">
+                    
+                    <!-- Role Header Box -->
+                    <div class="p-4 bg-[#F0F4F8] border-b border-slate-200/80 space-y-2">
+                      <div class="flex items-start justify-between">
+                        <div>
+                          <span class="text-[10px] font-bold text-[#2C4A6F] uppercase tracking-wider">
+                            Specialized Trade Role
+                          </span>
+                          <h2 class="text-base font-bold text-slate-900 tracking-tight">
+                            Solar PV & Storage Specialist
+                          </h2>
+                          <p class="text-xs text-slate-500">
+                            Trade: Renewable Energy • NABCEP Certified
+                          </p>
+                        </div>
+
+                        <!-- Total Hours per Role Badge (Compatibility Indicator) -->
+                        <div class="text-right">
+                          <span class="text-xs text-slate-400 block font-medium">Logged Hours</span>
+                          <span class="text-base font-extrabold text-[#2C4A6F] tabular-nums">980 hrs</span>
+                        </div>
+                      </div>
+
+                      <!-- Job Compatibility Stamp -->
+                      <div class="pt-1 flex items-center justify-between">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                          <svg class="w-3 h-3 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                          </svg>
+                          Commercial Solar Level 2 (Eligible)
+                        </span>
+                        <span class="text-[11px] text-slate-500">2 Contractors</span>
+                      </div>
+                    </div>
+
+                    <!-- Companies Under this Role -->
+                    <div class="divide-y divide-slate-100">
+                      
+                      <!-- Company 1: SunGrid Industrial Energy -->
+                      <div class="p-3.5 space-y-1.5">
+                        <div class="flex items-start justify-between">
+                          <div>
+                            <div class="flex items-center gap-1.5">
+                              <h3 class="text-[13.5px] font-bold text-slate-900">SunGrid Industrial Energy</h3>
+                              <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.2 rounded-full">
+                                Verified
+                              </span>
+                            </div>
+                            <p class="text-xs text-slate-500">
+                              Puget Sound Distribution Center Rooftop • Seattle, WA
+                            </p>
+                          </div>
+                          <span class="text-xs font-bold text-slate-900 tabular-nums">560 hrs</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                          <span>Jan 2023 – Jul 2023</span>
+                          <span class="text-emerald-700 font-medium">Verified by Dave Miller (PM)</span>
+                        </div>
+                      </div>
+
+                      <!-- Company 2: Northwest Solar Electric -->
+                      <div class="p-3.5 space-y-1.5">
+                        <div class="flex items-start justify-between">
+                          <div>
+                            <h3 class="text-[13.5px] font-bold text-slate-900">Northwest Solar Electric</h3>
+                            <p class="text-xs text-slate-500">
+                              King County Transit Depot Microgrid • Kent, WA
+                            </p>
+                          </div>
+                          <span class="text-xs font-bold text-slate-900 tabular-nums">420 hrs</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                          <span>Jul 2022 – Dec 2022</span>
+                          <span>Completed Installation</span>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- Quick Add Company to this Role -->
+                    <div class="p-3 bg-slate-50/70 border-t border-slate-100">
+                      <button type="button" onclick="addCompanyToSpecificRole('Solar PV & Storage Specialist')" class="btn-tap w-full py-2 text-xs font-semibold text-[#2C4A6F] hover:bg-slate-100 rounded-xl flex items-center justify-center gap-1.5">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                        <span>Add another company worked under this role</span>
+                      </button>
+                    </div>
+
+                  </div>
+
+                  <!-- Dynamic Extra Role Cards Container -->
+                  <div id="extra-roles-container" class="space-y-3"></div>
+
+                </div>
+
+                <!-- ----------------------------------------------------------- -->
+                <!-- VIEW B: TIMELINE-WISE EXPERIENCE                            -->
+                <!-- ----------------------------------------------------------- -->
+                <div id="view-timeline-container" class="hidden space-y-3">
+                  <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-card">
+                    <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
+                      Career Sequence (Newest to Oldest)
+                    </h2>
+
+                    <!-- Vertical Rail -->
+                    <div id="timeline-rail-items" class="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-200">
+                      
+                      <!-- Item 1: Apex -->
+                      <div class="relative">
+                        <div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-[#2C4A6F] ring-4 ring-blue-50"></div>
+                        <div>
+                          <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-[#2C4A6F]">Mar 2024 – Present</span>
+                            <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-1.5 py-0.2 rounded-full tabular-nums">1,840 hrs</span>
+                          </div>
+                          <h3 class="text-sm font-bold text-slate-900 mt-0.5">Apex Construction Partners</h3>
+                          <p class="text-xs text-slate-500">Journeyman Commercial Electrician • Seattle, WA</p>
+                        </div>
+                      </div>
+
+                      <!-- Item 2: TerraFirma -->
+                      <div class="relative">
+                        <div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-slate-500 ring-4 ring-slate-100"></div>
+                        <div>
+                          <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-semibold text-slate-600">Aug 2023 – Feb 2024</span>
+                            <span class="text-[10px] font-bold text-slate-700 bg-slate-100 px-1.5 py-0.2 rounded-full tabular-nums">600 hrs</span>
+                          </div>
+                          <h3 class="text-sm font-bold text-slate-900 mt-0.5">TerraFirma Builders</h3>
+                          <p class="text-xs text-slate-500">Journeyman Commercial Electrician • Bellevue, WA</p>
+                        </div>
+                      </div>
+
+                      <!-- Item 3: SunGrid (Solar PV Role) -->
+                      <div class="relative">
+                        <div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-amber-500 ring-4 ring-amber-50"></div>
+                        <div>
+                          <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-semibold text-slate-600">Jan 2023 – Jul 2023</span>
+                            <span class="text-[10px] font-bold text-amber-800 bg-amber-50 border border-amber-200 px-1.5 py-0.2 rounded-full tabular-nums">560 hrs</span>
+                          </div>
+                          <h3 class="text-sm font-bold text-slate-900 mt-0.5">SunGrid Industrial Energy</h3>
+                          <p class="text-xs text-slate-500">Solar PV & Storage Specialist • Seattle, WA</p>
+                        </div>
+                      </div>
+
+                      <!-- Item 4: Northwest Solar (Solar PV Role) -->
+                      <div class="relative">
+                        <div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-slate-400 ring-4 ring-slate-100"></div>
+                        <div>
+                          <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-semibold text-slate-600">Jul 2022 – Dec 2022</span>
+                            <span class="text-[10px] font-bold text-slate-700 bg-slate-100 px-1.5 py-0.2 rounded-full tabular-nums">420 hrs</span>
+                          </div>
+                          <h3 class="text-sm font-bold text-slate-900 mt-0.5">Northwest Solar Electric</h3>
+                          <p class="text-xs text-slate-500">Solar PV & Storage Specialist • Kent, WA</p>
+                        </div>
+                      </div>
+
+                      <!-- Item 5: JATC Apprenticeship -->
+                      <div class="relative">
+                        <div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-slate-300 ring-4 ring-slate-100"></div>
+                        <div>
+                          <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-semibold text-slate-500">2021 – 2022</span>
+                            <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.2 rounded-full">Apprentice</span>
+                          </div>
+                          <h3 class="text-sm font-bold text-slate-900 mt-0.5">Puget Sound Electrical JATC</h3>
+                          <p class="text-xs text-slate-500">Inside Wireman Apprenticeship Program</p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Sticky Action Bar -->
+              <div class="absolute bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-md border-t border-slate-200 flex items-center gap-3">
+                <button onclick="openManualRoleFlow()" class="btn-tap flex-1 h-12 bg-[#2C4A6F] hover:bg-[#1E3550] text-white font-bold text-xs rounded-full flex items-center justify-center gap-2 shadow-subtle">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+                  </svg>
+                  <span>Add New Experience</span>
+                </button>
+                <button onclick="showToast('Verification Pass Generated')" class="btn-tap h-12 px-5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs rounded-full">
+                  Share Pass
+                </button>
+              </div>
+
+            </div>
+
+
+            <!-- ============================================================= -->
+            <!-- SCREEN 3: ADD NEW EXPERIENCE (ROLE-FIRST MULTI-STEP FLOW)     -->
+            <!-- ============================================================= -->
+            <div id="screen-add-role-flow" class="screen-panel absolute inset-0 flex flex-col bg-[#F8FAFC] z-20 translate-x-full opacity-0">
+              
+              <!-- Navigation Header -->
+              <div class="px-5 pt-1 pb-2.5 flex items-center justify-between border-b border-slate-200/80 bg-white">
+                <button onclick="closeManualRoleFlow()" class="btn-tap -ml-2 w-9 h-9 flex items-center justify-center text-slate-600 hover:text-slate-900" aria-label="Cancel">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                </button>
+                <h1 id="flow-step-title" class="text-[15px] font-bold text-slate-900 tracking-tight">Step 1: Your Role</h1>
+                <span id="flow-step-indicator" class="text-xs font-semibold text-slate-400">1 of 2</span>
+              </div>
+
+              <!-- Flow Step Container -->
+              <div class="flex-1 overflow-y-auto no-scrollbar p-5 space-y-4 pb-24">
+
+                <!-- --------------------------------------------------------- -->
+                <!-- PART 1: ROLE & TRADE DEFINITION                           -->
+                <!-- --------------------------------------------------------- -->
+                <div id="flow-part-1" class="space-y-4">
+                  <div>
+                    <h2 class="text-lg font-bold text-slate-900 tracking-tight">What is your role?</h2>
+                    <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">
+                      Select or type your trade role. You can log multiple companies under this role in the next step.
+                    </p>
+                  </div>
+
+                  <!-- Quick Select Existing Entered Roles -->
+                  <div class="space-y-1.5">
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
+                      Existing Roles in Profile (Quick Pick)
+                    </span>
+                    <div class="flex flex-wrap gap-2">
+                      <button type="button" onclick="selectExistingRole('Journeyman Commercial Electrician', 'Electrical')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800">
+                        ⚡ Journeyman Electrician
+                      </button>
+                      <button type="button" onclick="selectExistingRole('Solar PV & Storage Specialist', 'Renewable Energy')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800">
+                        ☀️ Solar PV Specialist
+                      </button>
+                      <button type="button" onclick="selectExistingRole('Commercial Plumber', 'Plumbing & Pipefitting')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800">
+                        🔧 Commercial Plumber
+                      </button>
+                      <button type="button" onclick="selectExistingRole('HVAC Service Technician', 'Mechanical / HVAC')" class="role-pill btn-tap px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-800">
+                        ❄️ HVAC Tech
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Role Title Input (Empty default, Autocomplete Datalist, Auto-Trade Mapping) -->
+                  <div class="space-y-1">
+                    <label class="block text-xs font-bold text-slate-800">Role / Job Title</label>
+                    <input type="text" id="input-role-title" value="" list="role-options" oninput="handleRoleInput(this.value)" class="w-full h-11 px-3.5 bg-white border border-slate-300 rounded-xl text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" placeholder="Type or select role (e.g. Journeyman Electrician)" autocomplete="off" />
+                    <datalist id="role-options">
+                      <option value="Journeyman Commercial Electrician">
+                      <option value="Residential Wireman Electrician">
+                      <option value="Apprentice Wireman">
+                      <option value="Industrial Electrician">
+                      <option value="Solar PV & Storage Specialist">
+                      <option value="Commercial Plumber">
+                      <option value="Pipefitter & Steamfitter">
+                      <option value="HVAC Service Technician">
+                      <option value="Sheet Metal Journeyman">
+                      <option value="Commercial Framer & Carpenter">
+                      <option value="Heavy Equipment Operator">
+                    </datalist>
+                  </div>
+
+                  <!-- Trade Category Dropdown (Automatically updated when Role is typed) -->
+                  <div class="space-y-1">
+                    <label class="block text-xs font-bold text-slate-800">Trade Classification</label>
+                    <div class="relative">
+                      <select id="input-trade-category" class="w-full h-11 pl-3.5 pr-9 bg-white border border-slate-300 rounded-xl text-xs font-semibold text-slate-900 appearance-none focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]">
+                        <option value="Electrical" selected>Electrical (Commercial & Industrial)</option>
+                        <option value="Renewable Energy">Renewable Energy / Solar PV</option>
+                        <option value="Plumbing & Pipefitting">Plumbing & Pipefitting</option>
+                        <option value="Mechanical / HVAC">Mechanical / HVAC</option>
+                        <option value="Carpentry & Framing">Carpentry & Framing</option>
+                        <option value="Heavy Equipment">Heavy Equipment Operation</option>
+                      </select>
+                      <div class="absolute right-3 top-3.5 pointer-events-none text-slate-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- --------------------------------------------------------- -->
+                <!-- PART 2: COMPANIES WORKED UNDER THIS ROLE                  -->
+                <!-- --------------------------------------------------------- -->
+                <div id="flow-part-2" class="hidden space-y-4">
+                  <div class="bg-blue-50/70 border border-blue-100 p-3 rounded-2xl flex items-start gap-2.5">
+                    <div class="w-6 h-6 rounded-lg bg-[#2C4A6F] text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                      ✓
+                    </div>
+                    <div>
+                      <h2 class="text-xs font-bold text-slate-900" id="summary-selected-role">Journeyman Commercial Electrician</h2>
+                      <p class="text-[11px] text-slate-600 leading-tight mt-0.5">
+                        In construction, tradespeople switch contractors often under the same role. Enter companies below.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Location Autocomplete Datalist (Cities, States, Countries) -->
+                  <datalist id="location-options">
+                    <option value="Seattle, WA, United States">
+                    <option value="Bellevue, WA, United States">
+                    <option value="Tacoma, WA, United States">
+                    <option value="Spokane, WA, United States">
+                    <option value="Portland, OR, United States">
+                    <option value="San Francisco, CA, United States">
+                    <option value="Los Angeles, CA, United States">
+                    <option value="San Diego, CA, United States">
+                    <option value="Phoenix, AZ, United States">
+                    <option value="Denver, CO, United States">
+                    <option value="Dallas, TX, United States">
+                    <option value="Austin, TX, United States">
+                    <option value="Houston, TX, United States">
+                    <option value="Chicago, IL, United States">
+                    <option value="Atlanta, GA, United States">
+                    <option value="Miami, FL, United States">
+                    <option value="New York, NY, United States">
+                    <option value="Vancouver, BC, Canada">
+                  </datalist>
+
+                  <!-- Company 1 Entry Card -->
+                  <div id="company-card-1" class="company-card bg-white rounded-2xl p-4 border border-slate-200 shadow-card space-y-3" data-company-index="1">
+                    <div class="flex items-center justify-between">
+                      <span class="text-xs font-bold text-slate-900">Contractor / Employer</span>
+                      <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">Company 1</span>
+                    </div>
+
+                    <!-- Contractor Name (Not autofilled) -->
+                    <div>
+                      <input type="text" id="input-company-name-1" value="" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" placeholder="e.g. Skanska, Turner, Apex" />
+                      
+                      <!-- Suggestions -->
+                      <div class="flex items-center gap-1.5 mt-1.5 overflow-x-auto no-scrollbar">
+                        <button type="button" onclick="setCompanySuggestion(1, 'Apex Construction')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold rounded-md flex-shrink-0">+ Apex</button>
+                        <button type="button" onclick="setCompanySuggestion(1, 'Skanska USA')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold rounded-md flex-shrink-0">+ Skanska</button>
+                        <button type="button" onclick="setCompanySuggestion(1, 'Turner Construction')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold rounded-md flex-shrink-0">+ Turner</button>
+                        <button type="button" onclick="setCompanySuggestion(1, 'Hensel Phelps')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold rounded-md flex-shrink-0">+ Hensel</button>
+                        <button type="button" onclick="setCompanySuggestion(1, 'Mortenson')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold rounded-md flex-shrink-0">+ Mortenson</button>
+                      </div>
+                    </div>
+
+                    <!-- Location (Autofilled with datalist) -->
+                    <div>
+                      <label class="block text-[11px] font-bold text-slate-700 mb-1">Location</label>
+                      <input type="text" id="input-location-1" value="Seattle, WA, United States" list="location-options" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" placeholder="City, State, Country" />
+                    </div>
+
+                    <!-- Duration Calendar Pickers -->
+                    <div class="space-y-2 pt-0.5">
+                      <div class="flex items-center justify-between">
+                        <label class="text-[11px] font-bold text-slate-700">Duration Period</label>
+                        <label class="flex items-center gap-1.5 cursor-pointer">
+                          <input type="checkbox" id="input-active-1" onchange="toggleCompanyActive(1, this.checked)" class="w-3.5 h-3.5 text-[#2C4A6F] rounded border-slate-300 focus:ring-0 cursor-pointer" />
+                          <span class="text-[11px] font-semibold text-slate-600">Currently working here</span>
+                        </label>
+                      </div>
+
+                      <div class="grid grid-cols-2 gap-2">
+                        <div>
+                          <span class="text-[10px] text-slate-400 block mb-1">From Date</span>
+                          <input type="month" id="input-from-1" value="2023-09" class="w-full h-10 px-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" />
+                        </div>
+                        <div>
+                          <span class="text-[10px] text-slate-400 block mb-1">To Date</span>
+                          <input type="month" id="input-to-1" value="2024-03" class="w-full h-10 px-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" />
+                        </div>
+                      </div>
+
+                      <!-- Logged Hours Input -->
+                      <div class="flex items-center justify-between pt-1">
+                        <span class="text-[11px] font-medium text-slate-600">Estimated Logged Hours:</span>
+                        <div class="flex items-center gap-1.5">
+                          <input type="number" id="input-hours-1" value="840" class="w-20 h-8 px-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-bold text-slate-900 text-right focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" />
+                          <span class="text-xs text-slate-500 font-semibold">hrs</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- Dynamic Extra Company Container (Company 2, Company 3, etc.) -->
+                  <div id="extra-company-container" class="space-y-3"></div>
+
+                  <!-- Add Another Company Button -->
+                  <button type="button" onclick="addAnotherCompanyCard()" class="btn-tap w-full h-11 border border-dashed border-slate-300 hover:border-slate-500 rounded-2xl bg-white text-slate-700 font-semibold text-xs flex items-center justify-center gap-1.5">
+                    <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                    <span>+ Add another company under this role</span>
+                  </button>
+
+                </div>
+
+              </div>
+
+              <!-- Sticky Bottom Action Button -->
+              <div class="absolute bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur-md border-t border-slate-200">
+                <button id="btn-flow-action" onclick="handleFlowNext()" class="btn-tap w-full h-12 bg-[#2C4A6F] hover:bg-[#1E3550] text-white font-bold text-sm rounded-full flex items-center justify-center gap-2 shadow-subtle">
+                  <span id="flow-action-label">Continue to Companies ›</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- =============================================================== -->
+          <!-- MODAL: LUMBER 1-TAP OAUTH HANDSHAKE                             -->
+          <!-- =============================================================== -->
+          <div id="modal-lumber-sync" class="hidden absolute inset-0 z-50 bg-black/40 backdrop-blur-xs flex flex-col justify-end">
+            <div onclick="closeLumberModal()" class="flex-1 w-full"></div>
+
+            <div class="bg-white rounded-t-[28px] p-6 shadow-sheet space-y-4 max-h-[85%] overflow-y-auto">
+              <div class="w-9 h-1 bg-slate-300 rounded-full mx-auto -mt-2 mb-1"></div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-11 h-11 rounded-xl bg-[#2C4A6F] text-white flex items-center justify-center font-bold text-base shadow-xs">
+                    <svg class="w-6 h-6 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 class="font-bold text-slate-900 text-base">Connect to Lumber</h2>
+                    <p class="text-xs text-slate-500">Verified Contractor Data Sync</p>
+                  </div>
+                </div>
+                <button onclick="closeLumberModal()" class="btn-tap w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center" aria-label="Close">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+              </div>
+
+              <!-- Matched Record -->
+              <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-[#2C4A6F] text-white font-bold flex items-center justify-center text-xs">
+                  VK
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-xs font-bold text-slate-900 truncate">Vikhyat Kaushik</h3>
+                    <span class="text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold px-1.5 py-0.2 rounded-full">
+                      Matched
+                    </span>
+                  </div>
+                  <p class="text-[11px] text-slate-500">IBEW Local 46 • ID #784-2910</p>
+                </div>
+              </div>
+
+              <!-- Scope -->
+              <div class="space-y-2 text-xs text-slate-800">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px]">✓</span>
+                  <span><strong>1,840 Hours</strong> logged at Sound Transit Light Rail</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px]">✓</span>
+                  <span><strong>Journeyman Commercial Electrician</strong> role</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px]">✓</span>
+                  <span><strong>Apex Construction Partners</strong> employer record</span>
+                </div>
+              </div>
+
+              <!-- Action -->
+              <div class="pt-2">
+                <button id="btn-sync-action" onclick="executeLumberSync()" class="btn-tap w-full h-12 bg-[#2C4A6F] hover:bg-[#1E3550] text-white font-bold text-sm rounded-full flex items-center justify-center gap-2 shadow-subtle">
+                  <span id="sync-label">Authorize & Import Experience</span>
+                  <svg id="sync-icon" class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- =============================================================== -->
+          <!-- MODAL: CAMERA OCR DOCUMENT SCANNER                              -->
+          <!-- =============================================================== -->
+          <div id="modal-camera-scan" class="hidden absolute inset-0 z-50 bg-black flex flex-col justify-between text-white">
+            <div class="px-5 pt-4 pb-2 flex items-center justify-between">
+              <div>
+                <span class="text-xs font-semibold text-slate-200">Scan Paper Document</span>
+                <p class="text-[10px] text-slate-400">Dispatch slip, union ticket, paystub</p>
+              </div>
+              <button onclick="closeDocumentScanner()" class="btn-tap w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Viewfinder Area -->
+            <div class="relative flex-1 mx-6 my-4 border-2 border-dashed border-slate-400 rounded-2xl flex flex-col items-center justify-center p-6 text-center overflow-hidden">
+              <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl max-w-[240px] text-left space-y-1.5 border border-white/20">
+                <div class="w-28 h-2 bg-amber-400/80 rounded font-mono text-[9px] text-black px-1">IBEW LOCAL 46 DISPATCH</div>
+                <div class="w-20 h-2 bg-white/50 rounded"></div>
+                <div class="text-[10px] text-amber-300 font-semibold pt-1">
+                  Detected: Apex Construction • 1,840 hrs
+                </div>
+              </div>
+              <span class="text-xs text-slate-300 mt-4">Align document edges inside frame</span>
+            </div>
+
+            <div class="p-6 bg-slate-950 flex flex-col items-center gap-3">
+              <button onclick="captureDocumentOCR()" class="btn-tap w-16 h-16 rounded-full border-4 border-white bg-[#2C4A6F] text-white flex items-center justify-center shadow-lg">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                </svg>
+              </button>
+              <span class="text-[11px] text-slate-400">Tap to auto-extract details</span>
+            </div>
+          </div>
+
+          <!-- iOS Home Indicator -->
+          <div class="w-full h-5 bg-white flex items-center justify-center pb-1">
+            <div class="w-32 h-1 bg-slate-900/40 rounded-full"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =============================================================== -->
+  <!-- JAVASCRIPT: PROPORTIONAL SCALING & COMPLETE FLOW LOGIC          -->
+  <!-- =============================================================== -->
+  <script>
+    // 1. Proportional 80vh Scaling
+    function updatePhoneScale() {
+      const container = document.getElementById('phone-proportional-wrapper');
+      const frame = document.getElementById('phone-frame-wrapper');
+      if (!container || !frame) return;
+
+      const targetHeight = container.clientHeight;
+      const baseHeight = 852;
+      const scale = targetHeight / baseHeight;
+
+      frame.style.transform = `scale(${scale})`;
+    }
+
+    window.addEventListener('resize', updatePhoneScale);
+    window.addEventListener('DOMContentLoaded', () => {
+      updatePhoneScale();
+    });
+
+    // 2. Toast Notification Engine (Light Mode, Countdown Progress Bar, Click to Dismiss)
+    let toastTimeout = null;
+    const TOAST_DURATION = 3000;
+
+    function showToast(message) {
+      const toast = document.getElementById('app-toast');
+      const text = document.getElementById('toast-text');
+      const progress = document.getElementById('toast-progress');
+      if (!toast || !text) return;
+
+      if (toastTimeout) {
+        clearTimeout(toastTimeout);
+        toastTimeout = null;
+      }
+
+      text.textContent = message;
+
+      if (progress) {
+        progress.style.transition = 'none';
+        progress.style.width = '100%';
+        void progress.offsetWidth; // Force DOM reflow
+        progress.style.transition = `width ${TOAST_DURATION}ms linear`;
+        progress.style.width = '0%';
+      }
+
+      toast.classList.remove('hidden');
+
+      toastTimeout = setTimeout(() => {
+        dismissToast();
+      }, TOAST_DURATION);
+    }
+
+    function dismissToast() {
+      const toast = document.getElementById('app-toast');
+      const progress = document.getElementById('toast-progress');
+      if (toastTimeout) {
+        clearTimeout(toastTimeout);
+        toastTimeout = null;
+      }
+      if (progress) {
+        progress.style.transition = 'none';
+        progress.style.width = '100%';
+      }
+      if (toast) {
+        toast.classList.add('hidden');
+      }
+    }
+
+    // 3. Screen Switching Engine: 'hub' <-> 'experience' <-> 'add-role-flow'
+    function goToScreen(screenId) {
+      const hub = document.getElementById('screen-hub');
+      const exp = document.getElementById('screen-experience');
+      const addFlow = document.getElementById('screen-add-role-flow');
+
+      if (screenId === 'hub') {
+        hub.className = 'screen-panel absolute inset-0 flex flex-col bg-white z-10 translate-x-0 opacity-100';
+        exp.className = 'screen-panel absolute inset-0 flex flex-col bg-[#F8FAFC] z-10 translate-x-full opacity-0';
+        addFlow.className = 'screen-panel absolute inset-0 flex flex-col bg-[#F8FAFC] z-20 translate-x-full opacity-0';
+      } else if (screenId === 'experience') {
+        hub.className = 'screen-panel absolute inset-0 flex flex-col bg-white z-10 -translate-x-full opacity-0';
+        exp.className = 'screen-panel absolute inset-0 flex flex-col bg-[#F8FAFC] z-10 translate-x-0 opacity-100';
+        addFlow.className = 'screen-panel absolute inset-0 flex flex-col bg-[#F8FAFC] z-20 translate-x-full opacity-0';
+      }
+    }
+
+    // 4. Experience View Mode Switcher: Role Wise vs Timeline Wise
+    function setExperienceView(mode) {
+      const roleContainer = document.getElementById('view-role-container');
+      const timelineContainer = document.getElementById('view-timeline-container');
+      const tabRole = document.getElementById('tab-role-view');
+      const tabTimeline = document.getElementById('tab-timeline-view');
+
+      if (mode === 'role') {
+        if (roleContainer) roleContainer.classList.remove('hidden');
+        if (timelineContainer) timelineContainer.classList.add('hidden');
+        if (tabRole) tabRole.className = 'btn-tap flex-1 py-1.5 rounded-lg bg-white text-slate-900 shadow-subtle font-semibold transition-all text-center';
+        if (tabTimeline) tabTimeline.className = 'btn-tap flex-1 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-medium transition-all text-center';
+      } else {
+        if (roleContainer) roleContainer.classList.add('hidden');
+        if (timelineContainer) timelineContainer.classList.remove('hidden');
+        if (tabRole) tabRole.className = 'btn-tap flex-1 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-medium transition-all text-center';
+        if (tabTimeline) tabTimeline.className = 'btn-tap flex-1 py-1.5 rounded-lg bg-white text-slate-900 shadow-subtle font-semibold transition-all text-center';
+      }
+    }
+
+    // 5. Option 1: Upload Resume
+    function triggerResumeUpload() {
+      showToast('Uploading resume.pdf...');
+      setTimeout(() => {
+        showToast('Extracted: Electrician & Solar PV (3,420 hrs)');
+        goToScreen('experience');
+      }, 900);
+    }
+
+    // 6. Option 2: Connect with Lumber (Handshake Modal)
+    function openLumberSyncModal() {
+      const modal = document.getElementById('modal-lumber-sync');
+      if (modal) modal.classList.remove('hidden');
+    }
+    function closeLumberModal() {
+      const modal = document.getElementById('modal-lumber-sync');
+      if (modal) modal.classList.add('hidden');
+    }
+    function executeLumberSync() {
+      const label = document.getElementById('sync-label');
+      const icon = document.getElementById('sync-icon');
+
+      if (label) label.textContent = 'Syncing Timesheets...';
+      if (icon) icon.classList.add('animate-spin');
+
+      setTimeout(() => {
+        closeLumberModal();
+        if (label) label.textContent = 'Authorize & Import Experience';
+        if (icon) icon.classList.remove('animate-spin');
+        showToast('1,840 Verified Hours Synced from Lumber');
+        goToScreen('experience');
+      }, 850);
+    }
+
+    // 7. Option 3: External Platforms (Procore, ADP, NCCER, HCSS)
+    function connectExternalPlatform(name) {
+      showToast(`Connecting to ${name}...`);
+      setTimeout(() => {
+        showToast(`Imported verified records from ${name}`);
+        goToScreen('experience');
+      }, 850);
+    }
+
+    // 8. Option 4: Scan Documents
+    function openDocumentScanner() {
+      const modal = document.getElementById('modal-camera-scan');
+      if (modal) modal.classList.remove('hidden');
+    }
+    function closeDocumentScanner() {
+      const modal = document.getElementById('modal-camera-scan');
+      if (modal) modal.classList.add('hidden');
+    }
+    function captureDocumentOCR() {
+      showToast('Extracting dispatch slip data...');
+      setTimeout(() => {
+        closeDocumentScanner();
+        showToast('Apex Construction Dispatch Record Added');
+        goToScreen('experience');
+      }, 900);
+    }
+
+    // =========================================================================
+    // 9. ROLE-BASED ADD EXPERIENCE MULTI-STEP FLOW ENGINE
+    // =========================================================================
+    let flowCurrentPart = 1;
+    let selectedRoleTitle = '';
+    let selectedTrade = 'Electrical';
+    let companyCardCounter = 1;
+
+    function openManualRoleFlow() {
+      flowCurrentPart = 1;
+      updateFlowPartUI();
+      const addFlow = document.getElementById('screen-add-role-flow');
+      if (addFlow) {
+        addFlow.className = 'screen-panel absolute inset-0 flex flex-col bg-[#F8FAFC] z-20 translate-x-0 opacity-100';
+      }
+    }
+
+    function closeManualRoleFlow() {
+      const addFlow = document.getElementById('screen-add-role-flow');
+      if (addFlow) {
+        addFlow.className = 'screen-panel absolute inset-0 flex flex-col bg-[#F8FAFC] z-20 translate-x-full opacity-0';
+      }
+    }
+
+    function updateFlowPartUI() {
+      const part1 = document.getElementById('flow-part-1');
+      const part2 = document.getElementById('flow-part-2');
+      const title = document.getElementById('flow-step-title');
+      const indicator = document.getElementById('flow-step-indicator');
+      const btnLabel = document.getElementById('flow-action-label');
+
+      if (flowCurrentPart === 1) {
+        if (part1) part1.classList.remove('hidden');
+        if (part2) part2.classList.add('hidden');
+        if (title) title.textContent = 'Step 1: Your Role';
+        if (indicator) indicator.textContent = '1 of 2';
+        if (btnLabel) btnLabel.textContent = 'Continue to Companies ›';
+      } else {
+        if (part1) part1.classList.add('hidden');
+        if (part2) part2.classList.remove('hidden');
+        if (title) title.textContent = 'Step 2: Companies Worked';
+        if (indicator) indicator.textContent = '2 of 2';
+        if (btnLabel) btnLabel.textContent = 'Save Experience to Profile';
+
+        const summary = document.getElementById('summary-selected-role');
+        if (summary) summary.textContent = selectedRoleTitle || 'Selected Trade Role';
+      }
+    }
+
+    // Dynamic Role-to-Trade Mapping as User Types
+    function handleRoleInput(val) {
+      selectedRoleTitle = val;
+      const lower = val.toLowerCase().trim();
+      const tradeSelect = document.getElementById('input-trade-category');
+      if (!tradeSelect) return;
+
+      if (lower.includes('electr') || lower.includes('wireman') || lower.includes('lineman') || lower.includes('power')) {
+        tradeSelect.value = 'Electrical';
+        selectedTrade = 'Electrical';
+      } else if (lower.includes('solar') || lower.includes('pv') || lower.includes('battery') || lower.includes('renew')) {
+        tradeSelect.value = 'Renewable Energy';
+        selectedTrade = 'Renewable Energy';
+      } else if (lower.includes('plumb') || lower.includes('pipe') || lower.includes('steam') || lower.includes('gas')) {
+        tradeSelect.value = 'Plumbing & Pipefitting';
+        selectedTrade = 'Plumbing & Pipefitting';
+      } else if (lower.includes('hvac') || lower.includes('cool') || lower.includes('refrig') || lower.includes('mechanic')) {
+        tradeSelect.value = 'Mechanical / HVAC';
+        selectedTrade = 'Mechanical / HVAC';
+      } else if (lower.includes('carpent') || lower.includes('fram') || lower.includes('drywall') || lower.includes('wood')) {
+        tradeSelect.value = 'Carpentry & Framing';
+        selectedTrade = 'Carpentry & Framing';
+      } else if (lower.includes('operat') || lower.includes('heavy') || lower.includes('crane') || lower.includes('excavat')) {
+        tradeSelect.value = 'Heavy Equipment';
+        selectedTrade = 'Heavy Equipment';
+      }
+    }
+
+    function selectExistingRole(title, trade) {
+      const input = document.getElementById('input-role-title');
+      const select = document.getElementById('input-trade-category');
+      if (input) input.value = title;
+      if (select) select.value = trade;
+      selectedRoleTitle = title;
+      selectedTrade = trade;
+      showToast(`Selected: ${title}`);
+    }
+
+    function handleFlowNext() {
+      if (flowCurrentPart === 1) {
+        const input = document.getElementById('input-role-title');
+        const select = document.getElementById('input-trade-category');
+        if (input && input.value.trim()) {
+          selectedRoleTitle = input.value.trim();
+        } else {
+          selectedRoleTitle = 'Journeyman Commercial Electrician';
+          if (input) input.value = selectedRoleTitle;
+        }
+        if (select) selectedTrade = select.value;
+
+        flowCurrentPart = 2;
+        updateFlowPartUI();
+      } else {
+        saveNewRoleExperience();
+      }
+    }
+
+    // Company Input Helpers
+    function setCompanySuggestion(cardIndex, name) {
+      const input = document.getElementById(`input-company-name-${cardIndex}`);
+      if (input) input.value = name;
+      showToast(`Selected: ${name}`);
+    }
+
+    function toggleCompanyActive(cardIndex, isChecked) {
+      const toInput = document.getElementById(`input-to-${cardIndex}`);
+      if (!toInput) return;
+      if (isChecked) {
+        toInput.disabled = true;
+        toInput.classList.add('opacity-50', 'bg-slate-100');
+        toInput.dataset.prevValue = toInput.value;
+        toInput.value = '';
+      } else {
+        toInput.disabled = false;
+        toInput.classList.remove('opacity-50', 'bg-slate-100');
+        if (toInput.dataset.prevValue) toInput.value = toInput.dataset.prevValue;
+      }
+    }
+
+    // Add Another Company Card (Identical to Company 1, titled Company 2, Company 3, etc.)
+    function addAnotherCompanyCard() {
+      const container = document.getElementById('extra-company-container');
+      if (!container) return;
+
+      companyCardCounter++;
+      const index = companyCardCounter;
+
+      const card = document.createElement('div');
+      card.id = `company-card-${index}`;
+      card.className = 'company-card bg-white rounded-2xl p-4 border border-slate-200 shadow-card space-y-3';
+      card.dataset.companyIndex = index;
+      card.innerHTML = `
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-slate-900">Contractor / Employer</span>
+            <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-full">Company ${index}</span>
+          </div>
+          <button type="button" onclick="removeCompanyCard(${index})" class="text-slate-400 hover:text-red-600 text-[11px] font-semibold flex items-center gap-1 transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span>Remove</span>
+          </button>
+        </div>
+
+        <!-- Contractor Name (Not autofilled) -->
+        <div>
+          <input type="text" id="input-company-name-${index}" value="" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" placeholder="e.g. Skanska, Turner, Apex" />
+          
+          <!-- Suggestions -->
+          <div class="flex items-center gap-1.5 mt-1.5 overflow-x-auto no-scrollbar">
+            <button type="button" onclick="setCompanySuggestion(${index}, 'Apex Construction')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold rounded-md flex-shrink-0">+ Apex</button>
+            <button type="button" onclick="setCompanySuggestion(${index}, 'Skanska USA')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold rounded-md flex-shrink-0">+ Skanska</button>
+            <button type="button" onclick="setCompanySuggestion(${index}, 'Turner Construction')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold rounded-md flex-shrink-0">+ Turner</button>
+            <button type="button" onclick="setCompanySuggestion(${index}, 'Hensel Phelps')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold rounded-md flex-shrink-0">+ Hensel</button>
+            <button type="button" onclick="setCompanySuggestion(${index}, 'Mortenson')" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-semibold rounded-md flex-shrink-0">+ Mortenson</button>
+          </div>
+        </div>
+
+        <!-- Location (Autofilled with datalist) -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 mb-1">Location</label>
+          <input type="text" id="input-location-${index}" value="Seattle, WA, United States" list="location-options" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" placeholder="City, State, Country" />
+        </div>
+
+        <!-- Duration Calendar Pickers -->
+        <div class="space-y-2 pt-0.5">
+          <div class="flex items-center justify-between">
+            <label class="text-[11px] font-bold text-slate-700">Duration Period</label>
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" id="input-active-${index}" onchange="toggleCompanyActive(${index}, this.checked)" class="w-3.5 h-3.5 text-[#2C4A6F] rounded border-slate-300 focus:ring-0 cursor-pointer" />
+              <span class="text-[11px] font-semibold text-slate-600">Currently working here</span>
+            </label>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <span class="text-[10px] text-slate-400 block mb-1">From Date</span>
+              <input type="month" id="input-from-${index}" value="2022-09" class="w-full h-10 px-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" />
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 block mb-1">To Date</span>
+              <input type="month" id="input-to-${index}" value="2023-04" class="w-full h-10 px-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" />
+            </div>
+          </div>
+
+          <!-- Logged Hours Input -->
+          <div class="flex items-center justify-between pt-1">
+            <span class="text-[11px] font-medium text-slate-600">Estimated Logged Hours:</span>
+            <div class="flex items-center gap-1.5">
+              <input type="number" id="input-hours-${index}" value="480" class="w-20 h-8 px-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-bold text-slate-900 text-right focus:outline-none focus:ring-2 focus:ring-[#2C4A6F]" />
+              <span class="text-xs text-slate-500 font-semibold">hrs</span>
+            </div>
+          </div>
+        </div>
+      `;
+      container.appendChild(card);
+      showToast(`Company ${index} form added`);
+    }
+
+    function removeCompanyCard(index) {
+      const card = document.getElementById(`company-card-${index}`);
+      if (card) {
+        card.remove();
+        showToast(`Company ${index} removed`);
+      }
+    }
+
+    function addCompanyToSpecificRole(role) {
+      openManualRoleFlow();
+      handleRoleInput(role);
+      const input = document.getElementById('input-role-title');
+      if (input) input.value = role;
+      selectedRoleTitle = role;
+      flowCurrentPart = 2;
+      updateFlowPartUI();
+      showToast(`Adding contractor under ${role}`);
+    }
+
+    // Save Multi-Company Role Experience to Profile
+    function saveNewRoleExperience() {
+      const roleTitle = selectedRoleTitle || 'Journeyman Commercial Electrician';
+      const tradeName = selectedTrade || 'Electrical';
+
+      // Read all company cards in the form
+      const cards = document.querySelectorAll('.company-card');
+      const companyRecords = [];
+      let totalRoleHours = 0;
+
+      cards.forEach(card => {
+        const idx = card.dataset.companyIndex;
+        const nameInput = document.getElementById(`input-company-name-${idx}`);
+        const locInput = document.getElementById(`input-location-${idx}`);
+        const fromInput = document.getElementById(`input-from-${idx}`);
+        const toInput = document.getElementById(`input-to-${idx}`);
+        const activeCheck = document.getElementById(`input-active-${idx}`);
+        const hoursInput = document.getElementById(`input-hours-${idx}`);
+
+        const companyName = nameInput?.value.trim() || `Contractor Partner ${idx}`;
+        const location = locInput?.value.trim() || 'Seattle, WA, United States';
+        const fromDate = fromInput?.value || '2023-01';
+        const isActive = activeCheck?.checked || false;
+        const toDate = isActive ? 'Present' : (toInput?.value || '2023-12');
+        const hours = parseInt(hoursInput?.value) || 500;
+
+        totalRoleHours += hours;
+        companyRecords.push({
+          name: companyName,
+          location: location,
+          period: `${fromDate} – ${toDate}`,
+          isActive: isActive,
+          hours: hours
+        });
+      });
+
+      // 1. Append Role Card in Role-Wise View
+      const extraRolesContainer = document.getElementById('extra-roles-container');
+      if (extraRolesContainer) {
+        const roleCard = document.createElement('div');
+        roleCard.className = 'bg-white rounded-2xl border border-slate-200 shadow-card overflow-hidden';
+        
+        let companiesHtml = '';
+        companyRecords.forEach(c => {
+          companiesHtml += `
+            <div class="p-3.5 space-y-1.5">
+              <div class="flex items-start justify-between">
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <h3 class="text-[13.5px] font-bold text-slate-900">${c.name}</h3>
+                    ${c.isActive ? '<span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.2 rounded-full">Active</span>' : ''}
+                  </div>
+                  <p class="text-xs text-slate-500">${c.location}</p>
+                </div>
+                <span class="text-xs font-bold text-slate-900 tabular-nums">${c.hours} hrs</span>
+              </div>
+              <div class="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                <span>${c.period}</span>
+                <span class="text-slate-500 font-medium">Logged & Pending Verification</span>
+              </div>
+            </div>
+          `;
+        });
+
+        roleCard.innerHTML = `
+          <div class="p-4 bg-[#F0F4F8] border-b border-slate-200/80 space-y-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <span class="text-[10px] font-bold text-[#2C4A6F] uppercase tracking-wider">
+                  Added Trade Role
+                </span>
+                <h2 class="text-base font-bold text-slate-900 tracking-tight">
+                  ${roleTitle}
+                </h2>
+                <p class="text-xs text-slate-500">
+                  Trade: ${tradeName}
+                </p>
+              </div>
+              <div class="text-right">
+                <span class="text-xs text-slate-400 block font-medium">Logged Hours</span>
+                <span class="text-base font-extrabold text-[#2C4A6F] tabular-nums">${totalRoleHours} hrs</span>
+              </div>
+            </div>
+            <div class="pt-1 flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                ✓ Recorded Profile Role
+              </span>
+              <span class="text-[11px] text-slate-500">${companyRecords.length} Contractor${companyRecords.length > 1 ? 's' : ''}</span>
+            </div>
+          </div>
+          <div class="divide-y divide-slate-100">
+            ${companiesHtml}
+          </div>
+          <div class="p-3 bg-slate-50/70 border-t border-slate-100">
+            <button type="button" onclick="addCompanyToSpecificRole('${roleTitle}')" class="btn-tap w-full py-2 text-xs font-semibold text-[#2C4A6F] hover:bg-slate-100 rounded-xl flex items-center justify-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              <span>Add another company worked under this role</span>
+            </button>
+          </div>
+        `;
+        extraRolesContainer.appendChild(roleCard);
+      }
+
+      // 2. Append Timeline Entries in Timeline-Wise View
+      const timelineRail = document.getElementById('timeline-rail-items');
+      if (timelineRail) {
+        companyRecords.forEach(c => {
+          const item = document.createElement('div');
+          item.className = 'relative';
+          item.innerHTML = `
+            <div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-[#2C4A6F] ring-4 ring-blue-50"></div>
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-bold text-[#2C4A6F]">${c.period}</span>
+                <span class="text-[10px] font-bold text-slate-700 bg-slate-100 px-1.5 py-0.2 rounded-full tabular-nums">${c.hours} hrs</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900 mt-0.5">${c.name}</h3>
+              <p class="text-xs text-slate-500">${roleTitle} • ${c.location}</p>
+            </div>
+          `;
+          timelineRail.insertBefore(item, timelineRail.firstChild);
+        });
+      }
+
+      // Reset extra company cards
+      const extraCompContainer = document.getElementById('extra-company-container');
+      if (extraCompContainer) extraCompContainer.innerHTML = '';
+      companyCardCounter = 1;
+
+      // Reset inputs
+      const comp1Name = document.getElementById('input-company-name-1');
+      if (comp1Name) comp1Name.value = '';
+      const roleTitleInput = document.getElementById('input-role-title');
+      if (roleTitleInput) roleTitleInput.value = '';
+
+      closeManualRoleFlow();
+      showToast(`${roleTitle} & ${companyRecords.length} Companies Added!`);
+      goToScreen('experience');
+    }
+  </script>
+</body>
+</html>
